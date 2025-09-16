@@ -4,10 +4,12 @@ namespace _Project.Scripts.Features.Transform
 {
     public class MoveSystem : IExecuteSystem
     {
-        public MoveSystem()
-        {
-            
-        }
+        // private readonly IGroup<GameEntity> _movables;
+        //
+        // public MoveSystem(Contexts contexts)
+        // {
+        //     // _movables = contexts.game.GetGroup(GameMatcher.Transform, GameMatcher.Velocity);
+        // }
         
         public void Execute()
         {
