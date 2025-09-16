@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public _Project.Scripts.Features.Transform.TransformComponent _ProjectScriptsFeaturesTransformTransform { get { return (_Project.Scripts.Features.Transform.TransformComponent)GetComponent(GameComponentsLookup._ProjectScriptsFeaturesTransformTransform); } }
-    public bool has_ProjectScriptsFeaturesTransformTransform { get { return HasComponent(GameComponentsLookup._ProjectScriptsFeaturesTransformTransform); } }
+    public _Project.Scripts.Features.Transform.TransformComponent transform { get { return (_Project.Scripts.Features.Transform.TransformComponent)GetComponent(GameComponentsLookup.Transform); } }
+    public bool hasTransform { get { return HasComponent(GameComponentsLookup.Transform); } }
 
-    public void Add_ProjectScriptsFeaturesTransformTransform(UnityEngine.Transform newTransform) {
-        var index = GameComponentsLookup._ProjectScriptsFeaturesTransformTransform;
+    public void AddTransform(UnityEngine.Transform newTransform) {
+        var index = GameComponentsLookup.Transform;
         var component = (_Project.Scripts.Features.Transform.TransformComponent)CreateComponent(index, typeof(_Project.Scripts.Features.Transform.TransformComponent));
         component.Transform = newTransform;
         AddComponent(index, component);
     }
 
-    public void Replace_ProjectScriptsFeaturesTransformTransform(UnityEngine.Transform newTransform) {
-        var index = GameComponentsLookup._ProjectScriptsFeaturesTransformTransform;
+    public void ReplaceTransform(UnityEngine.Transform newTransform) {
+        var index = GameComponentsLookup.Transform;
         var component = (_Project.Scripts.Features.Transform.TransformComponent)CreateComponent(index, typeof(_Project.Scripts.Features.Transform.TransformComponent));
         component.Transform = newTransform;
         ReplaceComponent(index, component);
     }
 
-    public void Remove_ProjectScriptsFeaturesTransformTransform() {
-        RemoveComponent(GameComponentsLookup._ProjectScriptsFeaturesTransformTransform);
+    public void RemoveTransform() {
+        RemoveComponent(GameComponentsLookup.Transform);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcher_ProjectScriptsFeaturesTransformTransform;
+    static Entitas.IMatcher<GameEntity> _matcherTransform;
 
-    public static Entitas.IMatcher<GameEntity> _ProjectScriptsFeaturesTransformTransform {
+    public static Entitas.IMatcher<GameEntity> Transform {
         get {
-            if (_matcher_ProjectScriptsFeaturesTransformTransform == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup._ProjectScriptsFeaturesTransformTransform);
+            if (_matcherTransform == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Transform);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcher_ProjectScriptsFeaturesTransformTransform = matcher;
+                _matcherTransform = matcher;
             }
 
-            return _matcher_ProjectScriptsFeaturesTransformTransform;
+            return _matcherTransform;
         }
     }
 }

@@ -8,21 +8,18 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int _ProjectScriptsFeaturesTransformDirection = 0;
-    public const int _ProjectScriptsFeaturesTransformSpeed = 1;
-    public const int _ProjectScriptsFeaturesTransformTransform = 2;
+    public const int Transform = 0;
+    public const int Velocity = 1;
 
-    public const int TotalComponents = 3;
+    public const int TotalComponents = 2;
 
     public static readonly string[] componentNames = {
-        "_ProjectScriptsFeaturesTransformDirection",
-        "_ProjectScriptsFeaturesTransformSpeed",
-        "_ProjectScriptsFeaturesTransformTransform"
+        "Transform",
+        "Velocity"
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(_Project.Scripts.Features.Transform.DirectionComponent),
-        typeof(_Project.Scripts.Features.Transform.SpeedComponent),
-        typeof(_Project.Scripts.Features.Transform.TransformComponent)
+        typeof(_Project.Scripts.Features.Transform.TransformComponent),
+        typeof(_Project.Scripts.Features.Transform.VelocityComponent)
     };
 }
