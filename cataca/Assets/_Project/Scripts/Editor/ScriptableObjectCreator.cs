@@ -1,10 +1,10 @@
-﻿using Sirenix.OdinInspector.Editor;
-using Sirenix.Utilities;
-using Sirenix.Utilities.Editor;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Sirenix.OdinInspector.Editor;
+using Sirenix.Utilities;
+using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
 
@@ -126,7 +126,7 @@ namespace _Project.Scripts.Editor
         {
             if (this.previewObject)
             {
-                var dest = this.targetFolder + "/new " + this.MenuTree.Selection.First().Name.ToLower() + ".asset";
+                var dest = this.targetFolder + "/" + this.MenuTree.Selection.First().Name.Replace(" ", "") + ".asset";
                 dest = AssetDatabase.GenerateUniqueAssetPath(dest);
                 AssetDatabase.CreateAsset(this.previewObject, dest);
                 AssetDatabase.Refresh();
