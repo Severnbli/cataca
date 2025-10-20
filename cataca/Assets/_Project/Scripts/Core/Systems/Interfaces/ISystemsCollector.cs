@@ -1,6 +1,6 @@
 ﻿namespace _Project.Scripts.Core.Systems.Interfaces
 {
-    public interface ISystemsProvidersCollector
+    public interface ISystemsCollector
     {
         public void Init();
         public void Run();
