@@ -1,23 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using _Project.Scripts.Core.Systems.Interfaces;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.UnityEditor;
 
 namespace _Project.Scripts.Core.Systems.Collections
 {
-    public class EditorCollection : EcsSystems
+    public sealed class EditorCollection : BaseCollection<IEcsEditorSystem>
     {
-        public EditorCollection(EcsWorld defaultWorld, IEnumerable<IEditorSystem> systems) : base(defaultWorld)
+        public EditorCollection(EcsWorld defaultWorld, IEnumerable<IEcsEditorSystem> systems) : base(defaultWorld, systems)
         {
-            AddEditorSystems(systems);
-        }
-
-        private void AddEditorSystems(IEnumerable<IEditorSystem> systems)
-        {
-            GetAllSystems().AddRange(systems);
-            GetAllSystems().Add(new EcsSystemsDebugSystem());
+            Add(new EcsSystemsDebugSystem());
         }
     }
 }
