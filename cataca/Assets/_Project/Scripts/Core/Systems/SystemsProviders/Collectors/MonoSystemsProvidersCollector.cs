@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using _Project.Scripts.Features.Base.Interfaces;
+using _Project.Scripts.Core.Systems.Interfaces;
 using Sirenix.Utilities;
 using UnityEngine;
 using Zenject;
 
-namespace _Project.Scripts.Features.Base.SystemsProviders.Collectors
+namespace _Project.Scripts.Core.Systems.SystemsProviders.Collectors
 {
     public class MonoSystemsProvidersCollector : MonoBehaviour, ISystemsProvidersCollector
     {

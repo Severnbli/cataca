@@ -3,7 +3,7 @@
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.UnityEditor;
 
-namespace _Project.Scripts.Features.Base.SystemsProviders
+namespace _Project.Scripts.Core.Systems.SystemsProviders
 {
     public class EditorSystemsProvider : BaseSystemsProvider
     {
