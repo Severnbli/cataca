@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
 
-namespace _Project.Scripts.Features.Base.SystemsProviders
+namespace _Project.Scripts.Core.Systems.SystemsProviders
 {
     public class GameSystemsProvider : BaseSystemsProvider
     {

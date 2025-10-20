@@ -1,7 +1,7 @@
-﻿using _Project.Scripts.Features.Base.Interfaces;
+﻿using _Project.Scripts.Core.Systems.Interfaces;
 using Leopotam.EcsLite;
 
-namespace _Project.Scripts.Features.Base.SystemsProviders
+namespace _Project.Scripts.Core.Systems.SystemsProviders
 {
     public abstract class BaseSystemsProvider : ISystemsProvider
     {

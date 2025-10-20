@@ -1,4 +1,4 @@
-﻿namespace _Project.Scripts.Features.Base.Interfaces
+﻿namespace _Project.Scripts.Core.Systems.Interfaces
 {
     public interface ISystemsProvider
     {
