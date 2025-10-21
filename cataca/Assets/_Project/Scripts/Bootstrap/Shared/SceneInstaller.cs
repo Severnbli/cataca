@@ -19,10 +19,10 @@ namespace _Project.Scripts.Bootstrap.Shared
         private void SetupCollections()
         {
 #if UNITY_EDITOR
-            Container.Bind<EcsSystems>().To<EditorCollection>().AsSingle();
+            Container.Bind<IEcsSystems>().To<EditorCollection>().AsSingle();
 #endif
             
-            Container.Bind<EcsSystems>().To<GameCollection>().AsSingle();
+            Container.Bind<IEcsSystems>().To<GameCollection>().AsSingle();
         }
     }
 }
