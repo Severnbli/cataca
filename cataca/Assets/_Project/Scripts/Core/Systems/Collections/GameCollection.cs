@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _Project.Scripts.Core.Systems.Interfaces;
+using AB_Utility.FromSceneToEntityConverter;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.UnityEditor;
 
@@ -12,6 +13,7 @@ namespace _Project.Scripts.Core.Systems.Collections
 #if UNITY_EDITOR
             Add(new EcsSystemsDebugSystem());
 #endif
+            this.ConvertScene();
         }
     }
 }
