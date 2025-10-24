@@ -6,18 +6,18 @@ namespace _Project.Scripts.Features.Input.Configs
 {
     public class InputControlsConfig : ScriptableObjectAutoInstaller<InputControlsConfig>
     {
-        [SerializeField] private InputActionReference walk;
-        [SerializeField] private InputActionReference jump;
-        [SerializeField] private InputActionReference dash;
-        [SerializeField] private InputActionReference position;
-        [SerializeField] private InputActionReference rotation;
-        [SerializeField] private InputActionReference scale;
+        [SerializeField] private InputActionReference _walk;
+        [SerializeField] private InputActionReference _jump;
+        [SerializeField] private InputActionReference _dash;
+        [SerializeField] private InputActionReference _position;
+        [SerializeField] private InputActionReference _rotation;
+        [SerializeField] private InputActionReference _scale;
         
-        public InputActionReference Walk => walk;
-        public InputActionReference Jump => jump;
-        public InputActionReference Dash => dash;
-        public InputActionReference Position => position;
-        public InputActionReference Rotation => rotation;
-        public InputActionReference Scale => scale;
+        public InputActionReference Walk => _walk;
+        public InputActionReference Jump => _jump;
+        public InputActionReference Dash => _dash;
+        public InputActionReference Position => _position;
+        public InputActionReference Rotation => _rotation;
+        public InputActionReference Scale => _scale;
     }
 }
