@@ -34,15 +34,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Scale",
-                    "type": "Button",
-                    "id": "d30c1e53-49c2-4d83-b7c7-5185c73f1513",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Position",
                     "type": "Button",
                     "id": "bc54c3c9-d3d8-438e-bfbf-9678556d26e6",
@@ -55,6 +46,15 @@
                     "name": "Rotation",
                     "type": "Button",
                     "id": "4b4834b6-35d5-4f1b-bbc0-07153e29a21e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Scale",
+                    "type": "Button",
+                    "id": "d30c1e53-49c2-4d83-b7c7-5185c73f1513",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -179,7 +179,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Scale",
+                    "action": "Position",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -190,7 +190,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Scale",
+                    "action": "Position",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -201,7 +201,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Position",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -212,7 +212,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Position",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -223,7 +223,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotation",
+                    "action": "Scale",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -234,7 +234,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotation",
+                    "action": "Scale",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
