@@ -11,7 +11,7 @@ namespace _Project.Scripts.Features.Systems.Physics.Configs
 
         public override void InstallBindings()
         {
-            Container.Bind<T>().To<T>().AsSingle();
+            Container.Bind<T>().FromInstance((T)this).AsSingle();
         }
     }
 }
