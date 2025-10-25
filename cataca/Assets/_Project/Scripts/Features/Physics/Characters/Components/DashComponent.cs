@@ -8,5 +8,6 @@ namespace _Project.Scripts.Features.Physics.Characters.Components
         public bool Enabled;
         public float Force;
         public int MaxCount;
+        [NonSerialized] public int CurrentCount;
     }
 }
