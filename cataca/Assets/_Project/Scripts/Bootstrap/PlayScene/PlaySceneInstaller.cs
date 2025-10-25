@@ -1,6 +1,8 @@
 ﻿using _Project.Scripts.Bootstrap.Shared;
 using _Project.Scripts.Features.Input.Services;
 using _Project.Scripts.Features.Input.Systems;
+using _Project.Scripts.Features.Physics.Characters.Systems;
+using _Project.Scripts.Features.Player.Systems;
 using _Project.Scripts.Features.Time.Services;
 using _Project.Scripts.Features.Time.Systems;
 
@@ -19,6 +21,12 @@ namespace _Project.Scripts.Bootstrap.PlayScene
         {
             Container.BindInterfacesTo<TimeServiceUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<InputServiceUpdateSystem>().AsSingle();
+
+            Container.BindInterfacesTo<InputBasedWalkSystem>().AsSingle();
+            Container.BindInterfacesTo<InputBasedJumpSystem>().AsSingle();
+            Container.BindInterfacesTo<InputBasedDashSystem>().AsSingle();
+
+            Container.BindInterfacesTo<PlayerConfigSetupSystem>().AsSingle();
         }
     }
 }
