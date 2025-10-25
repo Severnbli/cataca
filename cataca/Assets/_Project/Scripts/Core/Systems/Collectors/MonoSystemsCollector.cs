@@ -45,10 +45,7 @@ namespace _Project.Scripts.Core.Systems.Collectors
 
         public void Destroy()
         {
-            foreach (var system in _systems.Where(s => s != null))
-            {
-                system.Destroy();
-            }
+            foreach (var systems in _systems) systems?.Destroy();
         }
     }
 }
