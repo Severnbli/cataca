@@ -6,9 +6,14 @@ namespace _Project.Scripts.Bootstrap.PlayScene
 {
     public class PlaySceneInstaller : SceneInstaller
     {
-        protected override void SetupBindings()
+
+        protected override void BindServices()
         {
             Container.Bind<TimeService>().AsSingle();
+        }
+
+        protected override void BindSystems()
+        {
             Container.BindInterfacesTo<TimeServiceUpdateSystem>().AsSingle();
         }
     }

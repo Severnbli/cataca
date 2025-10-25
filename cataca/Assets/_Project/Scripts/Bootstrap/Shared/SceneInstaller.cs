@@ -9,12 +9,15 @@ namespace _Project.Scripts.Bootstrap.Shared
         public sealed override void InstallBindings()
         {
             Container.BindInstance(new EcsWorld()).AsSingle();
-            
             SetupBindings();
             SetupCollections();
         }
 
-        protected abstract void SetupBindings();
+        private void SetupBindings()
+        {
+            BindServices();
+            BindSystems();
+        }
         
         private void SetupCollections()
         {
@@ -24,5 +27,8 @@ namespace _Project.Scripts.Bootstrap.Shared
             
             Container.Bind<IEcsSystems>().To<GameCollection>().AsSingle();
         }
+        
+        protected virtual void BindServices() {}
+        protected virtual void BindSystems() {}
     }
 }
