@@ -41,10 +41,8 @@ namespace _Project.Scripts.Features.Physics.Characters.Systems
                 var jumpInput = _inputService.Jump;
                 if (!jumpInput) continue;
                 
-                var walkDirection = _inputService.Walk;
-                
                 ref var rigidbody = ref _rigidbodyPool.Get(e);
-                rigidbody.Rigidbody.ProcessUpperPush(jump.Force, walkDirection);
+                rigidbody.Rigidbody.ProcessJump(jump.Force);
                 
                 jump.CurrentCount++;
             }

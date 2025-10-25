@@ -42,7 +42,7 @@ namespace _Project.Scripts.Features.Physics.Characters.Systems
                 ref var walk = ref _walkPool.Get(e);
                 if (!walk.Enabled) continue;
                 
-                var walkInput = _inputService.Walk.x;
+                var walkInput = _inputService.Walk;
                 
                 ref var rigidbody = ref _rigidbodyPool.Get(e);
                 rigidbody.Rigidbody.ProcessWalk(walk.Force, walkInput);
