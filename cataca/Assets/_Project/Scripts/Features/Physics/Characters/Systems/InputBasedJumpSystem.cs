@@ -29,6 +29,9 @@ namespace _Project.Scripts.Features.Physics.Characters.Systems
                 .Inc<RigidbodyComponent>()
                 .Inc<ControlledByInputMarker>()
                 .End();
+            
+            _jumpPool = world.GetPool<JumpComponent>();
+            _rigidbodyPool = world.GetPool<RigidbodyComponent>();
         }
 
         public void PostRun(IEcsSystems systems)
