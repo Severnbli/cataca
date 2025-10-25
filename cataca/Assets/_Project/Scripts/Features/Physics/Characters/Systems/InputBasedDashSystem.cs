@@ -1,0 +1,56 @@
+﻿using _Project.Scripts.Core.Systems.Interfaces;
+using _Project.Scripts.Features.Input.Markers;
+using _Project.Scripts.Features.Input.Services;
+using _Project.Scripts.Features.Physics.Characters.Components;
+using _Project.Scripts.Features.Physics.Components;
+using _Project.Scripts.Shared.Utils;
+using Leopotam.EcsLite;
+
+namespace _Project.Scripts.Features.Physics.Characters.Systems
+{
+    public class InputBasedDashSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
+    {
+        public InputBasedDashSystem(InputService inputService)
+        {
+            _inputService = inputService;
+        }
+        
+        private InputService _inputService;
+        private EcsFilter _filter;
+        private EcsPool<DashComponent> _dashPool;
+        private EcsPool<RigidbodyComponent> _rigidbodyPool;
+        
+        public void Init(IEcsSystems systems)
+        {
+            var world = systems.GetWorld();
+
+            _filter = world
+                .Filter<DashComponent>()
+                .Inc<RigidbodyComponent>()
+                .Inc<ControlledByInputMarker>()
+                .End();
+            
+            _dashPool = world.GetPool<DashComponent>();
+            _rigidbodyPool = world.GetPool<RigidbodyComponent>();
+        }
+
+        public void PostRun(IEcsSystems systems)
+        {
+            foreach (var e in _filter)
+            {
+                ref var dash = ref _dashPool.Get(e);
+                if (!dash.Enabled || dash.CurrentCount >= dash.MaxCount) continue;
+
+                var dashInput = _inputService.Dash;
+                if (!dashInput) continue;
+                
+                var walkDirection = _inputService.Walk;
+                
+                ref var rigidbody = ref _rigidbodyPool.Get(e);
+                rigidbody.Rigidbody.ProcessDash(dash.Force, walkDirection);
+                
+                dash.CurrentCount++;
+            }
+        }
+    }
+}
