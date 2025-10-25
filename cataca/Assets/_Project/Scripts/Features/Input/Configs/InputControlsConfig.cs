@@ -19,5 +19,15 @@ namespace _Project.Scripts.Features.Input.Configs
         public InputActionReference Position => _position;
         public InputActionReference Rotation => _rotation;
         public InputActionReference Scale => _scale;
+
+        protected override void RegisterBindings()
+        {
+            _walk.action.Enable();
+            _jump.action.Enable();
+            _dash.action.Enable();
+            _position.action.Enable();
+            _rotation.action.Enable();
+            _scale.action.Enable();
+        }
     }
 }
