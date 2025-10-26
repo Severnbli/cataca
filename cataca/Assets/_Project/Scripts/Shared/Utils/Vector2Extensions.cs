@@ -9,5 +9,11 @@ namespace _Project.Scripts.Shared.Utils
             var result = new Vector2(Mathf.Sign(vector.x), Mathf.Sign(vector.y));
             return result.normalized;
         }
+
+        public static Vector2 AddVerticalForce(this Vector2 vector, float force)
+        {
+            vector.y += force;
+            return vector;
+        }
     }
 }
