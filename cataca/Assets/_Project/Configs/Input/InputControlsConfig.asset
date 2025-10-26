@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397ac03f90e64a62bd7b71342f87162f, type: 3}
+  m_Name: InputControlsConfig
+  m_EditorClassIdentifier: 
+  _walk: {fileID: -6678921414412189813, guid: 7e33ae3f28e57934a88a34db5907b02a, type: 3}
+  _jump: {fileID: -1725715116707547832, guid: 7e33ae3f28e57934a88a34db5907b02a, type: 3}
+  _dash: {fileID: -8674799417610564058, guid: 7e33ae3f28e57934a88a34db5907b02a, type: 3}
+  _position: {fileID: 5937867771067824024, guid: 7e33ae3f28e57934a88a34db5907b02a, type: 3}
+  _rotation: {fileID: -6224449819346283763, guid: 7e33ae3f28e57934a88a34db5907b02a, type: 3}
+  _scale: {fileID: -383140323114406896, guid: 7e33ae3f28e57934a88a34db5907b02a, type: 3}
