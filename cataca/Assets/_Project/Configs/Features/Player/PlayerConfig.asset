@@ -18,9 +18,9 @@ MonoBehaviour:
   _jump:
     Enabled: 1
     Force: 7
-    MaxCount: 10
+    MaxCount: 2
   _dash:
     Enabled: 1
     Force: 15
-    MaxCount: 10
+    MaxCount: 1
     Duration: 0.4
