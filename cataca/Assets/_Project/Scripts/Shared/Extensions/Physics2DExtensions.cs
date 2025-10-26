@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Project.Scripts.Shared.Utils
+namespace _Project.Scripts.Shared.Extensions
 {
     public static class Physics2DExtensions
     {

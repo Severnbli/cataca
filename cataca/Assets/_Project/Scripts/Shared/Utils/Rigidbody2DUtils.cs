@@ -2,7 +2,7 @@
 
 namespace _Project.Scripts.Shared.Utils
 {
-    public static class Rigidbody2DExtensions
+    public static class Rigidbody2DUtils
     {
         public static void AddForce(this Rigidbody2D rigidbody2D, float force, Vector2 direction)
         {
