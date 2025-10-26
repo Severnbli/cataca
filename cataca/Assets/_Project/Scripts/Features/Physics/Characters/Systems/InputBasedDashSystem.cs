@@ -18,7 +18,7 @@ namespace _Project.Scripts.Features.Physics.Characters.Systems
         private InputService _inputService;
         private EcsFilter _filter;
         private EcsPool<DashComponent> _dashPool;
-        private EcsPool<RigidbodyComponent> _rigidbodyPool;
+        private EcsPool<DashDampingComponent> _dashDampingPool;
         
         public void Init(IEcsSystems systems)
         {
@@ -31,7 +31,7 @@ namespace _Project.Scripts.Features.Physics.Characters.Systems
                 .End();
             
             _dashPool = world.GetPool<DashComponent>();
-            _rigidbodyPool = world.GetPool<RigidbodyComponent>();
+            _dashDampingPool = world.GetPool<DashDampingComponent>();
         }
 
         public void PostRun(IEcsSystems systems)
@@ -43,11 +43,17 @@ namespace _Project.Scripts.Features.Physics.Characters.Systems
 
                 var dashInput = _inputService.Dash;
                 if (!dashInput) continue;
+
+                var walkInput = _inputService.Walk.x;
                 
-                var walkDirection = _inputService.Walk;
-                
-                ref var rigidbody = ref _rigidbodyPool.Get(e);
-                rigidbody.Rigidbody.ProcessDash(dash.Force, walkDirection);
+                ref var dashDamping = ref _dashDampingPool.Has(e)
+                    ? ref _dashDampingPool.Get(e)
+                    : ref _dashDampingPool.Add(e);
+
+                dashDamping.Force = dash.Force;
+                dashDamping.Factor = walkInput;
+                dashDamping.Duration = dash.Duration;
+                dashDamping.TimePassed = 0f;
                 
                 dash.CurrentCount++;
             }
