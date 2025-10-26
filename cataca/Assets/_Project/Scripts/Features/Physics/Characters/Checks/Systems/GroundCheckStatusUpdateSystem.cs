@@ -1,5 +1,6 @@
 ﻿using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features.Physics.Characters.Checks.Components;
+using _Project.Scripts.Shared.Extensions;
 using _Project.Scripts.Shared.Utils;
 using Leopotam.EcsLite;
 using UnityEngine;
