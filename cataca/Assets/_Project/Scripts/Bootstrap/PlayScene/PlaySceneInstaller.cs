@@ -1,6 +1,7 @@
 ﻿using _Project.Scripts.Bootstrap.Shared;
 using _Project.Scripts.Features.Input.Services;
 using _Project.Scripts.Features.Input.Systems;
+using _Project.Scripts.Features.Physics.Characters.Checks.Systems;
 using _Project.Scripts.Features.Physics.Characters.Movement.Systems;
 using _Project.Scripts.Features.Physics.Systems;
 using _Project.Scripts.Features.Player.Systems;
@@ -32,6 +33,10 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<DashDampingUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<RigidbodyVelocityApplySystem>().AsSingle();
 
+            Container.BindInterfacesTo<GroundCheckStatusUpdateSystem>().AsSingle();
+            Container.BindInterfacesTo<JumpResetCurrentCountOnGroundCheckSystem>().AsSingle();
+            Container.BindInterfacesTo<DashResetCurrentCountOnGroundCheckSystem>().AsSingle();
+            
             Container.BindInterfacesTo<PlayerConfigSetupSystem>().AsSingle();
         }
     }
