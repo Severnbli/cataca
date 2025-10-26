@@ -1,0 +1,1069 @@
+// Combined functionality from Scripts folder
+// Generated file containing all scripts from _Project/Scripts
+
+// ============================================================================
+// CORE SYSTEMS - INTERFACES
+// ============================================================================
+
+namespace _Project.Scripts.Core.Systems.Interfaces
+{
+    public interface IEcsGameSystem : Leopotam.EcsLite.IEcsSystem
+    {
+    }
+
+    public interface IEcsEditorSystem : Leopotam.EcsLite.IEcsSystem
+    {
+    }
+
+    public interface ISystemsCollector
+    {
+        public void Init();
+        public void Run();
+        public void Destroy();
+    }
+}
+
+// ============================================================================
+// CORE SYSTEMS - COLLECTIONS
+// ============================================================================
+
+namespace _Project.Scripts.Core.Systems.Collections
+{
+    using System.Collections.Generic;
+    using _Project.Scripts.Core.Systems.Interfaces;
+    using AB_Utility.FromSceneToEntityConverter;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsLite.UnityEditor;
+
+    public class BaseCollection<T> : EcsSystems where T : IEcsSystem
+    {
+        public BaseCollection(EcsWorld defaultWorld, IEnumerable<T> systems) : base(defaultWorld)
+        {
+            SetupSystems(systems);
+        }
+
+        private void SetupSystems(IEnumerable<T> systems)
+        {
+            foreach (var s in systems) Add(s);
+        }
+    }
+
+    public sealed class EditorCollection : BaseCollection<IEcsEditorSystem>
+    {
+        public EditorCollection(EcsWorld defaultWorld, IEnumerable<IEcsEditorSystem> systems) : base(defaultWorld, systems)
+        {
+            Add(new EcsSystemsDebugSystem());
+        }
+    }
+
+    public sealed class GameCollection : BaseCollection<IEcsGameSystem>
+    {
+        public GameCollection(EcsWorld defaultWorld, IEnumerable<IEcsGameSystem> systems) : base(defaultWorld, systems)
+        {
+#if UNITY_EDITOR
+            Add(new EcsSystemsDebugSystem());
+#endif
+            this.ConvertScene();
+        }
+    }
+}
+
+// ============================================================================
+// CORE SYSTEMS - COLLECTORS
+// ============================================================================
+
+namespace _Project.Scripts.Core.Systems.Collectors
+{
+    using System.Collections.Generic;
+    using System.Linq;
+    using _Project.Scripts.Core.Systems.Interfaces;
+    using Leopotam.EcsLite;
+    using Sirenix.Utilities;
+    using UnityEngine;
+    using Zenject;
+
+    public class MonoSystemsCollector : MonoBehaviour, ISystemsCollector
+    {
+        private readonly HashSet<IEcsSystems> _systems = new();
+
+        [Inject]
+        public void Construct(IEnumerable<IEcsSystems> providers)
+        {
+            _systems.AddRange(providers);
+        }
+        
+        private void Start()
+        {
+            Init();
+        }
+
+        private void Update()
+        {
+            Run();
+        }
+
+        private void OnDestroy()
+        {
+            Destroy();
+        }
+
+        public void Init()
+        {
+            foreach (var systems in _systems) systems?.Init();
+        }
+
+        public void Run()
+        {
+            foreach (var systems in _systems) systems?.Run();
+        }
+
+        public void Destroy()
+        {
+            foreach (var systems in _systems) systems?.Destroy();
+        }
+    }
+}
+
+// ============================================================================
+// SHARED - UTILITIES
+// ============================================================================
+
+namespace _Project.Scripts.Shared.Utils
+{
+    using UnityEngine;
+    using Leopotam.EcsLite;
+
+    public static class Rigidbody2DExtensions
+    {
+        public static void AddForce(this Rigidbody2D rigidbody2D, float force, Vector2 direction)
+        {
+            rigidbody2D.linearVelocity += direction.normalized * force;
+        }
+        
+        public static void AddHorizontalForce(this Rigidbody2D rigidbody2D, float force)
+        {
+            rigidbody2D.linearVelocity += Vector2.right * force;
+        }
+
+        public static void InstallHorizontalForce(this Rigidbody2D rigidbody2D, float force, Vector2 direction)
+        {
+            rigidbody2D.linearVelocity = new Vector2(direction.normalized.x * force, rigidbody2D.linearVelocity.y);
+        }
+
+        public static void AddVerticalForce(this Rigidbody2D rigidbody2D, float force)
+        {
+            rigidbody2D.linearVelocity += Vector2.up * force;
+        }
+    }
+
+    public static class Vector2Extensions
+    {
+        public static Vector2 GetNearestDiagonal(this Vector2 vector)
+        {
+            var result = new Vector2(Mathf.Sign(vector.x), Mathf.Sign(vector.y));
+            return result.normalized;
+        }
+    }
+
+    public static class EcsExtensions
+    {
+        public static bool TryGetFirst(this EcsFilter filter, out int entity)
+        {
+            entity = -1;
+            if (filter.GetEntitiesCount() == 0) return false;
+
+            entity = filter.GetRawEntities()[0];
+            return true;
+        }
+    }
+}
+
+// ============================================================================
+// SHARED - SCRIPTABLE OBJECTS
+// ============================================================================
+
+namespace _Project.Scripts.Shared.ScriptableObjects
+{
+    using UnityEngine;
+    using Zenject;
+
+    public abstract class ScriptableObjectAutoInstaller<T> : ScriptableObjectInstaller 
+        where T : ScriptableObjectAutoInstaller<T>
+    {
+        public sealed override void InstallBindings()
+        {
+            RegisterBindings();
+            Container.Bind<T>().FromInstance((T) this).AsSingle();
+        }
+        
+        protected virtual void RegisterBindings() {}
+    }
+}
+
+// ============================================================================
+// FEATURES - SHARED COMPONENTS
+// ============================================================================
+
+namespace _Project.Scripts.Features.Shared.Components
+{
+    using System;
+    using UnityEngine;
+
+    [Serializable]
+    public struct TransformComponent
+    {
+        public Transform Transform;
+    }
+
+    [Serializable]
+    public class SpriteRendererComponent
+    {
+        public SpriteRenderer SpriteRenderer;
+    }
+}
+
+// ============================================================================
+// FEATURES - PHYSICS COMPONENTS
+// ============================================================================
+
+namespace _Project.Scripts.Features.Physics.Components
+{
+    using System;
+    using UnityEngine;
+
+    [Serializable]
+    public struct RigidbodyComponent
+    {
+        public Rigidbody2D Rigidbody;
+        [NonSerialized] public float BaseXVelocity;
+        [NonSerialized] public float AdditiveXVelocity;
+    }
+
+    [Serializable]
+    public struct ColliderComponent
+    {
+        public Collider2D Collider;
+    }
+}
+
+// ============================================================================
+// FEATURES - PHYSICS CHARACTERS COMPONENTS
+// ============================================================================
+
+namespace _Project.Scripts.Features.Physics.Characters.Components
+{
+    using System;
+
+    [Serializable]
+    public struct WalkComponent
+    {
+        public bool Enabled;
+        public float Force;
+    }
+
+    [Serializable]
+    public struct JumpComponent
+    {
+        public bool Enabled;
+        public float Force;
+        public int MaxCount;
+        [NonSerialized] public int CurrentCount;
+    }
+
+    [Serializable]
+    public struct DashComponent
+    {
+        public bool Enabled;
+        public float Force;
+        public int MaxCount;
+        public float Duration;
+        [NonSerialized] public int CurrentCount;
+    }
+
+    public struct DashDampingComponent
+    {
+        public float Force;
+        public float Factor;
+        public float Duration;
+        public float TimePassed;
+    }
+}
+
+// ============================================================================
+// FEATURES - INPUT MARKERS
+// ============================================================================
+
+namespace _Project.Scripts.Features.Input.Markers
+{
+    public struct ControlledByInputMarker
+    {
+    }
+}
+
+// ============================================================================
+// FEATURES - INPUT SERVICES
+// ============================================================================
+
+namespace _Project.Scripts.Features.Input.Services
+{
+    using UnityEngine;
+
+    public sealed class InputService
+    {
+        public Vector2 Walk;
+        public bool Jump;
+        public bool Dash;
+        public bool Position;
+        public bool Rotation;
+        public bool Scale;
+    }
+}
+
+// ============================================================================
+// FEATURES - INPUT CONFIGS
+// ============================================================================
+
+namespace _Project.Scripts.Features.Input.Configs
+{
+    using _Project.Scripts.Shared.ScriptableObjects;
+    using UnityEngine;
+    using UnityEngine.InputSystem;
+
+    public class InputControlsConfig : ScriptableObjectAutoInstaller<InputControlsConfig>
+    {
+        [SerializeField] private InputActionReference _walk;
+        [SerializeField] private InputActionReference _jump;
+        [SerializeField] private InputActionReference _dash;
+        [SerializeField] private InputActionReference _position;
+        [SerializeField] private InputActionReference _rotation;
+        [SerializeField] private InputActionReference _scale;
+        
+        public InputActionReference Walk => _walk;
+        public InputActionReference Jump => _jump;
+        public InputActionReference Dash => _dash;
+        public InputActionReference Position => _position;
+        public InputActionReference Rotation => _rotation;
+        public InputActionReference Scale => _scale;
+
+        protected override void RegisterBindings()
+        {
+            _walk.action.Enable();
+            _jump.action.Enable();
+            _dash.action.Enable();
+            _position.action.Enable();
+            _rotation.action.Enable();
+            _scale.action.Enable();
+        }
+    }
+}
+
+// ============================================================================
+// FEATURES - INPUT SYSTEMS
+// ============================================================================
+
+namespace _Project.Scripts.Features.Input.Systems
+{
+    using _Project.Scripts.Core.Systems.Interfaces;
+    using _Project.Scripts.Features.Input.Configs;
+    using _Project.Scripts.Features.Input.Services;
+    using Leopotam.EcsLite;
+    using UnityEngine;
+
+    public class InputServiceUpdateSystem : IEcsRunSystem, IEcsGameSystem
+    {
+        public InputServiceUpdateSystem(InputService inputService, InputControlsConfig controlsConfig)
+        {
+            _inputService = inputService;
+            _controlsConfig = controlsConfig;
+        }
+        
+        private InputService _inputService;
+        private InputControlsConfig _controlsConfig;
+            
+        public void Run(IEcsSystems systems)
+        {
+            _inputService.Walk = _controlsConfig.Walk.action.ReadValue<Vector2>();
+            _inputService.Jump = _controlsConfig.Jump.action.triggered;
+            _inputService.Dash = _controlsConfig.Dash.action.triggered;
+            _inputService.Position = _controlsConfig.Position.action.triggered;
+            _inputService.Rotation = _controlsConfig.Rotation.action.triggered;
+            _inputService.Scale = _controlsConfig.Scale.action.triggered;
+        }
+    }
+}
+
+// ============================================================================
+// FEATURES - INPUT CONVERTERS
+// ============================================================================
+
+namespace _Project.Scripts.Features.Input.Converters
+{
+    using _Project.Scripts.Features.Input.Markers;
+    using AB_Utility.FromSceneToEntityConverter;
+
+    public class ControlledByInputMarkerConverter : ComponentConverter<ControlledByInputMarker>
+    {
+        
+    }
+}
+
+// ============================================================================
+// FEATURES - PHYSICS SYSTEMS
+// ============================================================================
+
+namespace _Project.Scripts.Features.Physics.Systems
+{
+    using _Project.Scripts.Core.Systems.Interfaces;
+    using _Project.Scripts.Features.Physics.Components;
+    using Leopotam.EcsLite;
+    using UnityEngine;
+
+    public class RigidbodyVelocityApplySystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
+    {
+        private EcsFilter _filter;
+        private EcsPool<RigidbodyComponent> _rigidbodyPool;
+        
+        public void Init(IEcsSystems systems)
+        {
+            var world = systems.GetWorld();
+
+            _filter = world
+                .Filter<RigidbodyComponent>()
+                .End();
+            
+            _rigidbodyPool = world.GetPool<RigidbodyComponent>();
+        }
+
+        public void PostRun(IEcsSystems systems)
+        {
+            foreach (var e in _filter)
+            {
+                ref var rigidbody = ref _rigidbodyPool.Get(e);
+
+                var velocity = new Vector2(
+                    rigidbody.BaseXVelocity + rigidbody.AdditiveXVelocity,
+                    rigidbody.Rigidbody.linearVelocity.y
+                    );
+                
+                rigidbody.Rigidbody.linearVelocity = velocity;
+                
+                rigidbody.AdditiveXVelocity = 0f;
+            }
+        }
+    }
+}
+
+// ============================================================================
+// FEATURES - PHYSICS CHARACTERS SYSTEMS
+// ============================================================================
+
+namespace _Project.Scripts.Features.Physics.Characters.Systems
+{
+    using _Project.Scripts.Core.Systems.Interfaces;
+    using _Project.Scripts.Features.Input.Markers;
+    using _Project.Scripts.Features.Input.Services;
+    using _Project.Scripts.Features.Physics.Characters.Components;
+    using _Project.Scripts.Features.Physics.Components;
+    using _Project.Scripts.Features.Time.Services;
+    using _Project.Scripts.Shared.Utils;
+    using Leopotam.EcsLite;
+    using UnityEngine;
+
+    public class InputBasedWalkSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
+    {
+        public InputBasedWalkSystem(InputService inputService)
+        {
+            _inputService = inputService;
+        }
+        
+        private InputService _inputService;
+        private EcsFilter _filter;
+        private EcsPool<WalkComponent> _walkPool;
+        private EcsPool<RigidbodyComponent> _rigidbodyPool;
+
+        public void Init(IEcsSystems systems)
+        {
+            var world = systems.GetWorld();
+
+            _filter = world
+                .Filter<WalkComponent>()
+                .Inc<RigidbodyComponent>()
+                .Inc<ControlledByInputMarker>()
+                .End();
+            
+            _walkPool = world.GetPool<WalkComponent>();
+            _rigidbodyPool = world.GetPool<RigidbodyComponent>();
+        }
+
+        public void PostRun(IEcsSystems systems)
+        {
+            foreach (var e in _filter)
+            {
+                ref var walk = ref _walkPool.Get(e);
+                if (!walk.Enabled) continue;
+                
+                var walkInput = _inputService.Walk.x;
+                ref var rigidbody = ref _rigidbodyPool.Get(e);
+                
+                rigidbody.BaseXVelocity = walk.Force * walkInput;
+            }
+        }
+    }
+
+    public class InputBasedJumpSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
+    {
+        public InputBasedJumpSystem(InputService inputService)
+        {
+            _inputService = inputService;
+        }
+        
+        private InputService _inputService;
+        private EcsFilter _filter;
+        private EcsPool<JumpComponent> _jumpPool;
+        private EcsPool<RigidbodyComponent> _rigidbodyPool;
+
+        public void Init(IEcsSystems systems)
+        {
+            var world = systems.GetWorld();
+
+            _filter = world
+                .Filter<JumpComponent>()
+                .Inc<RigidbodyComponent>()
+                .Inc<ControlledByInputMarker>()
+                .End();
+            
+            _jumpPool = world.GetPool<JumpComponent>();
+            _rigidbodyPool = world.GetPool<RigidbodyComponent>();
+        }
+
+        public void PostRun(IEcsSystems systems)
+        {
+            foreach (var e in _filter)
+            {
+                ref var jump = ref _jumpPool.Get(e);
+                if (!jump.Enabled || jump.CurrentCount >= jump.MaxCount) continue;
+                
+                var jumpInput = _inputService.Jump;
+                if (!jumpInput) continue;
+
+                ref var rigidbody = ref _rigidbodyPool.Get(e);
+                rigidbody.Rigidbody.AddVerticalForce(Mathf.Abs(jump.Force));
+                
+                jump.CurrentCount++;
+            }
+        }
+    }
+
+    public class InputBasedDashSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
+    {
+        public InputBasedDashSystem(InputService inputService)
+        {
+            _inputService = inputService;
+        }
+        
+        private InputService _inputService;
+        private EcsFilter _filter;
+        private EcsPool<DashComponent> _dashPool;
+        private EcsPool<DashDampingComponent> _dashDampingPool;
+        
+        public void Init(IEcsSystems systems)
+        {
+            var world = systems.GetWorld();
+
+            _filter = world
+                .Filter<DashComponent>()
+                .Inc<RigidbodyComponent>()
+                .Inc<ControlledByInputMarker>()
+                .End();
+            
+            _dashPool = world.GetPool<DashComponent>();
+            _dashDampingPool = world.GetPool<DashDampingComponent>();
+        }
+
+        public void PostRun(IEcsSystems systems)
+        {
+            foreach (var e in _filter)
+            {
+                ref var dash = ref _dashPool.Get(e);
+                if (!dash.Enabled || dash.CurrentCount >= dash.MaxCount) continue;
+
+                var dashInput = _inputService.Dash;
+                if (!dashInput) continue;
+
+                var walkInput = _inputService.Walk.x;
+                
+                ref var dashDamping = ref _dashDampingPool.Has(e)
+                    ? ref _dashDampingPool.Get(e)
+                    : ref _dashDampingPool.Add(e);
+
+                dashDamping.Force = dash.Force;
+                dashDamping.Factor = walkInput;
+                dashDamping.Duration = dash.Duration;
+                dashDamping.TimePassed = 0f;
+                
+                dash.CurrentCount++;
+            }
+        }
+    }
+
+    public class DashDampingUpdateSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
+    {
+        public DashDampingUpdateSystem(TimeService timeService)
+        {
+            _timeService = timeService;
+        }
+        
+        private TimeService _timeService;
+        private EcsFilter _filter;
+        private EcsPool<DashDampingComponent> _dashDampingPool;
+        private EcsPool<RigidbodyComponent> _rigidbodyPool;
+        
+        public void Init(IEcsSystems systems)
+        {
+            var world = systems.GetWorld();
+
+            _filter = world
+                .Filter<DashDampingComponent>()
+                .Inc<RigidbodyComponent>()
+                .End();
+            
+            _dashDampingPool = world.GetPool<DashDampingComponent>();
+            _rigidbodyPool = world.GetPool<RigidbodyComponent>();
+        }
+
+        public void PostRun(IEcsSystems systems)
+        {
+            foreach (var e in _filter)
+            {
+                ref var dashDamping = ref _dashDampingPool.Get(e);
+
+                if (dashDamping.TimePassed >= dashDamping.Duration)
+                {
+                    _dashDampingPool.Del(e);
+                    continue;
+                }
+                ref var rigidbody = ref _rigidbodyPool.Get(e);
+                
+                var t = (dashDamping.Duration - dashDamping.TimePassed) / dashDamping.Duration;
+                rigidbody.AdditiveXVelocity += dashDamping.Force * dashDamping.Factor * t;
+                
+                dashDamping.TimePassed += _timeService.DeltaTime;
+            }
+        }
+    }
+}
+
+// ============================================================================
+// FEATURES - PHYSICS CONVERTERS
+// ============================================================================
+
+namespace _Project.Scripts.Features.Physics.Converters
+{
+    using _Project.Scripts.Features.Physics.Components;
+    using AB_Utility.FromSceneToEntityConverter;
+
+    public class ColliderComponentConverter : ComponentConverter<ColliderComponent>
+    {
+    }
+
+    public class RigidbodyComponentConverter : ComponentConverter<RigidbodyComponent>
+    {
+    }
+}
+
+// ============================================================================
+// FEATURES - SHARED CONVERTERS
+// ============================================================================
+
+namespace _Project.Scripts.Features.Shared.Converters
+{
+    using _Project.Scripts.Features.Shared.Components;
+    using AB_Utility.FromSceneToEntityConverter;
+
+    public class TransformComponentConverter : ComponentConverter<TransformComponent>
+    {
+    }
+}
+
+// ============================================================================
+// FEATURES - PLAYER MARKERS
+// ============================================================================
+
+namespace _Project.Scripts.Features.Player.Markers
+{
+    public struct PlayerMarker
+    {
+    }
+}
+
+// ============================================================================
+// FEATURES - PLAYER CONFIGS
+// ============================================================================
+
+namespace _Project.Scripts.Features.Player.Configs
+{
+    using _Project.Scripts.Features.Physics.Characters.Components;
+    using _Project.Scripts.Shared.ScriptableObjects;
+    using UnityEngine;
+
+    public class PlayerConfig : ScriptableObjectAutoInstaller<PlayerConfig>
+    {
+        [SerializeField] private WalkComponent _walk;
+        [SerializeField] private JumpComponent _jump;
+        [SerializeField] private DashComponent _dash;
+        
+        public WalkComponent Walk => _walk;
+        public JumpComponent Jump => _jump;
+        public DashComponent Dash => _dash;
+    }
+}
+
+// ============================================================================
+// FEATURES - PLAYER SYSTEMS
+// ============================================================================
+
+namespace _Project.Scripts.Features.Player.Systems
+{
+    using _Project.Scripts.Core.Systems.Interfaces;
+    using _Project.Scripts.Features.Physics.Characters.Components;
+    using _Project.Scripts.Features.Physics.Components;
+    using _Project.Scripts.Features.Player.Configs;
+    using _Project.Scripts.Features.Player.Markers;
+    using Leopotam.EcsLite;
+
+    public class PlayerConfigSetupSystem : IEcsInitSystem, IEcsGameSystem
+    {
+        public PlayerConfigSetupSystem(PlayerConfig playerConfig)
+        {
+            _playerConfig = playerConfig;
+        }
+        
+        private PlayerConfig _playerConfig;
+        private EcsFilter _filter;
+        private EcsPool<WalkComponent> _walkPool;
+        private EcsPool<JumpComponent> _jumpPool;
+        private EcsPool<DashComponent> _dashPool;
+
+        public void Init(IEcsSystems systems)
+        {
+            var world = systems.GetWorld();
+
+            _filter = world
+                .Filter<PlayerMarker>()
+                .Inc<RigidbodyComponent>()
+                .End();
+            
+            _walkPool = world.GetPool<WalkComponent>();
+            _jumpPool = world.GetPool<JumpComponent>();
+            _dashPool = world.GetPool<DashComponent>();
+            
+            SetupPlayers();
+        }
+
+        private void SetupPlayers()
+        {
+            foreach (var e in _filter)
+            {
+                if (!_walkPool.Has(e))
+                {
+                    ref var walk = ref _walkPool.Add(e);
+                    walk = _playerConfig.Walk;
+                }
+
+                if (!_jumpPool.Has(e))
+                {
+                    ref var jump = ref _jumpPool.Add(e);
+                    jump = _playerConfig.Jump;
+                }
+
+                if (!_dashPool.Has(e))
+                {
+                    ref var dash = ref _dashPool.Add(e);
+                    dash = _playerConfig.Dash;
+                }
+            }
+        }
+    }
+}
+
+// ============================================================================
+// FEATURES - PLAYER CONVERTERS
+// ============================================================================
+
+namespace _Project.Scripts.Features.Player.Converters
+{
+    using _Project.Scripts.Features.Player.Markers;
+    using AB_Utility.FromSceneToEntityConverter;
+
+    public class PlayerMarkerConverter : ComponentConverter<PlayerMarker>
+    {
+    }
+}
+
+// ============================================================================
+// FEATURES - TIME SERVICES
+// ============================================================================
+
+namespace _Project.Scripts.Features.Time.Services
+{
+    public sealed class TimeService
+    {
+        public float DeltaTime;
+        public float Time;
+        public float UnscaledDeltaTime;
+        public float UnscaledTime;
+    }
+}
+
+// ============================================================================
+// FEATURES - TIME SYSTEMS
+// ============================================================================
+
+namespace _Project.Scripts.Features.Time.Systems
+{
+    using _Project.Scripts.Core.Systems.Interfaces;
+    using _Project.Scripts.Features.Time.Services;
+    using Leopotam.EcsLite;
+
+    public class TimeServiceUpdateSystem : IEcsRunSystem, IEcsGameSystem
+    {
+        private readonly TimeService _timeService;
+
+        public TimeServiceUpdateSystem(TimeService timeService)
+        {
+            _timeService = timeService;
+        }
+
+        public void Run(IEcsSystems systems)
+        {
+            _timeService.Time = UnityEngine.Time.time;
+            _timeService.UnscaledTime = UnityEngine.Time.unscaledTime;
+            _timeService.DeltaTime = UnityEngine.Time.deltaTime;
+            _timeService.UnscaledDeltaTime = UnityEngine.Time.unscaledDeltaTime;
+        }
+    }
+}
+
+// ============================================================================
+// BOOTSTRAP SHARED
+// ============================================================================
+
+namespace _Project.Scripts.Bootstrap.Shared
+{
+    using _Project.Scripts.Core.Systems.Collections;
+    using Leopotam.EcsLite;
+    using Zenject;
+
+    public abstract class SceneInstaller : MonoInstaller
+    {
+        public sealed override void InstallBindings()
+        {
+            Container.BindInstance(new EcsWorld()).AsSingle();
+            SetupBindings();
+            SetupCollections();
+        }
+
+        private void SetupBindings()
+        {
+            BindServices();
+            BindSystems();
+        }
+        
+        private void SetupCollections()
+        {
+#if UNITY_EDITOR
+            Container.Bind<IEcsSystems>().To<EditorCollection>().AsSingle();
+#endif
+            
+            Container.Bind<IEcsSystems>().To<GameCollection>().AsSingle();
+        }
+        
+        protected virtual void BindServices() {}
+        protected virtual void BindSystems() {}
+    }
+}
+
+// ============================================================================
+// BOOTSTRAP PLAY SCENE
+// ============================================================================
+
+namespace _Project.Scripts.Bootstrap.PlayScene
+{
+    using _Project.Scripts.Bootstrap.Shared;
+    using _Project.Scripts.Features.Input.Services;
+    using _Project.Scripts.Features.Input.Systems;
+    using _Project.Scripts.Features.Physics.Characters.Systems;
+    using _Project.Scripts.Features.Physics.Systems;
+    using _Project.Scripts.Features.Player.Systems;
+    using _Project.Scripts.Features.Time.Services;
+    using _Project.Scripts.Features.Time.Systems;
+
+    public class PlaySceneInstaller : SceneInstaller
+    {
+
+        protected override void BindServices()
+        {
+            Container.Bind<TimeService>().AsSingle();
+            Container.Bind<InputService>().AsSingle();
+        }
+
+        protected override void BindSystems()
+        {
+            Container.BindInterfacesTo<TimeServiceUpdateSystem>().AsSingle();
+            Container.BindInterfacesTo<InputServiceUpdateSystem>().AsSingle();
+
+            Container.BindInterfacesTo<InputBasedWalkSystem>().AsSingle();
+            Container.BindInterfacesTo<InputBasedJumpSystem>().AsSingle();
+            Container.BindInterfacesTo<InputBasedDashSystem>().AsSingle();
+            
+            Container.BindInterfacesTo<DashDampingUpdateSystem>().AsSingle();
+            Container.BindInterfacesTo<RigidbodyVelocityApplySystem>().AsSingle();
+
+            Container.BindInterfacesTo<PlayerConfigSetupSystem>().AsSingle();
+        }
+    }
+}
+
+// ============================================================================
+// EDITOR
+// ============================================================================
+
+namespace _Project.Scripts.Editor
+{
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using Sirenix.OdinInspector.Editor;
+    using Sirenix.Utilities;
+    using Sirenix.Utilities.Editor;
+    using UnityEditor;
+    using UnityEngine;
+
+    public class ScriptableObjectCreator : OdinMenuEditorWindow
+    {
+        static HashSet<Type> scriptableObjectTypes = AssemblyUtilities.GetTypes(AssemblyCategory.Scripts)
+            .Where(t =>
+                t.IsClass &&
+                typeof(ScriptableObject).IsAssignableFrom(t) &&
+                !typeof(EditorWindow).IsAssignableFrom(t) &&
+                !typeof(UnityEditor.Editor).IsAssignableFrom(t))
+           .ToHashSet();
+
+        [MenuItem("Assets/Create Scriptable Object", priority = -1000)]
+        private static void ShowDialog()
+        {
+            var path = "Assets";
+            var obj = Selection.activeObject;
+            if (obj && AssetDatabase.Contains(obj))
+            {
+                path = AssetDatabase.GetAssetPath(obj);
+                if (!Directory.Exists(path))
+                {
+                    path = Path.GetDirectoryName(path);
+                }
+            }
+
+            var window = CreateInstance<ScriptableObjectCreator>();
+            window.ShowUtility();
+            window.position = GUIHelper.GetEditorWindowRect().AlignCenter(800, 500);
+            window.titleContent = new GUIContent(path);
+            window.targetFolder = path.Trim('/');
+        }
+
+        private ScriptableObject previewObject;
+        private string targetFolder;
+        private Vector2 scroll;
+
+        private Type SelectedType
+        {
+            get
+            {
+                var m = this.MenuTree.Selection.LastOrDefault();
+                return m == null ? null : m.Value as Type;
+            }
+        }
+
+        protected override OdinMenuTree BuildMenuTree()
+        {
+            this.MenuWidth = 270;
+            this.WindowPadding = Vector4.zero;
+
+            OdinMenuTree tree = new OdinMenuTree(false);
+            tree.Config.DrawSearchToolbar = true;
+            tree.DefaultMenuStyle = OdinMenuStyle.TreeViewStyle;
+            tree.AddRange(scriptableObjectTypes.Where(x => !x.IsAbstract), GetMenuPathForType).AddThumbnailIcons();
+            tree.SortMenuItemsByName();
+            tree.Selection.SelectionConfirmed += x => this.CreateAsset();
+            tree.Selection.SelectionChanged += e =>
+            {
+                if (this.previewObject && !AssetDatabase.Contains(this.previewObject))
+                {
+                    DestroyImmediate(this.previewObject);
+                }
+
+                if (e != SelectionChangedType.ItemAdded)
+                {
+                    return;
+                }
+
+                var t = this.SelectedType;
+                if (t != null && !t.IsAbstract)
+                {
+                    this.previewObject = CreateInstance(t) as ScriptableObject;
+                }
+            };
+
+            return tree;
+        }
+
+        private string GetMenuPathForType(Type t)
+        {
+            if (t != null && scriptableObjectTypes.Contains(t))
+            {
+                var name = t.Name.Split('`').First().SplitPascalCase();
+                return GetMenuPathForType(t.BaseType) + "/" + name;
+            }
+
+            return "";
+        }
+
+        protected override IEnumerable<object> GetTargets()
+        {
+            yield return this.previewObject;
+        }
+
+        protected override void DrawEditor(int index)
+        {
+            this.scroll = GUILayout.BeginScrollView(this.scroll);
+            {
+                base.DrawEditor(index);
+            }
+            GUILayout.EndScrollView();
+
+            if (this.previewObject)
+            {
+                GUILayout.FlexibleSpace();
+                SirenixEditorGUI.HorizontalLineSeparator(1);
+                if (GUILayout.Button("Create Asset", GUILayoutOptions.Height(30)))
+                {
+                    this.CreateAsset();
+                }
+            }
+        }
+
+        private void CreateAsset()
+        {
+            if (this.previewObject)
+            {
+                var dest = this.targetFolder + "/" + this.MenuTree.Selection.First().Name.Replace(" ", "") + ".asset";
+                dest = AssetDatabase.GenerateUniqueAssetPath(dest);
+                AssetDatabase.CreateAsset(this.previewObject, dest);
+                AssetDatabase.Refresh();
+                Selection.activeObject = this.previewObject;
+                EditorApplication.delayCall += this.Close;
+            }
+        }
+    }
+}
+

@@ -1,0 +1,157 @@
+2025-10-26,Complete chapter 2.1, 2.2 of course work
+2025-10-26,Add physics and colliders to Triangle, update scene objects
+2025-10-26,Add PlayerConfig asset and directory
+2025-10-26,Register new physics systems in PlaySceneInstaller
+2025-10-26,Add DashDampingUpdateSystem for dash velocity control
+2025-10-26,Refactor dash system to use DashDampingComponent
+2025-10-26,Add DashDampingComponent struct for character physics
+2025-10-26,Add Duration field to DashComponent struct
+2025-10-26,Use AddVerticalForce for character jump
+2025-10-26,Refactor walk input handling in InputBasedWalkSystem
+2025-10-26,Add RigidbodyVelocityApplySystem for physics velocity
+2025-10-26,Add velocity fields to RigidbodyComponent
+2025-10-26,Refactor Rigidbody2DExtensions and remove Vector2 vertical force
+2025-10-26,Add AddVerticalForce extension to Vector2
+2025-10-26,Refactor Rigidbody2DExtensions for horizontal force methods
+2025-10-26,Register player and input systems in PlaySceneInstaller
+2025-10-26,Initialize jump and rigidbody pools in Init method
+2025-10-26,Add PlayerConfigSetupSystem for player component setup
+2025-10-26,Refactor Destroy method in MonoSystemsCollector
+2025-10-26,Add ControlledByInputMarkerConverter component
+2025-10-26,Add InputBasedDashSystem for character dashing
+2025-10-26,Refactor Rigidbody2D extension methods for movement
+2025-10-26,Add Vector2Extensions with GetNearestDiagonal method
+2025-10-26,Add InputBasedJumpSystem for character jumping
+2025-10-26,Add ProcessPush and ProcessUpperPush to Rigidbody2DExtensions
+2025-10-26,Add CurrentCount field to Dash and Jump components
+2025-10-26,Add InputBasedWalkSystem for character movement
+2025-10-26,Add Rigidbody2D extension for walking logic
+2025-10-26,Add ControlledByInputMarker struct and meta files
+2025-10-26,Add PlayerConfig ScriptableObject for player settings
+2025-10-26,Add character movement components
+2025-10-25,Move PlayerMarker to Player namespace and folder
+2025-10-25,Bind InputService and InputServiceUpdateSystem
+2025-10-25,Add InputServiceUpdateSystem for input handling
+2025-10-25,Add InputService class for input handling
+2025-10-25,Refactor SceneInstaller to use BindServices and BindSystems
+2025-10-25,Enable input actions in InputControlsConfig
+2025-10-25,Add physics component converters
+2025-10-25,Add PlayerMarker and its converter
+2025-10-25,Add InputControlsConfig asset and update Play scene
+2025-10-25,Format private fields with "_" prefix
+2025-10-25,Change name of action from move to walk
+2025-10-25,Add InputControlsConfig ScriptableObject
+2025-10-25,Change order of manipulating actions
+2025-10-25,Setup some input actions for player
+2025-10-25,Add ScriptableObjectAutoInstaller base class
+2025-10-24,Add SpriteRendererComponent class
+2025-10-24,Add RigidbodyComponent struct for 2D physics
+2025-10-24,Add ColliderComponent struct for physics features
+2025-10-24,Reorganize project
+2025-10-24,Fix force DI installer
+2025-10-24,Add new converter and installer to Play scene
+2025-10-24,Bind GravityApplierSystem in PlaySceneInstaller
+2025-10-24,Add GravityApplierSystem for physics simulation
+2025-10-24,Add GravityComponent and its converter
+2025-10-24,Remove Player and Platform prefabs
+2025-10-24,Add GravityConfig asset for physics feature
+2025-10-24,Add GravityConfig class for physics system
+2025-10-24,Add ForceConfig base class for physics system
+2025-10-21,Refactor Play scene structure and update Triangle sprite
+2025-10-21,Add converters for Transform and Velocity components
+2025-10-21,Bind new services and systems in PlaySceneInstaller
+2025-10-21,Bind IEcsSystems interface instead of EcsSystems
+2025-10-21,Refactor MovementSystem to use TimeService
+2025-10-21,Add EcsExtensions utility with TryGetFirst method
+2025-10-21,Refactor time update to use TimeService
+2025-10-21,Add TimeService class for time management
+2025-10-21,Add Movement and TimeUpdate ECS systems
+2025-10-21,Add TransformComponent struct
+2025-10-21,Add TimeComponent struct for time tracking
+2025-10-21,Add VelocityComponent struct for movement data
+2025-10-21,Add PlaySceneInstaller class stub
+2025-10-21,Add abstract SceneInstaller for DI setup
+2025-10-21,Refactor collections to use BaseCollection class
+2025-10-21,Add IEcsEditorSystem and IEcsGameSystem interfaces
+2025-10-21,Add EditorCollection and GameCollection system classes
+2025-10-20,Refactor systems architecture and add MonoSystemsCollector
+2025-10-20,Refactor systems providers to Core/Systems namespace
+2025-10-20,Add meta files for Shared and Utils directories
+2025-10-20,Add MonoSystemsProvidersCollector implementation
+2025-10-20,Add base and specialized systems providers
+2025-10-20,Add interfaces for systems provider and collector
+2025-10-20,Remove obsolete feature interfaces and update directory structure
+2025-10-20,Update Base.meta file with new GUID and timestamp
+2025-10-20,Add IFixedUpdatableFeature and IUpdatableFeature interfaces
+2025-10-20,Remove platform and player feature scripts and controllers
+2025-10-19,Add LeoEcsLiteEntityConverter package to project
+2025-10-19,Revert "Add ecslite.di package to project dependencies"
+2025-10-19,Add ecslite.di package to project dependencies
+2025-10-19,Add ecslite-unityeditor package to manifest
+2025-10-19,Add com.leopotam.ecslite package to project
+2025-10-19,Update explanation note
+2025-10-14,Add new platforms and adjust platform scales in Play scene
+2025-10-14,Add new platform controllers and platforms to Play scene
+2025-10-14,Add Platform prefab and meta files
+2025-10-14,Add Player prefab with movement components
+2025-10-14,Add platform movement and control scripts
+2025-10-14,Add wall detection and customizable key bindings to PlayerController2D
+2025-10-14,Add 2D player controller and Ground tag
+2025-10-14,Add Cinemachine package to Unity manifest
+2025-10-09,Add git log export script and reset font asset
+2025-10-09,Add course materials archive and git log
+2025-10-09,Remove DesperateDevs plugin and related assets
+2025-10-09,Rename Cards scene to Records
+2025-10-09,Add two new PNG images to materials folder
+2025-10-09,Add new Cyrillic glyphs to LiberationSans SDF fallback
+2025-10-09,Add new Cards scene to project
+2025-10-09,Refactor Settings scene hierarchy and camera setup
+2025-10-09,Refactor Play scene hierarchy and camera setup
+2025-10-09,Add two new PNG images to materials folder
+2025-10-09,Rename scenes and add Settings scene
+2025-10-09,Add new Cyrillic glyphs to LiberationSans SDF fallback
+2025-10-09,Add Cyrillic glyphs to LiberationSans SDF fallback
+2025-10-09,Add UML diagram and update project documentation
+2025-10-09,Update course material DOCX file
+2025-10-08,Add new document to materials folder
+2025-10-08,Clear glyph and character tables in fallback font asset
+2025-10-08,Update LiberationSans SDF fallback font asset
+2025-10-08,Add TextMesh Pro font and resources
+2025-10-08,Update Canvas settings for SceneTemplate and MenuScene
+2025-10-08,Refactor MenuScene hierarchy and UI setup
+2025-10-08,Add SceneTemplate prefab for shared scenes
+2025-10-08,Add meta files for new Prefabs directories
+2025-10-08,Add UI sorting layers to TagManager
+2025-10-08,Add MenuScene Unity scene and meta file
+2025-10-08,Add initial PlayScene Unity scene
+2025-10-08,Remove TestScene from project
+2025-10-07,Remove Entitas and Transform feature, add base feature engine
+2025-09-17,Generate default Jenny folders
+2025-09-16,Update Entitas with Unity registry packet
+2025-09-16,Add some transform components
+2025-09-16,Create Moving scripts folder
+2025-09-16,Add Transform scripts folder
+2025-09-16,Add Features scripts folder
+2025-09-16,Update TestScene with TestInstaller
+2025-09-16,Add test bootstrap elements
+2025-09-16,Add Zenject OptionalExtras
+2025-09-16,Change SampleScene name to TestScene
+2025-09-16,Add Zenject
+2025-09-13,Add Entitas plugin
+2025-09-12,Add ScriptableObjectCreator class
+2025-09-12,Add Editor scripts folder
+2025-09-12,Update UniTask
+2025-09-12,Add DOTween plugin
+2025-09-12,Add Odin plugin
+2025-09-12,Add UniTask plugin
+2025-09-12,Create Scripts folder
+2025-09-12,Create Media folder
+2025-09-12,Create Input configs folder and move there config file
+2025-09-12,Create Configs folder and move there URP project configs
+2025-09-12,Move all files to _Project folder
+2025-09-12,Create _Project folder
+2025-09-04,URP implement
+2025-09-02,Initial unity project commit
+2025-09-02,Create .gitignore
+2025-09-02,Create .gitattributes
+2025-09-02,Initial commit
