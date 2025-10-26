@@ -9,15 +9,19 @@ namespace _Project.Scripts.Shared.Utils
             rigidbody2D.linearVelocity += direction.normalized * force;
         }
         
-        public static void AddHorizontalForce(this Rigidbody2D rigidbody2D, float force, Vector2 direction)
+        public static void AddHorizontalForce(this Rigidbody2D rigidbody2D, float force)
         {
-            var horizontalDirection = Vector2.right * direction.x;
-            rigidbody2D.linearVelocity += horizontalDirection * force;
+            rigidbody2D.linearVelocity += Vector2.right * force;
         }
 
         public static void InstallHorizontalForce(this Rigidbody2D rigidbody2D, float force, Vector2 direction)
         {
             rigidbody2D.linearVelocity = new Vector2(direction.normalized.x * force, rigidbody2D.linearVelocity.y);
+        }
+
+        public static void AddVerticalForce(this Rigidbody2D rigidbody2D, float force)
+        {
+            rigidbody2D.linearVelocity += Vector2.up * force;
         }
     }
 }
