@@ -19,7 +19,7 @@ namespace _Project.Scripts.Features.Physics.Characters.Systems
         private InputService _inputService;
         private EcsFilter _filter;
         private EcsPool<JumpComponent> _jumpPool;
-        private EcsPool<RigidbodyComponent> _rigidbodyPool;
+        private EcsPool<JumpDampingComponent> _jumpDampingPool;
 
         public void Init(IEcsSystems systems)
         {
@@ -32,7 +32,7 @@ namespace _Project.Scripts.Features.Physics.Characters.Systems
                 .End();
             
             _jumpPool = world.GetPool<JumpComponent>();
-            _rigidbodyPool = world.GetPool<RigidbodyComponent>();
+            _jumpDampingPool = world.GetPool<JumpDampingComponent>();
         }
 
         public void PostRun(IEcsSystems systems)
@@ -44,9 +44,12 @@ namespace _Project.Scripts.Features.Physics.Characters.Systems
                 
                 var jumpInput = _inputService.Jump;
                 if (!jumpInput) continue;
+                
+                ref var jumpDamping = ref _jumpDampingPool.Has(e)
+                    ? ref _jumpDampingPool.Get(e)
+                    : ref _jumpDampingPool.Add(e);
 
-                ref var rigidbody = ref _rigidbodyPool.Get(e);
-                rigidbody.Rigidbody.AddVerticalForce(Mathf.Abs(jump.Force));
+                jumpDamping.Force = jump.Force;
                 
                 jump.CurrentCount++;
             }
