@@ -19,7 +19,7 @@ namespace _Project.Scripts.Features.Physics.Characters.Systems
         private InputService _inputService;
         private EcsFilter _filter;
         private EcsPool<WalkComponent> _walkPool;
-        private EcsPool<RigidbodyComponent> _rigidbodyPool;
+        private EcsPool<WalkDampingComponent> _walkDampingPool;
 
         public void Init(IEcsSystems systems)
         {
@@ -32,7 +32,7 @@ namespace _Project.Scripts.Features.Physics.Characters.Systems
                 .End();
             
             _walkPool = world.GetPool<WalkComponent>();
-            _rigidbodyPool = world.GetPool<RigidbodyComponent>();
+            _walkDampingPool = world.GetPool<WalkDampingComponent>();
         }
 
         public void PostRun(IEcsSystems systems)
@@ -42,10 +42,14 @@ namespace _Project.Scripts.Features.Physics.Characters.Systems
                 ref var walk = ref _walkPool.Get(e);
                 if (!walk.Enabled) continue;
                 
-                var walkInput = _inputService.Walk.x;
-                ref var rigidbody = ref _rigidbodyPool.Get(e);
+                var walkInput = _inputService.Walk;
                 
-                rigidbody.BaseXVelocity = walk.Force * walkInput;
+                ref var walkDamping = ref _walkDampingPool.Has(e)
+                    ? ref _walkDampingPool.Get(e)
+                    : ref _walkDampingPool.Add(e);
+
+                walkDamping.Force = walk.Force;
+                walkDamping.Factor = walkInput.x;
             }
         }
     }
