@@ -7,5 +7,7 @@ namespace _Project.Scripts.Features.Physics.Components
     public struct RigidbodyComponent
     {
         public Rigidbody2D Rigidbody;
+        [NonSerialized] public float BaseXVelocity;
+        [NonSerialized] public float AdditiveXVelocity;
     }
 }
