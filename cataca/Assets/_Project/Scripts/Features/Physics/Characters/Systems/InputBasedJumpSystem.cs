@@ -5,6 +5,7 @@ using _Project.Scripts.Features.Physics.Characters.Components;
 using _Project.Scripts.Features.Physics.Components;
 using _Project.Scripts.Shared.Utils;
 using Leopotam.EcsLite;
+using UnityEngine;
 
 namespace _Project.Scripts.Features.Physics.Characters.Systems
 {
@@ -43,9 +44,9 @@ namespace _Project.Scripts.Features.Physics.Characters.Systems
                 
                 var jumpInput = _inputService.Jump;
                 if (!jumpInput) continue;
-                
+
                 ref var rigidbody = ref _rigidbodyPool.Get(e);
-                rigidbody.Rigidbody.ProcessJump(jump.Force);
+                rigidbody.Rigidbody.AddVerticalForce(Mathf.Abs(jump.Force));
                 
                 jump.CurrentCount++;
             }
