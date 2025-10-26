@@ -1,5 +1,5 @@
 ﻿using _Project.Scripts.Core.Systems.Interfaces;
-using _Project.Scripts.Features.Physics.Characters.Components;
+using _Project.Scripts.Features.Physics.Characters.Movement.Components;
 using _Project.Scripts.Features.Physics.Components;
 using _Project.Scripts.Features.Player.Configs;
 using _Project.Scripts.Features.Player.Markers;

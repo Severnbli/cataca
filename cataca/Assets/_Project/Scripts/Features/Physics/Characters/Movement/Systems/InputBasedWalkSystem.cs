@@ -1,13 +1,11 @@
 ﻿using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features.Input.Markers;
 using _Project.Scripts.Features.Input.Services;
-using _Project.Scripts.Features.Physics.Characters.Components;
+using _Project.Scripts.Features.Physics.Characters.Movement.Components;
 using _Project.Scripts.Features.Physics.Components;
-using _Project.Scripts.Shared.Utils;
 using Leopotam.EcsLite;
-using UnityEngine;
 
-namespace _Project.Scripts.Features.Physics.Characters.Systems
+namespace _Project.Scripts.Features.Physics.Characters.Movement.Systems
 {
     public class InputBasedWalkSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
     {
