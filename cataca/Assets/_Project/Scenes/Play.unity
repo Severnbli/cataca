@@ -1727,6 +1727,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &905540230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 905540231}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &905540231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905540230}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.257, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1506968977}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &991353424
 GameObject:
   m_ObjectHideFlags: 0
@@ -2069,7 +2100,7 @@ GameObject:
   - component: {fileID: 1370912463}
   - component: {fileID: 1370912465}
   - component: {fileID: 1370912464}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2344,6 +2375,7 @@ GameObject:
   - component: {fileID: 1506968982}
   - component: {fileID: 1506968981}
   - component: {fileID: 1506968984}
+  - component: {fileID: 1506968985}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -2363,7 +2395,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 905540231}
   m_Father: {fileID: 1240016997335290181}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1506968978
@@ -2538,6 +2571,7 @@ MonoBehaviour:
   - {fileID: 1506968982}
   - {fileID: 1506968981}
   - {fileID: 1506968984}
+  - {fileID: 1506968985}
   _destroyAfterConversion: 0
 --- !u!114 &1506968984
 MonoBehaviour:
@@ -2553,6 +2587,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _component:
     Rigidbody: {fileID: 1506968979}
+--- !u!114 &1506968985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506968976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0802a343c13f4b479b9478ed568ea3cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _component:
+    Transform: {fileID: 905540231}
+    Layer:
+      serializedVersion: 2
+      m_Bits: 8
+    Distance: 0.05
 --- !u!1 &1625394267
 GameObject:
   m_ObjectHideFlags: 0
