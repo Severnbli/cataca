@@ -1,4 +1,4 @@
-﻿using _Project.Scripts.Features.Physics.Characters.Components;
+﻿using _Project.Scripts.Features.Physics.Characters.Movement.Components;
 using _Project.Scripts.Shared.ScriptableObjects;
 using UnityEngine;
 

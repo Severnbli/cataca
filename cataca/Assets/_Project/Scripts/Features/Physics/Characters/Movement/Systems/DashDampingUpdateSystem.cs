@@ -1,10 +1,10 @@
 ﻿using _Project.Scripts.Core.Systems.Interfaces;
-using _Project.Scripts.Features.Physics.Characters.Components;
+using _Project.Scripts.Features.Physics.Characters.Movement.Components;
 using _Project.Scripts.Features.Physics.Components;
 using _Project.Scripts.Features.Time.Services;
 using Leopotam.EcsLite;
 
-namespace _Project.Scripts.Features.Physics.Characters.Systems
+namespace _Project.Scripts.Features.Physics.Characters.Movement.Systems
 {
     public class DashDampingUpdateSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
     {

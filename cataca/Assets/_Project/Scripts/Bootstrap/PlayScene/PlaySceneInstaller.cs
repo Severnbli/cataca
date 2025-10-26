@@ -1,7 +1,7 @@
 ﻿using _Project.Scripts.Bootstrap.Shared;
 using _Project.Scripts.Features.Input.Services;
 using _Project.Scripts.Features.Input.Systems;
-using _Project.Scripts.Features.Physics.Characters.Systems;
+using _Project.Scripts.Features.Physics.Characters.Movement.Systems;
 using _Project.Scripts.Features.Physics.Systems;
 using _Project.Scripts.Features.Player.Systems;
 using _Project.Scripts.Features.Time.Services;
