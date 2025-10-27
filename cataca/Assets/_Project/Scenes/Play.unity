@@ -2376,6 +2376,7 @@ GameObject:
   - component: {fileID: 1506968981}
   - component: {fileID: 1506968984}
   - component: {fileID: 1506968985}
+  - component: {fileID: 1506968986}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -2572,6 +2573,7 @@ MonoBehaviour:
   - {fileID: 1506968981}
   - {fileID: 1506968984}
   - {fileID: 1506968985}
+  - {fileID: 1506968986}
   _destroyAfterConversion: 0
 --- !u!114 &1506968984
 MonoBehaviour:
@@ -2600,11 +2602,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _component:
+    Disabled: 0
     Transform: {fileID: 905540231}
     Layer:
       serializedVersion: 2
       m_Bits: 8
-    Distance: 0.05
+    Distance: 0.1
+--- !u!114 &1506968986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506968976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ea97ebb9aa4885b0e8bbdcdb01fc6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _component:
+    BlockTime: 2
 --- !u!1 &1625394267
 GameObject:
   m_ObjectHideFlags: 0
