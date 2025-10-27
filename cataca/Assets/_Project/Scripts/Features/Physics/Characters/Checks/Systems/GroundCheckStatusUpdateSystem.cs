@@ -1,13 +1,12 @@
 ﻿using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features.Physics.Characters.Checks.Components;
 using _Project.Scripts.Shared.Extensions;
-using _Project.Scripts.Shared.Utils;
 using Leopotam.EcsLite;
 using UnityEngine;
 
 namespace _Project.Scripts.Features.Physics.Characters.Checks.Systems
 {
-    public class GroundCheckStatusUpdateSystem : IEcsInitSystem, IEcsRunSystem, IEcsGameSystem
+    public class GroundCheckStatusUpdateSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
     {
         private EcsFilter _filter;
         private EcsPool<GroundCheckComponent> _groundCheckPool;
@@ -25,7 +24,7 @@ namespace _Project.Scripts.Features.Physics.Characters.Checks.Systems
             _groundCheckStatusPool = world.GetPool<GroundCheckStatusComponent>();
         }
 
-        public void Run(IEcsSystems systems)
+        public void PostRun(IEcsSystems systems)
         {
             foreach (var e in _filter)
             {
@@ -36,6 +35,12 @@ namespace _Project.Scripts.Features.Physics.Characters.Checks.Systems
                     ? ref _groundCheckStatusPool.Get(e)
                     : ref _groundCheckStatusPool.Add(e);
 
+                if (groundCheck.Disabled)
+                {
+                    groundCheckStatus.IsOnGround = false;
+                    continue;
+                }
+                
                 groundCheckStatus.IsOnGround = Physics2DExtensions.IsHitCollider(groundCheck.Transform.position,
                     Vector2.down, groundCheck.Distance, groundCheck.Layer);
             }
