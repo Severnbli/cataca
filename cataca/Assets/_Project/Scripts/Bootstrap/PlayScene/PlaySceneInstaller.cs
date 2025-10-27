@@ -27,12 +27,15 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<InputBasedWalkSystem>().AsSingle();
             Container.BindInterfacesTo<InputBasedJumpSystem>().AsSingle();
             Container.BindInterfacesTo<InputBasedDashSystem>().AsSingle();
+            
+            Container.BindInterfacesTo<JumpBlockGroundCheckUpdateSystem>().AsSingle();
 
             Container.BindInterfacesTo<WalkDampingUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<JumpDampingUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<DashDampingUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<RigidbodyVelocityApplySystem>().AsSingle();
 
+            Container.BindInterfacesTo<GroundCheckTimeBlockUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<GroundCheckStatusUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<JumpResetCurrentCountOnGroundCheckSystem>().AsSingle();
             Container.BindInterfacesTo<DashResetCurrentCountOnGroundCheckSystem>().AsSingle();
