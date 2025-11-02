@@ -1,11 +1,11 @@
 ﻿using System;
-using UnityEngine.UI;
+using _Project.Scripts.Features.UI.Buttons.Monos;
 
 namespace _Project.Scripts.Features.UI.Buttons.Components
 {
     [Serializable]
     public struct ButtonComponent
     {
-        public Button Button;
+        public ButtonWrapper Button;
     }
 }
