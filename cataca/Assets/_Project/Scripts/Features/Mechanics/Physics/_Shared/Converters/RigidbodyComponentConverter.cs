@@ -1,7 +1,7 @@
-﻿using _Project.Scripts.Features.Mechanics.Physics.Components;
+﻿using _Project.Scripts.Features.Mechanics.Physics._Shared.Components;
 using AB_Utility.FromSceneToEntityConverter;
 
-namespace _Project.Scripts.Features.Mechanics.Physics.Converters
+namespace _Project.Scripts.Features.Mechanics.Physics._Shared.Converters
 {
     public class RigidbodyComponentConverter : ComponentConverter<RigidbodyComponent>
     {

@@ -1,5 +1,5 @@
-﻿using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Components;
-using _Project.Scripts.Shared.ScriptableObjects;
+﻿using _Project.Scripts._Shared.ScriptableObjects;
+using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Components;
 using UnityEngine;
 
 namespace _Project.Scripts.Features.Mechanics.Player.Configs

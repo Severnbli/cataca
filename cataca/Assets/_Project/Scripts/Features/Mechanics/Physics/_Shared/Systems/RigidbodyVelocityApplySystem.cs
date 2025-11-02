@@ -1,9 +1,9 @@
 ﻿using _Project.Scripts.Core.Systems.Interfaces;
-using _Project.Scripts.Features.Mechanics.Physics.Components;
+using _Project.Scripts.Features.Mechanics.Physics._Shared.Components;
 using Leopotam.EcsLite;
 using UnityEngine;
 
-namespace _Project.Scripts.Features.Mechanics.Physics.Systems
+namespace _Project.Scripts.Features.Mechanics.Physics._Shared.Systems
 {
     public class RigidbodyVelocityApplySystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
     {

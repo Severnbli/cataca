@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
 
-namespace _Project.Scripts.Shared.Extensions
+namespace _Project.Scripts._Shared.Extensions
 {
     public static class EcsExtensions
     {

@@ -2,7 +2,7 @@
 using Leopotam.EcsLite;
 using Zenject;
 
-namespace _Project.Scripts.Bootstrap.Shared
+namespace _Project.Scripts.Bootstrap._Shared
 {
     public abstract class SceneInstaller : MonoInstaller
     {

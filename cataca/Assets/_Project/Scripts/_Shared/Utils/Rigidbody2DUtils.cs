@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Project.Scripts.Shared.Utils
+namespace _Project.Scripts._Shared.Utils
 {
     public static class Rigidbody2DUtils
     {

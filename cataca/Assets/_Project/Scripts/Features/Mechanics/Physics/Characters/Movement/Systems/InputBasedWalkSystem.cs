@@ -1,8 +1,8 @@
 ﻿using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features.Mechanics.Input.Markers;
 using _Project.Scripts.Features.Mechanics.Input.Services;
+using _Project.Scripts.Features.Mechanics.Physics._Shared.Components;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Components;
-using _Project.Scripts.Features.Mechanics.Physics.Components;
 using Leopotam.EcsLite;
 
 namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Systems
