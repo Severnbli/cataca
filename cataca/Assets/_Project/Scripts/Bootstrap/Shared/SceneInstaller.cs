@@ -9,6 +9,7 @@ namespace _Project.Scripts.Bootstrap.Shared
         public sealed override void InstallBindings()
         {
             Container.BindInstance(new EcsWorld()).AsSingle();
+            Container.BindInstance(destroyCancellationToken).AsSingle();
             SetupBindings();
             SetupCollections();
         }
