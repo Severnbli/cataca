@@ -1,7 +1,7 @@
-﻿using _Project.Scripts.Features.UI.Components;
+﻿using _Project.Scripts.Features.UI.Buttons.Components;
 using AB_Utility.FromSceneToEntityConverter;
 
-namespace _Project.Scripts.Features.UI.Converters
+namespace _Project.Scripts.Features.UI.Buttons.Converters
 {
     public class OpenButtonConverter : ComponentConverter<OpenButtonComponent>
     {
