@@ -1,6 +1,6 @@
 ﻿using _Project.Scripts.Core.Systems.Interfaces;
+using _Project.Scripts.Features.UI._Shared.Markers;
 using _Project.Scripts.Features.UI.Buttons.Components;
-using _Project.Scripts.Features.UI.Buttons.Markers;
 using Leopotam.EcsLite;
 using UnityEngine;
 
@@ -17,7 +17,7 @@ namespace _Project.Scripts.Features.UI.Buttons.Systems
 
             _filter = world
                 .Filter<ButtonComponent>()
-                .Inc<CloseAppButtonMarker>()
+                .Inc<CloseAppSignalMarker>()
                 .End();
             
             _buttonPool = world.GetPool<ButtonComponent>();

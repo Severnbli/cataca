@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 4817145987828497348}
   - component: {fileID: 641425844583818326}
   - component: {fileID: 5832970583104222731}
-  - component: {fileID: 7283716626185222213}
+  - component: {fileID: 7683703725309708355}
   m_Layer: 0
   m_Name: CloseButton
   m_TagString: Untagged
@@ -720,7 +720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _converters:
   - {fileID: 5832970583104222731}
-  - {fileID: 7283716626185222213}
+  - {fileID: 7683703725309708355}
   _destroyAfterConversion: 0
 --- !u!114 &5832970583104222731
 MonoBehaviour:
@@ -736,7 +736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _component:
     Button: {fileID: 4817145987828497348}
---- !u!114 &7283716626185222213
+--- !u!114 &7683703725309708355
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -745,7 +745,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8119739840154875865}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bbf409502d8423d8d4205a12ba210bd, type: 3}
+  m_Script: {fileID: 11500000, guid: afe5b26e988c4f57b2a99e3621eb5af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _component:
