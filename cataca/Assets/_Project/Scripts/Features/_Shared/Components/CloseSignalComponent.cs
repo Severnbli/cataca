@@ -1,7 +1,7 @@
 ﻿using System;
-using _Project.Scripts.Features.UI._Shared.Monos;
+using _Project.Scripts.Features._Shared.Monos;
 
-namespace _Project.Scripts.Features.UI._Shared.Components
+namespace _Project.Scripts.Features._Shared.Components
 {
     [Serializable]
     public struct CloseSignalComponent

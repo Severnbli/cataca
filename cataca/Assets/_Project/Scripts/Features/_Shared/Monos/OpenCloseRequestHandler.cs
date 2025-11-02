@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace _Project.Scripts.Features.UI._Shared.Monos
+namespace _Project.Scripts.Features._Shared.Monos
 {
     public class OpenCloseRequestHandler : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-﻿namespace _Project.Scripts.Features.UI._Shared.Markers
+﻿namespace _Project.Scripts.Features._Shared.Markers
 {
     public struct CloseAppSignalMarker
     {
