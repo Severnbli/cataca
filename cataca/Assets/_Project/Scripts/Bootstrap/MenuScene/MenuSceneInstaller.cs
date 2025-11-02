@@ -1,4 +1,5 @@
 ﻿using _Project.Scripts.Bootstrap._Shared;
+using _Project.Scripts.Features._Shared.Systems;
 using _Project.Scripts.Features.UI.Buttons.Systems;
 
 namespace _Project.Scripts.Bootstrap.MenuScene
@@ -7,7 +8,8 @@ namespace _Project.Scripts.Bootstrap.MenuScene
     {
         protected override void BindSystems()
         {
-            Container.BindInterfacesTo<CloseAppByButtonSystem>().AsSingle();
+            Container.BindInterfacesTo<CloseAppSignalButtonListenerSystem>().AsSingle();
+            Container.BindInterfacesTo<CloseAppRequestHandlerSystem>().AsSingle();
         }
     }
 }

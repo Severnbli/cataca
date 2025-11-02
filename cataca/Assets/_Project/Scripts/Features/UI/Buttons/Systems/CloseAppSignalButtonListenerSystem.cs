@@ -1,15 +1,17 @@
 ﻿using _Project.Scripts.Core.Systems.Interfaces;
-using _Project.Scripts.Features.UI._Shared.Markers;
+using _Project.Scripts.Features._Shared.Markers;
+using _Project.Scripts.Features._Shared.Requests;
 using _Project.Scripts.Features.UI.Buttons.Components;
 using Leopotam.EcsLite;
 using UnityEngine;
 
 namespace _Project.Scripts.Features.UI.Buttons.Systems
 {
-    public class CloseAppByButtonSystem : IEcsInitSystem, IEcsRunSystem, IEcsGameSystem
+    public class CloseAppSignalButtonListenerSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
     {
         private EcsFilter _filter;
         private EcsPool<ButtonComponent> _buttonPool;
+        private EcsPool<CloseAppRequest> _closeAppRequestPool;
         
         public void Init(IEcsSystems systems)
         {
@@ -21,9 +23,10 @@ namespace _Project.Scripts.Features.UI.Buttons.Systems
                 .End();
             
             _buttonPool = world.GetPool<ButtonComponent>();
+            _closeAppRequestPool = world.GetPool<CloseAppRequest>();
         }
 
-        public void Run(IEcsSystems systems)
+        public void PostRun(IEcsSystems systems)
         {
             foreach (var e in _filter)
             {
@@ -31,8 +34,9 @@ namespace _Project.Scripts.Features.UI.Buttons.Systems
 
                 if (!button.Button.Pressed) continue;
                 
-                Application.Quit();
-                return;
+                var world = systems.GetWorld();
+                var requestEntity = world.NewEntity();
+                _closeAppRequestPool.Add(requestEntity);
             }
         }
     }

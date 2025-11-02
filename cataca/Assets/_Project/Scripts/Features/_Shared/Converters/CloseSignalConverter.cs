@@ -1,7 +1,7 @@
-﻿using _Project.Scripts.Features.UI._Shared.Components;
+﻿using _Project.Scripts.Features._Shared.Components;
 using AB_Utility.FromSceneToEntityConverter;
 
-namespace _Project.Scripts.Features.UI._Shared.Converters
+namespace _Project.Scripts.Features._Shared.Converters
 {
     public class CloseSignalConverter : ComponentConverter<CloseSignalComponent>
     {
