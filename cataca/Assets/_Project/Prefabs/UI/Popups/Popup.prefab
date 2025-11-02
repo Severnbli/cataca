@@ -224,8 +224,6 @@ GameObject:
   - component: {fileID: 5727487396544955814}
   - component: {fileID: 4849813014153005246}
   - component: {fileID: 3443447351338483142}
-  - component: {fileID: 5868394343597032793}
-  - component: {fileID: 2988499246380379938}
   m_Layer: 0
   m_Name: Popup
   m_TagString: Untagged
@@ -268,8 +266,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _converters:
   - {fileID: 3443447351338483142}
-  - {fileID: 5868394343597032793}
-  - {fileID: 2988499246380379938}
   _destroyAfterConversion: 0
 --- !u!114 &3443447351338483142
 MonoBehaviour:
@@ -286,34 +282,6 @@ MonoBehaviour:
   _component:
     Fade: {fileID: 7485210001725462454}
     Body: {fileID: 3673180940109777558}
---- !u!114 &5868394343597032793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5495896125610296328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9559a18f7c6b4823a0cd642d53e2b63b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _component:
-    Button: {fileID: 1745321962740523194}
---- !u!114 &2988499246380379938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5495896125610296328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7061838a6e5b4b5384a054689825283b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _component:
-    Button: {fileID: 0}
 --- !u!1 &5741081001131930389
 GameObject:
   m_ObjectHideFlags: 0
