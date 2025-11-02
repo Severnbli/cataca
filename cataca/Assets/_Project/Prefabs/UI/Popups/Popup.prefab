@@ -222,9 +222,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5727487396544955814}
+  - component: {fileID: 4605290421781554339}
   - component: {fileID: 4849813014153005246}
   - component: {fileID: 3443447351338483142}
-  - component: {fileID: 4605290421781554339}
+  - component: {fileID: 4806031014292857364}
   m_Layer: 0
   m_Name: Popup
   m_TagString: Untagged
@@ -253,6 +254,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4605290421781554339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5495896125610296328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defb48476d0841699d604d9da7525298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4849813014153005246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _converters:
   - {fileID: 3443447351338483142}
+  - {fileID: 4806031014292857364}
   _destroyAfterConversion: 0
 --- !u!114 &3443447351338483142
 MonoBehaviour:
@@ -283,7 +297,7 @@ MonoBehaviour:
   _component:
     Fade: {fileID: 7485210001725462454}
     Body: {fileID: 3673180940109777558}
---- !u!114 &4605290421781554339
+--- !u!114 &4806031014292857364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -292,9 +306,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5495896125610296328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: defb48476d0841699d604d9da7525298, type: 3}
+  m_Script: {fileID: 11500000, guid: a2ce23f31a8040979ca1b737277a64f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _component:
+    OpenCloseRequestHandler: {fileID: 4605290421781554339}
 --- !u!1 &5741081001131930389
 GameObject:
   m_ObjectHideFlags: 0
