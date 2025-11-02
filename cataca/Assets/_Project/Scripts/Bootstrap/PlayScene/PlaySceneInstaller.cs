@@ -1,12 +1,12 @@
 ﻿using _Project.Scripts.Bootstrap.Shared;
-using _Project.Scripts.Features.Input.Services;
-using _Project.Scripts.Features.Input.Systems;
-using _Project.Scripts.Features.Physics.Characters.Checks.Systems;
-using _Project.Scripts.Features.Physics.Characters.Movement.Systems;
-using _Project.Scripts.Features.Physics.Systems;
-using _Project.Scripts.Features.Player.Systems;
-using _Project.Scripts.Features.Time.Services;
-using _Project.Scripts.Features.Time.Systems;
+using _Project.Scripts.Features.Mechanics.Input.Services;
+using _Project.Scripts.Features.Mechanics.Input.Systems;
+using _Project.Scripts.Features.Mechanics.Physics.Characters.Checks.Systems;
+using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Systems;
+using _Project.Scripts.Features.Mechanics.Physics.Systems;
+using _Project.Scripts.Features.Mechanics.Player.Systems;
+using _Project.Scripts.Features.Mechanics.Time.Services;
+using _Project.Scripts.Features.Mechanics.Time.Systems;
 
 namespace _Project.Scripts.Bootstrap.PlayScene
 {
