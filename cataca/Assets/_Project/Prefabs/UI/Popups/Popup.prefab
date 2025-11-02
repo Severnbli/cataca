@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 5727487396544955814}
   - component: {fileID: 4849813014153005246}
   - component: {fileID: 3443447351338483142}
+  - component: {fileID: 4605290421781554339}
   m_Layer: 0
   m_Name: Popup
   m_TagString: Untagged
@@ -282,6 +283,18 @@ MonoBehaviour:
   _component:
     Fade: {fileID: 7485210001725462454}
     Body: {fileID: 3673180940109777558}
+--- !u!114 &4605290421781554339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5495896125610296328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defb48476d0841699d604d9da7525298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5741081001131930389
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,7 +593,10 @@ GameObject:
   - component: {fileID: 6349408781521098410}
   - component: {fileID: 7244640928967490493}
   - component: {fileID: 4465727611532953673}
-  - component: {fileID: 1745321962740523194}
+  - component: {fileID: 4817145987828497348}
+  - component: {fileID: 641425844583818326}
+  - component: {fileID: 5832970583104222731}
+  - component: {fileID: 7283716626185222213}
   m_Layer: 0
   m_Name: CloseButton
   m_TagString: Untagged
@@ -646,7 +662,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1745321962740523194
+--- !u!114 &4817145987828497348
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -655,7 +671,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8119739840154875865}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: f735d02e7ed5454682a158b937e4d5db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -690,3 +706,47 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &641425844583818326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119739840154875865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d40b90da6b42589971320ba7a7bc95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _converters:
+  - {fileID: 5832970583104222731}
+  - {fileID: 7283716626185222213}
+  _destroyAfterConversion: 0
+--- !u!114 &5832970583104222731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119739840154875865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceaf791e4855442fb668df07bf3d73f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _component:
+    Button: {fileID: 4817145987828497348}
+--- !u!114 &7283716626185222213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119739840154875865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bbf409502d8423d8d4205a12ba210bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _component:
+    RequestHandler: {fileID: 4605290421781554339}
