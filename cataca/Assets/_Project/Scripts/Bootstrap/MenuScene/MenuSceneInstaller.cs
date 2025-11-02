@@ -1,4 +1,4 @@
-﻿using _Project.Scripts.Bootstrap.Shared;
+﻿using _Project.Scripts.Bootstrap._Shared;
 using _Project.Scripts.Features.UI.Buttons.Systems;
 
 namespace _Project.Scripts.Bootstrap.MenuScene

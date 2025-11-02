@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace _Project.Scripts.Features.Mechanics.Physics.Components
+namespace _Project.Scripts.Features.Mechanics.Physics._Shared.Components
 {
     [Serializable]
     public struct RigidbodyComponent

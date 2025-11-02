@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-namespace _Project.Scripts.Shared.ScriptableObjects
+namespace _Project.Scripts._Shared.ScriptableObjects
 {
     public abstract class ScriptableObjectAutoInstaller<T> : ScriptableObjectInstaller 
         where T : ScriptableObjectAutoInstaller<T>

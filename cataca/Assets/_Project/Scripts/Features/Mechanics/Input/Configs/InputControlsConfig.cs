@@ -1,4 +1,4 @@
-﻿using _Project.Scripts.Shared.ScriptableObjects;
+﻿using _Project.Scripts._Shared.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

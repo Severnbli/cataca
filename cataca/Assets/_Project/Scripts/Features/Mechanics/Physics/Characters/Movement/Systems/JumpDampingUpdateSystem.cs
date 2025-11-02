@@ -1,7 +1,7 @@
-﻿using _Project.Scripts.Core.Systems.Interfaces;
+﻿using _Project.Scripts._Shared.Utils;
+using _Project.Scripts.Core.Systems.Interfaces;
+using _Project.Scripts.Features.Mechanics.Physics._Shared.Components;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Components;
-using _Project.Scripts.Features.Mechanics.Physics.Components;
-using _Project.Scripts.Shared.Utils;
 using Leopotam.EcsLite;
 using UnityEngine;
 
