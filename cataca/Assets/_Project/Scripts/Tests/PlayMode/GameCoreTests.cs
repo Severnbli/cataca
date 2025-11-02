@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿#if UNITY_EDITOR
+using NUnit.Framework;
 
 namespace _Project.Scripts.Tests.PlayMode
 {
@@ -21,3 +22,4 @@ namespace _Project.Scripts.Tests.PlayMode
         [Test] public void UI_Buttons_TriggerExpectedPanels_WhenClicked() {}
     }
 }
+#endif
