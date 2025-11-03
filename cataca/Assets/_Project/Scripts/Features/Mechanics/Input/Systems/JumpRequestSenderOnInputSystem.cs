@@ -26,6 +26,8 @@ namespace _Project.Scripts.Features.Mechanics.Input.Systems
                 .Filter<ControlledByInputMarker>()
                 .Inc<JumpComponent>()
                 .End();
+            
+            _jumpPerformRequestPool = world.GetPool<JumpPerformRequest>();
         }
 
         public void Run(IEcsSystems systems)
