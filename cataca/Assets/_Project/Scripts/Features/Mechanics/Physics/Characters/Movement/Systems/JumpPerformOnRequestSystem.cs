@@ -2,15 +2,16 @@
 using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features.Mechanics.Physics._Shared.Components;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Components;
+using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Requests;
 using Leopotam.EcsLite;
 using UnityEngine;
 
 namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Systems
 {
-    public class JumpDampingUpdateSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
+    public class JumpPerformOnRequestSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
     {
         private EcsFilter _filter;
-        private EcsPool<JumpDampingComponent> _jumpDampingPool;
+        private EcsPool<JumpComponent> _jumpPool;
         private EcsPool<RigidbodyComponent> _rigidbodyPool;
         
         public void Init(IEcsSystems systems)
@@ -18,11 +19,12 @@ namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.System
             var world = systems.GetWorld();
 
             _filter = world
-                .Filter<JumpDampingComponent>()
+                .Filter<JumpPerformRequest>()
+                .Inc<JumpComponent>()
                 .Inc<RigidbodyComponent>()
                 .End();
             
-            _jumpDampingPool = world.GetPool<JumpDampingComponent>();
+            _jumpPool = world.GetPool<JumpComponent>();
             _rigidbodyPool = world.GetPool<RigidbodyComponent>();
         }
 
@@ -30,12 +32,12 @@ namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.System
         {
             foreach (var e in _filter)
             {
-                ref var jumpDamping = ref _jumpDampingPool.Get(e);
+                ref var jump = ref _jumpPool.Get(e);
+                if (!jump.Enabled || jump.CurrentCount >= jump.MaxCount) continue;
+                jump.CurrentCount++;
+                
                 ref var rigidbody = ref _rigidbodyPool.Get(e);
-                
-                rigidbody.Rigidbody.AddVerticalForce(Mathf.Abs(jumpDamping.Force));
-                
-                _jumpDampingPool.Del(e);
+                rigidbody.Rigidbody.AddVerticalForce(Mathf.Abs(jump.Force));
             }
         }
     }

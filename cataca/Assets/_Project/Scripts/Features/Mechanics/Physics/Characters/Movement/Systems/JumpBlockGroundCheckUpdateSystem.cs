@@ -1,6 +1,7 @@
 ﻿using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Checks.Components;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Components;
+using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Requests;
 using Leopotam.EcsLite;
 
 namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Systems
@@ -17,7 +18,7 @@ namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.System
 
             _filter = world
                 .Filter<JumpBlockGroundCheckComponent>()
-                .Inc<JumpDampingComponent>()
+                .Inc<JumpPerformRequest>()
                 .End();
             
             _jumpBlockGroundCheckPool = world.GetPool<JumpBlockGroundCheckComponent>();
