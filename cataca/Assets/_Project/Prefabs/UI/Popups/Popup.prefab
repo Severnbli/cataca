@@ -295,8 +295,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _component:
+    Parent: {fileID: 5495896125610296328}
     Fade: {fileID: 7485210001725462454}
     Body: {fileID: 3673180940109777558}
+    Opened: 0
 --- !u!114 &4806031014292857364
 MonoBehaviour:
   m_ObjectHideFlags: 0
