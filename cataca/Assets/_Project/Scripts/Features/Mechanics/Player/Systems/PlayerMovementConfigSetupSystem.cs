@@ -7,9 +7,9 @@ using Leopotam.EcsLite;
 
 namespace _Project.Scripts.Features.Mechanics.Player.Systems
 {
-    public class PlayerConfigSetupSystem : IEcsInitSystem, IEcsGameSystem
+    public class PlayerMovementConfigSetupSystem : IEcsInitSystem, IEcsGameSystem
     {
-        public PlayerConfigSetupSystem(PlayerMovementConfig playerMovementConfig)
+        public PlayerMovementConfigSetupSystem(PlayerMovementConfig playerMovementConfig)
         {
             _playerMovementConfig = playerMovementConfig;
         }
