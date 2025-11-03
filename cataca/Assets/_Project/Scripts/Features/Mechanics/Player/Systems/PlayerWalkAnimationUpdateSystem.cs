@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace _Project.Scripts.Features.Mechanics.Player.Systems
 {
-    public class PlayerWalkAnimationUpdateSystem : IEcsInitSystem, IEcsRunSystem, IEcsGameSystem
+    public class PlayerWalkAnimationUpdateSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
     {
         public PlayerWalkAnimationUpdateSystem(PlayerAnimationConfig config)
         {
@@ -34,7 +34,7 @@ namespace _Project.Scripts.Features.Mechanics.Player.Systems
             _walkDampingPool = world.GetPool<WalkDampingComponent>();
         }
 
-        public void Run(IEcsSystems systems)
+        public void PostRun(IEcsSystems systems)
         {
             foreach (var e in _filter)
             {
