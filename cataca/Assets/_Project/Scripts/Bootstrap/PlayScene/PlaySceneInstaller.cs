@@ -30,14 +30,13 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<JumpRequestSenderOnInputSystem>().AsSingle();
             Container.BindInterfacesTo<DashRequestSenderOnInputSystem>().AsSingle();
 
-            Container.BindInterfacesTo<InputBasedWalkSystem>().AsSingle();
-            Container.BindInterfacesTo<InputBasedJumpSystem>().AsSingle();
-            Container.BindInterfacesTo<InputBasedDashSystem>().AsSingle();
+            Container.BindInterfacesTo<WalkPerformOnListenInputSystem>().AsSingle();
+            Container.BindInterfacesTo<JumpPerformOnRequestSystem>().AsSingle();
+            Container.BindInterfacesTo<DashPerformOnRequestSystem>().AsSingle();
             
             Container.BindInterfacesTo<JumpBlockGroundCheckUpdateSystem>().AsSingle();
 
             Container.BindInterfacesTo<WalkDampingUpdateSystem>().AsSingle();
-            Container.BindInterfacesTo<JumpDampingUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<DashDampingUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<RigidbodyVelocityApplySystem>().AsSingle();
 
