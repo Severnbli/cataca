@@ -9,12 +9,12 @@ namespace _Project.Scripts.Features.Mechanics.Player.Systems
 {
     public class PlayerConfigSetupSystem : IEcsInitSystem, IEcsGameSystem
     {
-        public PlayerConfigSetupSystem(PlayerConfig playerConfig)
+        public PlayerConfigSetupSystem(PlayerMovementConfig playerMovementConfig)
         {
-            _playerConfig = playerConfig;
+            _playerMovementConfig = playerMovementConfig;
         }
         
-        private PlayerConfig _playerConfig;
+        private PlayerMovementConfig _playerMovementConfig;
         private EcsFilter _filter;
         private EcsPool<WalkComponent> _walkPool;
         private EcsPool<JumpComponent> _jumpPool;
@@ -43,19 +43,19 @@ namespace _Project.Scripts.Features.Mechanics.Player.Systems
                 if (!_walkPool.Has(e))
                 {
                     ref var walk = ref _walkPool.Add(e);
-                    walk = _playerConfig.Walk;
+                    walk = _playerMovementConfig.Walk;
                 }
 
                 if (!_jumpPool.Has(e))
                 {
                     ref var jump = ref _jumpPool.Add(e);
-                    jump = _playerConfig.Jump;
+                    jump = _playerMovementConfig.Jump;
                 }
 
                 if (!_dashPool.Has(e))
                 {
                     ref var dash = ref _dashPool.Add(e);
-                    dash = _playerConfig.Dash;
+                    dash = _playerMovementConfig.Dash;
                 }
             }
         }

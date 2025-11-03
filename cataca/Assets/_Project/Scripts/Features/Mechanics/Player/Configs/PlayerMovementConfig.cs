@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Project.Scripts.Features.Mechanics.Player.Configs
 {
-    public class PlayerConfig : ScriptableObjectAutoInstaller<PlayerConfig>
+    public class PlayerMovementConfig : ScriptableObjectAutoInstaller<PlayerMovementConfig>
     {
         [SerializeField] private WalkComponent _walk;
         [SerializeField] private JumpComponent _jump;
