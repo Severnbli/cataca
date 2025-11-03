@@ -7,9 +7,9 @@ using Leopotam.EcsLite;
 
 namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Systems
 {
-    public class InputBasedWalkSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
+    public class WalkPerformOnListenInputSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
     {
-        public InputBasedWalkSystem(InputService inputService)
+        public WalkPerformOnListenInputSystem(InputService inputService)
         {
             _inputService = inputService;
         }
