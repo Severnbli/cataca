@@ -1,15 +1,15 @@
 ﻿using _Project.Scripts.Core.Systems.Interfaces;
-using _Project.Scripts.Features.Mechanics.Input.Markers;
 using _Project.Scripts.Features.Mechanics.Input.Services;
 using _Project.Scripts.Features.Mechanics.Physics._Shared.Components;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Components;
+using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Requests;
 using Leopotam.EcsLite;
 
 namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Systems
 {
-    public class InputBasedDashSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
+    public class DashPerformOnRequestSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
     {
-        public InputBasedDashSystem(InputService inputService)
+        public DashPerformOnRequestSystem(InputService inputService)
         {
             _inputService = inputService;
         }
@@ -18,19 +18,21 @@ namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.System
         private EcsFilter _filter;
         private EcsPool<DashComponent> _dashPool;
         private EcsPool<DashDampingComponent> _dashDampingPool;
+        private EcsPool<RigidbodyComponent> _rigidbodyPool;
         
         public void Init(IEcsSystems systems)
         {
             var world = systems.GetWorld();
 
             _filter = world
-                .Filter<DashComponent>()
+                .Filter<DashPerformRequest>()
+                .Inc<DashComponent>()
                 .Inc<RigidbodyComponent>()
-                .Inc<ControlledByInputMarker>()
                 .End();
             
             _dashPool = world.GetPool<DashComponent>();
             _dashDampingPool = world.GetPool<DashDampingComponent>();
+            _rigidbodyPool = world.GetPool<RigidbodyComponent>();
         }
 
         public void PostRun(IEcsSystems systems)
@@ -39,22 +41,18 @@ namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.System
             {
                 ref var dash = ref _dashPool.Get(e);
                 if (!dash.Enabled || dash.CurrentCount >= dash.MaxCount) continue;
-
-                var dashInput = _inputService.Dash;
-                if (!dashInput) continue;
-
+                dash.CurrentCount++;
+                
                 var walkInput = _inputService.Walk.x;
                 
                 ref var dashDamping = ref _dashDampingPool.Has(e)
                     ? ref _dashDampingPool.Get(e)
                     : ref _dashDampingPool.Add(e);
-
+                
                 dashDamping.Force = dash.Force;
                 dashDamping.Factor = walkInput;
                 dashDamping.Duration = dash.Duration;
                 dashDamping.TimePassed = 0f;
-                
-                dash.CurrentCount++;
             }
         }
     }
