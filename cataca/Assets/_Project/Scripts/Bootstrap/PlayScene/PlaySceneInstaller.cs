@@ -23,6 +23,12 @@ namespace _Project.Scripts.Bootstrap.PlayScene
         {
             Container.BindInterfacesTo<TimeServiceUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<InputServiceUpdateSystem>().AsSingle();
+            
+            Container.BindInterfacesTo<JumpPerformRequestDeleterSystem>().AsSingle();
+            Container.BindInterfacesTo<DashPerformRequestDeleterSystem>().AsSingle();
+            
+            Container.BindInterfacesTo<JumpRequestSenderOnInputSystem>().AsSingle();
+            Container.BindInterfacesTo<DashRequestSenderOnInputSystem>().AsSingle();
 
             Container.BindInterfacesTo<InputBasedWalkSystem>().AsSingle();
             Container.BindInterfacesTo<InputBasedJumpSystem>().AsSingle();
