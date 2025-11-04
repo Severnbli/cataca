@@ -1,8 +1,8 @@
 ﻿using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features.Mechanics.Anims.Components;
-using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Requests;
 using _Project.Scripts.Features.Mechanics.Player.Configs;
 using _Project.Scripts.Features.Mechanics.Player.Markers;
+using _Project.Scripts.Features.Mechanics.Player.Requests;
 using Leopotam.EcsLite;
 
 namespace _Project.Scripts.Features.Mechanics.Player.Systems
@@ -23,7 +23,7 @@ namespace _Project.Scripts.Features.Mechanics.Player.Systems
             var world = systems.GetWorld();
 
             _filter = world
-                .Filter<DashPerformRequest>()
+                .Filter<PlayDashAnimationRequest>()
                 .Inc<AnimatorComponent>()
                 .Inc<PlayerMarker>()
                 .End();
