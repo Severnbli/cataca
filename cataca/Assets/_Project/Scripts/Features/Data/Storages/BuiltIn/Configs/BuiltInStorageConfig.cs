@@ -32,7 +32,7 @@ namespace _Project.Scripts.Features.Data.Storages.BuiltIn.Configs
         [Button]
         private void ResetAll()
         {
-            if (EditorHelpers.Confirm("Warning! It will reset ALL keys even if they are not specified."))
+            if (EditorUtils.Confirm("Warning! It will reset ALL keys even if they are not specified."))
             {
                 PlayerPrefs.DeleteAll();
             }
