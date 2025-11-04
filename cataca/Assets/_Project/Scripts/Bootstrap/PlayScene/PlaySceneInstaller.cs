@@ -26,6 +26,8 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             
             Container.BindInterfacesTo<JumpPerformRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<DashPerformRequestDeleterSystem>().AsSingle();
+            Container.BindInterfacesTo<PlayJumpAnimationRequestDeleterSystem>().AsSingle();
+            Container.BindInterfacesTo<PlayDashAnimationRequestDeleterSystem>().AsSingle();
             
             Container.BindInterfacesTo<JumpRequestSenderOnInputSystem>().AsSingle();
             Container.BindInterfacesTo<DashRequestSenderOnInputSystem>().AsSingle();
@@ -39,6 +41,13 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<WalkDampingUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<DashDampingUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<RigidbodyVelocityApplySystem>().AsSingle();
+            
+            Container.BindInterfacesTo<PlayerDashAnimationTriggerSystem>().AsSingle();
+            Container.BindInterfacesTo<PlayerFallAnimationUpdateSystem>().AsSingle();
+            Container.BindInterfacesTo<PlayerJumpAnimationTriggerSystem>().AsSingle();
+            Container.BindInterfacesTo<PlayerWalkAnimationUpdateSystem>().AsSingle();
+            
+            Container.BindInterfacesTo<FlipObjectOnWalkSystem>().AsSingle();
 
             Container.BindInterfacesTo<GroundCheckTimeBlockUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<GroundCheckStatusUpdateSystem>().AsSingle();
