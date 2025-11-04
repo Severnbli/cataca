@@ -1,4 +1,6 @@
-﻿namespace _Project.Scripts._Shared.Utils
+﻿#if UNITY_EDITOR
+
+namespace _Project.Scripts._Shared.Utils
 {
     public static class EditorHelpers
     {
@@ -8,3 +10,5 @@
         }
     }
 }
+
+#endif
