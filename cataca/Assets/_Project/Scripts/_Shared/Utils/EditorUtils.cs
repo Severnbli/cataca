@@ -2,7 +2,7 @@
 
 namespace _Project.Scripts._Shared.Utils
 {
-    public static class EditorHelpers
+    public static class EditorUtils
     {
         public static bool Confirm(string msg)
         {
