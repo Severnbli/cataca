@@ -3,6 +3,7 @@ using _Project.Scripts.Features.Mechanics.Input.Services;
 using _Project.Scripts.Features.Mechanics.Physics._Shared.Components;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Components;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Requests;
+using _Project.Scripts.Features.Mechanics.Player.Requests;
 using Leopotam.EcsLite;
 
 namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Systems
@@ -18,7 +19,7 @@ namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.System
         private EcsFilter _filter;
         private EcsPool<DashComponent> _dashPool;
         private EcsPool<DashDampingComponent> _dashDampingPool;
-        private EcsPool<RigidbodyComponent> _rigidbodyPool;
+        private EcsPool<PlayDashAnimationRequest> _playDashAnimationRequestPool;
         
         public void Init(IEcsSystems systems)
         {
@@ -32,7 +33,7 @@ namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.System
             
             _dashPool = world.GetPool<DashComponent>();
             _dashDampingPool = world.GetPool<DashDampingComponent>();
-            _rigidbodyPool = world.GetPool<RigidbodyComponent>();
+            _playDashAnimationRequestPool = world.GetPool<PlayDashAnimationRequest>();
         }
 
         public void PostRun(IEcsSystems systems)
@@ -42,6 +43,8 @@ namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.System
                 ref var dash = ref _dashPool.Get(e);
                 if (!dash.Enabled || dash.CurrentCount >= dash.MaxCount) continue;
                 dash.CurrentCount++;
+                
+                if (!_playDashAnimationRequestPool.Has(e)) _playDashAnimationRequestPool.Add(e);
                 
                 var walkInput = _inputService.Walk.x;
                 
