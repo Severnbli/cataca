@@ -19,9 +19,9 @@ namespace _Project.Scripts.Core.StateMachine.Base
         
         public async UniTaskVoid LoadState<T>() where T : IState
         {
-            await _currentState?.OnExit();
+            if (_currentState is not null) await _currentState.OnExit();
             _currentState = _diContainer.Resolve<T>();
-            await _currentState?.OnEnter();
+            if (_currentState is not null) await _currentState.OnEnter();
         }
     }
 }
