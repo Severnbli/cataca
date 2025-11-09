@@ -3,7 +3,7 @@ using AB_Utility.FromSceneToEntityConverter;
 
 namespace _Project.Scripts.Features.Mechanics.Records.Converters
 {
-    public class RecordPlayerConverter : ComponentConverter<RecordPlayerComponent>
+    public class RecordsPlayerConverter : ComponentConverter<RecordsPlayerComponent>
     {
         
     }
