@@ -1,5 +1,6 @@
 ﻿using _Project.Scripts.Bootstrap._Shared;
 using _Project.Scripts.Features._Shared.Systems;
+using _Project.Scripts.Features.Mechanics.Records.Systems;
 using _Project.Scripts.Features.UI.Buttons.Systems;
 using _Project.Scripts.Features.UI.Popups.Systems;
 using UnityEngine;
@@ -10,6 +11,8 @@ namespace _Project.Scripts.Bootstrap.MenuScene
     {
         protected override void BindSystems()
         {
+            Container.BindInterfacesTo<RecordPlayPauseRequestDeleter>().AsSingle();
+            
             Container.BindInterfacesTo<CloseAppSignalButtonListenerSystem>().AsSingle();
             Container.BindInterfacesTo<CloseAppRequestHandlerSystem>().AsSingle();
             
