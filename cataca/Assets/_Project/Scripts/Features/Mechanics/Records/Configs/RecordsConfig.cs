@@ -18,9 +18,12 @@ namespace _Project.Scripts.Features.Mechanics.Records.Configs
         [SerializeField] 
         [OnValueChanged("ValidateRecords")]
         private List<RecordComponent> _records;
+
+        [SerializeField] private bool _loopedPlayback = true;
         
         public GameObject RecordPrefab => _recordPrefab;
         public List<RecordComponent> Records => _records;
+        public bool LoopedPlayback => _loopedPlayback;
 
 #if UNITY_EDITOR
         [ShowInInspector]
