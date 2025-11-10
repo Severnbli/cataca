@@ -5,10 +5,10 @@ namespace _Project.Scripts.Features.Audio.Configs
 {
     public class AudioConfig : ScriptableObjectAutoInstaller<AudioConfig>
     {
-        [SerializeField] private Sprite _playableIsOnSprite;
-        [SerializeField] private Sprite _playableIsOffSprite;
+        [SerializeField] private Sprite _playableIsOn;
+        [SerializeField] private Sprite _playableIsOff;
         
-        public Sprite PlayableIsOnSprite => _playableIsOnSprite;
-        public Sprite PlayableIsOffSprite => _playableIsOffSprite;
+        public Sprite PlayableIsOn => _playableIsOn;
+        public Sprite PlayableIsOff => _playableIsOff;
     }
 }
