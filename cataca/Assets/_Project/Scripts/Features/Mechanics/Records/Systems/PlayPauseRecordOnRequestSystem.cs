@@ -43,6 +43,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
                 .End();
             
             _audioSourcePool = world.GetPool<AudioSourceComponent>();
+            _recordPool = world.GetPool<RecordComponent>();
         }
 
         public void PostRun(IEcsSystems systems)
