@@ -8,9 +8,10 @@ namespace _Project.Scripts.Features.Audio.Systems
 {
     public class AudioSettingsWriterSystem : IEcsDestroySystem, IEcsGameSystem
     {
-        public AudioSettingsWriterSystem(AudioService audioService)
+        public AudioSettingsWriterSystem(AudioService audioService, BuiltInStorageConfig storageConfig)
         {
             _audioService = audioService;
+            _storageConfig = storageConfig;
         }
         
         private AudioService _audioService;
