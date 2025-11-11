@@ -31,6 +31,7 @@ namespace _Project.Scripts.Bootstrap.MenuScene
             Container.BindInterfacesTo<PopupPlayOpenAnimRequestHandlerSystem>().AsSingle();
             
             Container.BindInterfacesTo<PlayPauseRecordOnRequestSystem>().AsSingle();
+            Container.BindInterfacesTo<RecordsUIInstantiatorSystem>().AsSingle();
         }
     }
 }
