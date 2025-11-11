@@ -10,12 +10,15 @@ namespace _Project.Scripts.Features.Data.Storages.BuiltIn.Configs
     {
         [SerializeField] private string _levels;
         [SerializeField] private string _records;
+        [SerializeField] private string _settings;
         
         public string Levels => _levels;
         public string Records => _records;
+        public string Settings => _settings;
 
 #if UNITY_EDITOR
         [PropertySpace(10)]
+        [PropertyOrder(0)]
         [Button]
         private void ResetLevels()
         {
@@ -23,6 +26,7 @@ namespace _Project.Scripts.Features.Data.Storages.BuiltIn.Configs
         }
         
         [PropertySpace(10)]
+        [PropertyOrder(1)]
         [Button]
         private void ResetRecords()
         {
@@ -30,10 +34,12 @@ namespace _Project.Scripts.Features.Data.Storages.BuiltIn.Configs
         }
 
         [PropertySpace] 
+        [PropertyOrder(2)]
         [SerializeField] 
         private Record record;
         
         [PropertySpace(10)]
+        [PropertyOrder(3)]
         [Button]
         private void AddRecord()
         {
@@ -43,6 +49,15 @@ namespace _Project.Scripts.Features.Data.Storages.BuiltIn.Configs
         }
         
         [PropertySpace(10)]
+        [PropertyOrder(4)]
+        [Button]
+        private void ResetSettings()
+        {
+            PlayerPrefs.DeleteKey(_settings);
+        }
+        
+        [PropertySpace(10)]
+        [PropertyOrder(10)]
         [Button]
         private void ResetAll()
         {
