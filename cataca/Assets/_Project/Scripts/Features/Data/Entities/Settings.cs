@@ -6,6 +6,6 @@ namespace _Project.Scripts.Features.Data.Entities
     public class Settings
     {
         public float MusicVolume { get; set; }
-        public float SoundVolume { get; set; }
+        public float SoundsVolume { get; set; }
     }
 }
