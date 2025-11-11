@@ -22,6 +22,8 @@ namespace _Project.Scripts.Bootstrap.MenuScene
         {
             Container.BindInterfacesTo<AudioSettingsLoaderSystem>().AsSingle();
             Container.BindInterfacesTo<AudioSlidersLoaderSystem>().AsSingle();
+            Container.BindInterfacesTo<AudioServiceLoaderSystem>().AsSingle();
+            
             Container.BindInterfacesTo<RecordsUIInstantiatorSystem>().AsSingle();
             
             Container.BindInterfacesTo<RecordPlayPauseRequestDeleter>().AsSingle();
@@ -42,6 +44,8 @@ namespace _Project.Scripts.Bootstrap.MenuScene
             Container.BindInterfacesTo<PlayPauseRecordOnRequestSystem>().AsSingle();
             Container.BindInterfacesTo<PlayableRecordUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<RecordsPlayServiceUpdatePlayingStateSystem>().AsSingle();
+            
+            Container.BindInterfacesTo<AudioSettingsWriterSystem>().AsSingle();
         }
     }
 }
