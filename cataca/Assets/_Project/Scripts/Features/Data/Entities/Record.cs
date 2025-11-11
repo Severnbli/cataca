@@ -9,7 +9,9 @@ namespace _Project.Scripts.Features.Data.Entities
 
         public static bool operator ==(Record a, Record b)
         {
-            return b != null && a != null && a.Id == b.Id;
+            if (ReferenceEquals(a, b)) return true;
+            if (ReferenceEquals(a, null) || ReferenceEquals(b, null)) return false;
+            return a.Id == b.Id;
         }
 
         public static bool operator !=(Record a, Record b)
