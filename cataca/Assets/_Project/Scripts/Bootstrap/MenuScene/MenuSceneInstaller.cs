@@ -36,6 +36,7 @@ namespace _Project.Scripts.Bootstrap.MenuScene
             
             Container.BindInterfacesTo<PlayPauseRecordOnRequestSystem>().AsSingle();
             Container.BindInterfacesTo<PlayableRecordUpdateSystem>().AsSingle();
+            Container.BindInterfacesTo<RecordsPlayServiceUpdatePlayingStateSystem>().AsSingle();
         }
     }
 }
