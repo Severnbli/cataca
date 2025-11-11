@@ -1,16 +1,12 @@
-﻿using System.Linq;
-using _Project.Scripts._Shared.Extensions;
-using _Project.Scripts._Shared.Utils;
+﻿using _Project.Scripts._Shared.Extensions;
 using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features._Shared.Components;
-using _Project.Scripts.Features.Data.Entities;
 using _Project.Scripts.Features.Mechanics.Records.Components;
 using _Project.Scripts.Features.Mechanics.Records.Configs;
 using _Project.Scripts.Features.Mechanics.Records.Markers;
 using _Project.Scripts.Features.Mechanics.Records.Requests;
 using _Project.Scripts.Features.Mechanics.Records.Services;
 using Leopotam.EcsLite;
-using UnityEngine;
 
 namespace _Project.Scripts.Features.Mechanics.Records.Systems
 {
