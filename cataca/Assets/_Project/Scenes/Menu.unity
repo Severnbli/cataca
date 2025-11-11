@@ -654,9 +654,9 @@ PrefabInstance:
       value: -364.87003
       objectReference: {fileID: 0}
     - target: {fileID: 6327284880561439010, guid: e6d8119ee17e6bf40a3f3a4c5ce6dddb, type: 3}
-      propertyPath: '_converters.Array.data[1]'
+      propertyPath: '_converters.Array.data[2]'
       value: 
-      objectReference: {fileID: 977211244}
+      objectReference: {fileID: 0}
     - target: {fileID: 7173430827759844889, guid: e6d8119ee17e6bf40a3f3a4c5ce6dddb, type: 3}
       propertyPath: '_converters.Array.data[1]'
       value: 
@@ -796,17 +796,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: defb48476d0841699d604d9da7525298, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &977211244 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8874391261317914544, guid: e6d8119ee17e6bf40a3f3a4c5ce6dddb, type: 3}
-  m_PrefabInstance: {fileID: 977211241}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea2cc6cb743c44888b494172934d2fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &977211245 stripped
