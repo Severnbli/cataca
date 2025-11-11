@@ -3,6 +3,7 @@ using System.Linq;
 using _Project.Scripts._Shared.Utils;
 using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features.Audio.Components;
+using _Project.Scripts.Features.Audio.Configs;
 using _Project.Scripts.Features.Data.Storages.BuiltIn.Configs;
 using _Project.Scripts.Features.Mechanics.Records.Components;
 using _Project.Scripts.Features.Mechanics.Records.Configs;
@@ -17,16 +18,18 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
 {
     public class RecordsUIInstantiatorSystem : IEcsInitSystem, IEcsGameSystem
     {
-        public RecordsUIInstantiatorSystem(RecordsUIInstantiatorConfig uiConfig, RecordsConfig recordsConfig, BuiltInStorageConfig storageConfig)
+        public RecordsUIInstantiatorSystem(RecordsUIInstantiatorConfig uiConfig, RecordsConfig recordsConfig, BuiltInStorageConfig storageConfig, AudioConfig audioConfig)
         {
             _uiConfig = uiConfig;
             _recordsConfig = recordsConfig;
             _storageConfig = storageConfig;
+            _audioConfig = audioConfig;
         }
 
         private RecordsUIInstantiatorConfig _uiConfig;
         private RecordsConfig _recordsConfig;
         private BuiltInStorageConfig _storageConfig;
+        private AudioConfig _audioConfig;
         private EcsWorld _world;
         private EcsFilter _containerFilter;
         private EcsPool<RecordComponent> _recordPool;
@@ -79,6 +82,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
                 
                 ref var playable = ref _playablePool.Add(entity);
                 playable.Playable = recordMono.Playable;
+                recordMono.Playable.sprite = _audioConfig.PlayableIsOff;
             }
         }
     }
