@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levels: levels
   _records: records
+  _settings: settings
   record:
     Id: 0
