@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8363551671615655435}
   - component: {fileID: 5717916077316039542}
   - component: {fileID: 6013374767339001423}
-  - component: {fileID: 2235657525931629342}
   - component: {fileID: 2903245943529532576}
   m_Layer: 0
   m_Name: Record
@@ -93,18 +92,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 5717916077316039542}
   _button: {fileID: 2903245943529532576}
---- !u!114 &2235657525931629342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 373131750488355174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38e444c07bf24b0c986f800dd06b3e6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   _playable: {fileID: 7967464406193913214}
 --- !u!114 &2903245943529532576
 MonoBehaviour:
