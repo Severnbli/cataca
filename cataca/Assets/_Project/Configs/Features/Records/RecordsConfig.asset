@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eddb867402af423aaf7339aacb79b76a, type: 3}
   m_Name: RecordsConfig
   m_EditorClassIdentifier: 
-  _recordPrefab: {fileID: 0}
   _records:
   - Record:
       Id: 0
-    AudioClip: {fileID: 0}
+    AudioClip: {fileID: 8300000, guid: 820ac782c9542c44fa09109e418b09f1, type: 3}
+  - Record:
+      Id: 1
+    AudioClip: {fileID: 8300000, guid: 4a0ffa234ededd64f983725a1bc77e50, type: 3}
+  _loopedPlayback: 1
   _builtInStorageConfig: {fileID: 11400000, guid: 3d7387af57f7faf449fc02906d46f371, type: 2}
