@@ -6,9 +6,9 @@ using Leopotam.EcsLite;
 
 namespace _Project.Scripts.Features.Audio.Systems
 {
-    public class AudioSettingsLoaderConfig : IEcsInitSystem, IEcsGameSystem
+    public class AudioSettingsLoaderSystem : IEcsInitSystem, IEcsGameSystem
     {
-        public AudioSettingsLoaderConfig(AudioConfig audioConfig, BuiltInStorageConfig storageConfig)
+        public AudioSettingsLoaderSystem(AudioConfig audioConfig, BuiltInStorageConfig storageConfig)
         {
             _audioConfig = audioConfig;
             _storageConfig = storageConfig;
