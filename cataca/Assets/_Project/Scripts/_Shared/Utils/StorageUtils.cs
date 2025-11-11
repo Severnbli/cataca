@@ -28,6 +28,16 @@ namespace _Project.Scripts._Shared.Utils
             SaveBuiltInList(config.Records, records);
         }
 
+        public static Settings LoadSettings(BuiltInStorageConfig config)
+        {
+            return Load<Settings>(config.Settings);
+        }
+
+        public static void SaveSettings(BuiltInStorageConfig config, Settings settings)
+        {
+            Save(config.Settings, settings);
+        }
+
         public static List<T> LoadBuiltInList<T>(string path)
         {
             var jsonData = PlayerPrefs.GetString(path, string.Empty);
@@ -40,6 +50,21 @@ namespace _Project.Scripts._Shared.Utils
         public static void SaveBuiltInList<T>(string path, List<T> list)
         {
             PlayerPrefs.SetString(path, JsonUtils.ToJson(list));
+        }
+
+        public static T Load<T>(string path) where T : new()
+        {
+            var jsonData = PlayerPrefs.GetString(path, String.Empty);
+            var obj = string.IsNullOrEmpty(jsonData)
+                ? new T()
+                : JsonUtils.FromJson<T>(jsonData);
+            return obj;
+        }
+
+        public static void Save<T>(string path, T data)
+        {
+            var jsonData = JsonUtils.ToJson(data);
+            PlayerPrefs.SetString(path, jsonData);
         }
     }
 }
