@@ -4,6 +4,7 @@ using _Project.Scripts._Shared.Utils;
 using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features._Shared.Components;
 using _Project.Scripts.Features.Data.Entities;
+using _Project.Scripts.Features.Mechanics.Records.Components;
 using _Project.Scripts.Features.Mechanics.Records.Configs;
 using _Project.Scripts.Features.Mechanics.Records.Markers;
 using _Project.Scripts.Features.Mechanics.Records.Requests;
@@ -24,8 +25,8 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
         private RecordsConfig _recordsConfig;
         private EcsFilter _audioSourcesFilter;
         private EcsFilter _requestsFilter;
+        private EcsPool<RecordComponent> _recordPool;
         private EcsPool<AudioSourceComponent> _audioSourcePool;
-        private EcsPool<RecordPlayPauseRequest> _recordPlayPauseRequestPool;
         
         public void Init(IEcsSystems systems)
         {
@@ -38,19 +39,19 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
 
             _requestsFilter = world
                 .Filter<RecordPlayPauseRequest>()
+                .Inc<RecordComponent>()
                 .End();
             
             _audioSourcePool = world.GetPool<AudioSourceComponent>();
-            _recordPlayPauseRequestPool = world.GetPool<RecordPlayPauseRequest>();
         }
 
         public void PostRun(IEcsSystems systems)
         {
             if (!_requestsFilter.TryGetFirst(out var requestEntity) || _audioSourcesFilter.GetEntitiesCount() == 0) return;
             
-            ref var recordPlayPauseRequest = ref _recordPlayPauseRequestPool.Get(requestEntity);
+            ref var record = ref _recordPool.Get(requestEntity);
 
-            if (recordPlayPauseRequest.Record == _recordsPlayService.Current)
+            if (record.Record == _recordsPlayService.Current)
             {
                 if (_recordsPlayService.Playing)
                 {
@@ -64,7 +65,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
                 return;
             }
             
-            StartPlayback(recordPlayPauseRequest.Record);
+            StartPlayback(record);
         }
 
         private void PausePlayback()
@@ -89,15 +90,14 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
             }
         }
 
-        private void StartPlayback(Record record)
+        private void StartPlayback(RecordComponent record)
         {
             _recordsPlayService.Playing = true;
-            if (!RecordsUtils.TryGetAudioClipByRecord(_recordsConfig.Records, record, out var audioClip)) return;
 
             foreach (var e in _audioSourcesFilter)
             {
                 ref var audioSource = ref _audioSourcePool.Get(e);
-                audioSource.AudioSource.clip = audioClip;
+                audioSource.AudioSource.clip = record.AudioClip;
                 audioSource.AudioSource.loop = _recordsConfig.LoopedPlayback;
                 audioSource.AudioSource.Play();
             }
