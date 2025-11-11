@@ -6,7 +6,7 @@ using Leopotam.EcsLite;
 
 namespace _Project.Scripts.Features.Mechanics.Records.Systems
 {
-    public class RecordPlayPauseRequestOnButtonPressedSystem : IEcsInitSystem, IEcsRunSystem, IEcsGameSystem
+    public class RecordPlayPauseRequestOnButtonPressedSenderSystem : IEcsInitSystem, IEcsRunSystem, IEcsGameSystem
     {
         private EcsFilter _filter;
         private EcsPool<ButtonComponent> _buttonPool;
