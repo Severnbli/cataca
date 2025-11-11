@@ -60,7 +60,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Configs
             {
                 if (idsFromStorage.Contains(record.Record.Id)) idsFromStorage.Remove(record.Record.Id);
                 if (record.AudioClip == null) notAudioClipIds.Add(record.Record.Id);
-                if (_records.Select(x => x.Record.Id == record.Record.Id).Count() > 1)
+                if (_records.Count(x => x.Record.Id == record.Record.Id) > 1)
                 {
                     repeatedIds.Add(record.Record.Id);
                 }
