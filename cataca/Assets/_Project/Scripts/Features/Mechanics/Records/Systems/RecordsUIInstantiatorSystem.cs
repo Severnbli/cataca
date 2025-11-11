@@ -18,18 +18,17 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
 {
     public class RecordsUIInstantiatorSystem : IEcsInitSystem, IEcsGameSystem
     {
-        public RecordsUIInstantiatorSystem(RecordsUIInstantiatorConfig uiConfig, RecordsConfig recordsConfig, BuiltInStorageConfig storageConfig, AudioConfig audioConfig)
+        public RecordsUIInstantiatorSystem(RecordsUIInstantiatorConfig uiConfig, RecordsConfig recordsConfig, 
+            BuiltInStorageConfig storageConfig)
         {
             _uiConfig = uiConfig;
             _recordsConfig = recordsConfig;
             _storageConfig = storageConfig;
-            _audioConfig = audioConfig;
         }
 
         private RecordsUIInstantiatorConfig _uiConfig;
         private RecordsConfig _recordsConfig;
         private BuiltInStorageConfig _storageConfig;
-        private AudioConfig _audioConfig;
         private EcsWorld _world;
         private EcsFilter _containerFilter;
         private EcsPool<RecordComponent> _recordPool;
@@ -82,7 +81,6 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
                 
                 ref var playable = ref _playablePool.Add(entity);
                 playable.Playable = recordMono.Playable;
-                recordMono.Playable.sprite = _audioConfig.PlayableIsOff;
             }
         }
     }
