@@ -1,4 +1,5 @@
 ﻿using _Project.Scripts.Bootstrap._Shared;
+using _Project.Scripts.Features.Audio.Systems;
 using _Project.Scripts.Features.Mechanics.Input.Services;
 using _Project.Scripts.Features.Mechanics.Input.Systems;
 using _Project.Scripts.Features.Mechanics.Physics._Shared.Systems;
@@ -21,6 +22,8 @@ namespace _Project.Scripts.Bootstrap.PlayScene
 
         protected override void BindSystems()
         {
+            Container.BindInterfacesTo<AudioSettingsLoaderSystem>().AsSingle();
+            
             Container.BindInterfacesTo<TimeServiceUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<InputServiceUpdateSystem>().AsSingle();
             

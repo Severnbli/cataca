@@ -1,5 +1,6 @@
 ﻿using _Project.Scripts.Bootstrap._Shared;
 using _Project.Scripts.Features._Shared.Systems;
+using _Project.Scripts.Features.Audio.Systems;
 using _Project.Scripts.Features.Mechanics.Records.Services;
 using _Project.Scripts.Features.Mechanics.Records.Systems;
 using _Project.Scripts.Features.UI.Buttons.Systems;
@@ -17,6 +18,7 @@ namespace _Project.Scripts.Bootstrap.MenuScene
 
         protected override void BindSystems()
         {
+            Container.BindInterfacesTo<AudioSettingsLoaderSystem>().AsSingle();
             Container.BindInterfacesTo<RecordsUIInstantiatorSystem>().AsSingle();
             
             Container.BindInterfacesTo<RecordPlayPauseRequestDeleter>().AsSingle();
