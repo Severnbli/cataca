@@ -8,8 +8,10 @@ namespace _Project.Scripts.Features.Mechanics.Records.Monos
     {
         [SerializeField] private Image _icon;
         [SerializeField] private ButtonWrapper _button;
+        [SerializeField] private Image _playable;
         
         public Image Icon => _icon;
         public ButtonWrapper Button => _button;
+        public Image Playable => _playable;
     }
 }
