@@ -22,6 +22,8 @@ namespace _Project.Scripts.Bootstrap.MenuScene
             Container.BindInterfacesTo<CloseAppSignalButtonListenerSystem>().AsSingle();
             Container.BindInterfacesTo<CloseAppRequestHandlerSystem>().AsSingle();
             
+            Container.BindInterfacesTo<RecordPlayPauseRequestOnButtonPressedSenderSystem>().AsSingle();
+            
             Container.BindInterfacesTo<OpenSignalButtonListenerSystem>().AsSingle();
             Container.BindInterfacesTo<CloseSignalButtonListenerSystem>().AsSingle();
             
