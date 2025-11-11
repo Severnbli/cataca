@@ -46,6 +46,7 @@ namespace _Project.Scripts.Bootstrap.MenuScene
             Container.BindInterfacesTo<RecordsPlayServiceUpdatePlayingStateSystem>().AsSingle();
             
             Container.BindInterfacesTo<AudioSettingsWriterSystem>().AsSingle();
+            Container.BindInterfacesTo<AudioServiceUpdateOnSlidersChangeValueSystem>().AsSingle();
         }
     }
 }
