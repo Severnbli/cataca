@@ -7,5 +7,8 @@ namespace _Project.Scripts.Features.Mechanics.Records.Configs
     {
         [SerializeField] private GameObject _prefab;
         [SerializeField] private Sprite[] _icons;
+        
+        public GameObject Prefab => _prefab;
+        public Sprite[] Icons => _icons;
     }
 }
