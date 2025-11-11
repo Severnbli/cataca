@@ -21,6 +21,13 @@
       "dependencies": {},
       "hash": "aecbac1b9ec48575f2c7f14f3e707eb1d6ad9180"
     },
+    "com.starasgames.tmpro-dynamic-data-cleaner": {
+      "version": "https://github.com/STARasGAMES/tmpro-dynamic-data-cleaner.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "3016fca9cfdebe8c5aa04102195d4fed7947dee2"
+    },
     "com.unity.2d.animation": {
       "version": "10.2.1",
       "depth": 1,
