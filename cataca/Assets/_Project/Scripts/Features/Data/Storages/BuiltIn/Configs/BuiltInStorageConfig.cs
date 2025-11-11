@@ -1,5 +1,6 @@
 ﻿using _Project.Scripts._Shared.ScriptableObjects;
 using _Project.Scripts._Shared.Utils;
+using _Project.Scripts.Features.Data.Entities;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -26,6 +27,19 @@ namespace _Project.Scripts.Features.Data.Storages.BuiltIn.Configs
         private void ResetRecords()
         {
             PlayerPrefs.DeleteKey(_records);
+        }
+
+        [PropertySpace] 
+        [SerializeField] 
+        private Record record;
+        
+        [PropertySpace(10)]
+        [Button]
+        private void AddRecord()
+        {
+            var list = StorageUtils.LoadRecords(this);
+            list.Add(record);
+            StorageUtils.SaveRecords(this, list);
         }
         
         [PropertySpace(10)]
