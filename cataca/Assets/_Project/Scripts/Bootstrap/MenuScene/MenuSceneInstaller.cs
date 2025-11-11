@@ -19,6 +19,7 @@ namespace _Project.Scripts.Bootstrap.MenuScene
         protected override void BindSystems()
         {
             Container.BindInterfacesTo<AudioSettingsLoaderSystem>().AsSingle();
+            Container.BindInterfacesTo<AudioSlidersLoaderSystem>().AsSingle();
             Container.BindInterfacesTo<RecordsUIInstantiatorSystem>().AsSingle();
             
             Container.BindInterfacesTo<RecordPlayPauseRequestDeleter>().AsSingle();
