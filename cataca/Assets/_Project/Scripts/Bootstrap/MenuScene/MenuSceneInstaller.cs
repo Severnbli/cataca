@@ -17,6 +17,8 @@ namespace _Project.Scripts.Bootstrap.MenuScene
 
         protected override void BindSystems()
         {
+            Container.BindInterfacesTo<RecordsUIInstantiatorSystem>().AsSingle();
+            
             Container.BindInterfacesTo<RecordPlayPauseRequestDeleter>().AsSingle();
             
             Container.BindInterfacesTo<CloseAppSignalButtonListenerSystem>().AsSingle();
@@ -33,7 +35,7 @@ namespace _Project.Scripts.Bootstrap.MenuScene
             Container.BindInterfacesTo<PopupPlayOpenAnimRequestHandlerSystem>().AsSingle();
             
             Container.BindInterfacesTo<PlayPauseRecordOnRequestSystem>().AsSingle();
-            Container.BindInterfacesTo<RecordsUIInstantiatorSystem>().AsSingle();
+            Container.BindInterfacesTo<PlayableRecordUpdateSystem>().AsSingle();
         }
     }
 }
