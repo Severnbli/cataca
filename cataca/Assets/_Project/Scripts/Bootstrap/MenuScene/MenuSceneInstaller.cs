@@ -1,5 +1,6 @@
 ﻿using _Project.Scripts.Bootstrap._Shared;
 using _Project.Scripts.Features._Shared.Systems;
+using _Project.Scripts.Features.Audio.Services;
 using _Project.Scripts.Features.Audio.Systems;
 using _Project.Scripts.Features.Mechanics.Records.Services;
 using _Project.Scripts.Features.Mechanics.Records.Systems;
@@ -14,6 +15,7 @@ namespace _Project.Scripts.Bootstrap.MenuScene
         protected override void BindServices()
         {
             Container.Bind<RecordsPlayService>().AsSingle();
+            Container.Bind<AudioService>().AsSingle();
         }
 
         protected override void BindSystems()
