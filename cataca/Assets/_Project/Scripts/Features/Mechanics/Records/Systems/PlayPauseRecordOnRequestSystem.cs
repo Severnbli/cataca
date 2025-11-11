@@ -10,6 +10,7 @@ using _Project.Scripts.Features.Mechanics.Records.Markers;
 using _Project.Scripts.Features.Mechanics.Records.Requests;
 using _Project.Scripts.Features.Mechanics.Records.Services;
 using Leopotam.EcsLite;
+using UnityEngine;
 
 namespace _Project.Scripts.Features.Mechanics.Records.Systems
 {
@@ -82,7 +83,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
 
         private void UnpausePlayback()
         {
-            _recordsPlayService.Playing = false;
+            _recordsPlayService.Playing = true;
             
             foreach (var e in _audioSourcesFilter)
             {
@@ -94,6 +95,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
         private void StartPlayback(RecordComponent record)
         {
             _recordsPlayService.Playing = true;
+            _recordsPlayService.Current = record.Record;
 
             foreach (var e in _audioSourcesFilter)
             {
