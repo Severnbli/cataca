@@ -1,5 +1,8 @@
-﻿namespace _Project.Scripts.Features.Mechanics.Platforms.Markers
+﻿using System;
+
+namespace _Project.Scripts.Features.Mechanics.Platforms.Markers
 {
+    [Serializable]
     public struct RotatePlatformMarker
     {
         
