@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using _Project.Scripts.Features.Mechanics.Platforms.Enums;
 using UnityEngine;
 
 namespace _Project.Scripts.Features.Mechanics.Platforms.Monos
@@ -9,9 +10,11 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Monos
         [SerializeField] private GameObject _statesContainer;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Collider2D _collider;
+        [SerializeField] private PlatformType[] _platformTypes;
         
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
         public Collider2D Collider => _collider;
+        public PlatformType[] PlatformTypes => _platformTypes;
 
         public List<Transform> States
         {
