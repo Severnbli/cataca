@@ -6,7 +6,7 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Configs
 {
     public class PlatformAnimationConfig : ScriptableObjectAutoInstaller<PlatformAnimationConfig>
     {
-        [SerializeField] private float duration;
+        [SerializeField] private float duration = 0.2f;
         [SerializeField] private Ease ease = Ease.InOutQuad;
         
         public float Duration => duration;
