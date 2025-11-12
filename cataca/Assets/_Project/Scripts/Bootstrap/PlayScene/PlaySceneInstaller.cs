@@ -5,6 +5,7 @@ using _Project.Scripts.Features.Mechanics.Input.Systems;
 using _Project.Scripts.Features.Mechanics.Physics._Shared.Systems;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Checks.Systems;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Systems;
+using _Project.Scripts.Features.Mechanics.Platforms.Systems;
 using _Project.Scripts.Features.Mechanics.Player.Systems;
 using _Project.Scripts.Features.Mechanics.Time.Services;
 using _Project.Scripts.Features.Mechanics.Time.Systems;
@@ -23,6 +24,10 @@ namespace _Project.Scripts.Bootstrap.PlayScene
         protected override void BindSystems()
         {
             Container.BindInterfacesTo<AudioSettingsLoaderSystem>().AsSingle();
+            
+            Container.BindInterfacesTo<PositionPlatformEngageRequestDeleterSystem>().AsSingle();
+            Container.BindInterfacesTo<RotatePlatformEngageRequestDeleterSystem>().AsSingle();
+            Container.BindInterfacesTo<ScalePlatformEngageRequestDeleterSystem>().AsSingle();
             
             Container.BindInterfacesTo<TimeServiceUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<InputServiceUpdateSystem>().AsSingle();
