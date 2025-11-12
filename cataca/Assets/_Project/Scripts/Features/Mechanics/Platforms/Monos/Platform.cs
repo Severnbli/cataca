@@ -18,10 +18,12 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Monos
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Collider2D _collider;
         [SerializeField] private PlatformType[] _platformTypes;
-        
+        [SerializeField] private Transform _object;
+
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
         public Collider2D Collider => _collider;
         public PlatformType[] PlatformTypes => _platformTypes;
+        public Transform Object => _object;
 
         public List<Transform> States
         {
@@ -47,6 +49,7 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Monos
             checks.TryAdd(() => _spriteRenderer == null, "SpriteRenderer not set");
             checks.TryAdd(() => _collider == null, "Collider not set");
             checks.TryAdd(() => _platformTypes.Length != _platformTypes.Distinct().Count(), "Platform types duplicated");
+            checks.TryAdd(() => _object == null, "Object not set");
             
             EditorUtils.Validate(checks, nameof(Platform));
         }
