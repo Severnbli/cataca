@@ -5,6 +5,7 @@ using _Project.Scripts.Features.Mechanics.Platforms.Configs;
 using _Project.Scripts.Features.Mechanics.Platforms.Requests;
 using DG.Tweening;
 using Leopotam.EcsLite;
+using UnityEngine;
 
 namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
 {
@@ -49,21 +50,17 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
                 ref var tween = ref _tweenPool.Has(e)
                     ? ref _tweenPool.Get(e)
                     : ref _tweenPool.Add(e);
-                
-                var sequence = DOTween.Sequence();
 
-                if (tween.Tween is not null && tween.Tween.active) sequence.Append(tween.Tween);
+                tween.Tween ??= DOTween.Sequence();
                 
                 var targetScale = states[platform.RotateId].localScale;
                 
-                sequence.Append(platform.Platform.Object.transform
+                tween.Tween.Append(platform.Platform.Object.transform
                     .DOScale(targetScale, _animationConfig.Duration)
                     .SetEase(_animationConfig.Ease)
                 );
                 
-                sequence.AppendInterval(_animationConfig.TransitionDuration);
-                
-                tween.Tween = sequence;
+                tween.Tween.AppendInterval(_animationConfig.TransitionDuration);
             }
         }
     }
