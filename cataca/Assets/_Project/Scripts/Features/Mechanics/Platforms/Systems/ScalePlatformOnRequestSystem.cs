@@ -52,7 +52,7 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
                 
                 if (sequence.Sequence is not { active: true }) sequence.Sequence = DOTween.Sequence();
                 
-                var targetScale = states[platform.RotateId].localScale;
+                var targetScale = states[platform.ScaleId].localScale;
                 
                 sequence.Sequence.Append(platform.Platform.Object.transform
                     .DOScale(targetScale, _animationConfig.Duration)
