@@ -18,7 +18,7 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
         private PlatformAnimationConfig _animationConfig;
         private EcsFilter _filter;
         private EcsPool<PlatformComponent> _platformPool;
-        private EcsPool<TweenComponent> _tweenPool;
+        private EcsPool<SequenceComponent> _sequencePool;
         
         public void Init(IEcsSystems systems)
         {
@@ -30,7 +30,7 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
                 .End();
             
             _platformPool = world.GetPool<PlatformComponent>();
-            _tweenPool = world.GetPool<TweenComponent>();
+            _sequencePool = world.GetPool<SequenceComponent>();
         }
 
         public void PostRun(IEcsSystems systems)
@@ -46,24 +46,20 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
                     ? nextId
                     : 0;
                 
-                ref var tween = ref _tweenPool.Has(e)
-                    ? ref _tweenPool.Get(e)
-                    : ref _tweenPool.Add(e);
+                ref var sequence = ref _sequencePool.Has(e)
+                    ? ref _sequencePool.Get(e)
+                    : ref _sequencePool.Add(e);
                 
-                var sequence = DOTween.Sequence();
-
-                if (tween.Tween is not null && tween.Tween.active) sequence.Append(tween.Tween);
+                if (sequence.Sequence is not { active: true }) sequence.Sequence = DOTween.Sequence();
                 
                 var targetScale = states[platform.RotateId].localScale;
                 
-                sequence.Append(platform.Platform.Object.transform
+                sequence.Sequence.Append(platform.Platform.Object.transform
                     .DOScale(targetScale, _animationConfig.Duration)
                     .SetEase(_animationConfig.Ease)
                 );
                 
-                sequence.AppendInterval(_animationConfig.TransitionDuration);
-                
-                tween.Tween = sequence;
+                sequence.Sequence.AppendInterval(_animationConfig.TransitionDuration);
             }
         }
     }
