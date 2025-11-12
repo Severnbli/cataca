@@ -5,6 +5,7 @@ using _Project.Scripts.Features.UI.Popups.Configs;
 using _Project.Scripts.Features.UI.Popups.Requests;
 using DG.Tweening;
 using Leopotam.EcsLite;
+using UnityEngine;
 
 namespace _Project.Scripts.Features.UI.Popups.Systems
 {
@@ -49,9 +50,9 @@ namespace _Project.Scripts.Features.UI.Popups.Systems
                 ref var tween = ref _tweenPool.Has(e)
                     ? ref _tweenPool.Get(e)
                     : ref _tweenPool.Add(e);
-
-                tween.Tween ??= DOTween.Sequence();
-                tween.Tween.Append(MakeAnim(popup));
+                
+                tween.Tween?.Kill();
+                tween.Tween = MakeAnim(popup);
             }
         }
 
