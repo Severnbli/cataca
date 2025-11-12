@@ -4,7 +4,7 @@ using Leopotam.EcsLite;
 
 namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
 {
-    public class InstantiatePlatformRequestDeleter : IEcsInitSystem, IEcsRunSystem, IEcsGameSystem
+    public class InstantiatePlatformRequestDeleterSystem : IEcsInitSystem, IEcsRunSystem, IEcsGameSystem
     {
         private EcsFilter _filter;
         private EcsPool<InstantiatePlatformRequest> _instantiatePlatformRequestsPool;
