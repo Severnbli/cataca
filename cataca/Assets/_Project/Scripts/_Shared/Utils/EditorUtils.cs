@@ -38,7 +38,7 @@ namespace _Project.Scripts._Shared.Utils
             
             foreach (var check in checks)
             {
-                if (!check.Key.Invoke()) output.Add(check.Value);
+                if (check.Key.Invoke()) output.Add(check.Value);
             }
 
             if (!output.Any())
@@ -50,7 +50,7 @@ namespace _Project.Scripts._Shared.Utils
             var finalOutput = output
                 .Select((txt, i) => $"{i + 1}) {txt}")
                 .ToList();
-            Debug.LogWarning($"Validation {name} failed: {string.Join(";\n", finalOutput)}");
+            Debug.LogWarning($"Validation {name} failed:\n{string.Join(";\n", finalOutput)}");
         }
     }
 }
