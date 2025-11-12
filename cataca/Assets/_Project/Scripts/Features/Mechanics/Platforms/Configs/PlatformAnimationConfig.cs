@@ -8,8 +8,10 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Configs
     {
         [SerializeField] private float duration = 0.2f;
         [SerializeField] private Ease ease = Ease.InOutQuad;
+        [SerializeField] private float transitionDuration = 0.2f;
         
         public float Duration => duration;
         public Ease Ease => ease;
+        public float TransitionDuration => transitionDuration;
     }
 }
