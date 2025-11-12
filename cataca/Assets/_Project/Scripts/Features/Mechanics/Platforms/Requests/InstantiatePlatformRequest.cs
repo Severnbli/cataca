@@ -1,0 +1,9 @@
+﻿using UnityEngine;
+
+namespace _Project.Scripts.Features.Mechanics.Platforms.Requests
+{
+    public struct InstantiatePlatformRequest
+    {
+        public GameObject Platform;
+    }
+}
