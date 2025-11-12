@@ -247,6 +247,7 @@ MonoBehaviour:
   _statesContainer: {fileID: 3926145488769302112}
   _spriteRenderer: {fileID: 5587571054491930617}
   _collider: {fileID: 8284547077663548122}
+  _platformTypes: 00000000
 --- !u!114 &5449238375751469982
 MonoBehaviour:
   m_ObjectHideFlags: 0
