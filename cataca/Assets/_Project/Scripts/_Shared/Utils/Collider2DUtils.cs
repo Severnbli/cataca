@@ -4,15 +4,18 @@ namespace _Project.Scripts._Shared.Utils
 {
     public static class Collider2DUtils
     {
-        public static void DrawColliderAt(Collider2D collider, Transform transform)
+        public static void DrawColliderAt(Collider2D collider, Transform transform, Color color)
         {
             SetMatrix(transform);
-            DrawCollider(collider);
+            DrawCollider(collider, color);
             ResetMatrix();
         }
 
-        public static void DrawCollider(Collider2D collider)
+        public static void DrawCollider(Collider2D collider, Color color)
         {
+            var baseColor = Gizmos.color;
+            Gizmos.color = color;
+            
             switch (collider)
             {
                 case BoxCollider2D box:
@@ -41,6 +44,8 @@ namespace _Project.Scripts._Shared.Utils
                     break;
                 }
             }
+            
+            Gizmos.color = baseColor;
         }
         
         private static void SetMatrix(Transform transform)
