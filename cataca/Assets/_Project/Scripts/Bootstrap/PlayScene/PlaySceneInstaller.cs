@@ -25,9 +25,9 @@ namespace _Project.Scripts.Bootstrap.PlayScene
         {
             Container.BindInterfacesTo<AudioSettingsLoaderSystem>().AsSingle();
             
-            Container.BindInterfacesTo<PositionPlatformEngageRequestDeleterSystem>().AsSingle();
-            Container.BindInterfacesTo<RotatePlatformEngageRequestDeleterSystem>().AsSingle();
-            Container.BindInterfacesTo<ScalePlatformEngageRequestDeleterSystem>().AsSingle();
+            Container.BindInterfacesTo<PositionPlatformRequestDeleterSystem>().AsSingle();
+            Container.BindInterfacesTo<RotatePlatformRequestDeleterSystem>().AsSingle();
+            Container.BindInterfacesTo<ScalePlatformRequestDeleterSystem>().AsSingle();
             
             Container.BindInterfacesTo<TimeServiceUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<InputServiceUpdateSystem>().AsSingle();
