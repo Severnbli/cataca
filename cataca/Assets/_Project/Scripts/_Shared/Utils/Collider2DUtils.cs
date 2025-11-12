@@ -13,6 +13,9 @@ namespace _Project.Scripts._Shared.Utils
 
         public static void DrawCollider(Collider2D collider)
         {
+            var baseColor = Gizmos.color;
+            Gizmos.color = Color.green;
+            
             switch (collider)
             {
                 case BoxCollider2D box:
@@ -41,6 +44,8 @@ namespace _Project.Scripts._Shared.Utils
                     break;
                 }
             }
+            
+            Gizmos.color = baseColor;
         }
         
         private static void SetMatrix(Transform transform)
