@@ -48,7 +48,7 @@ namespace _Project.Scripts._Shared.Utils
             }
             
             var finalOutput = output
-                .Select((txt, i) => $"{i + 1}) {txt}")
+                .Select((txt, i) => $"{(i + 1).ToString()}) {txt}")
                 .ToList();
             Debug.LogWarning($"Validation {name} failed:\n{string.Join(";\n", finalOutput)}");
         }
