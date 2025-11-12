@@ -39,6 +39,9 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             
             Container.BindInterfacesTo<JumpRequestSenderOnInputSystem>().AsSingle();
             Container.BindInterfacesTo<DashRequestSenderOnInputSystem>().AsSingle();
+            Container.BindInterfacesTo<PositionPlatformRequestSenderOnInputSystem>().AsSingle();
+            Container.BindInterfacesTo<RotatePlatformRequestSenderOnInputSystem>().AsSingle();
+            Container.BindInterfacesTo<ScalePlatformRequestSenderOnInputSystem>().AsSingle();
 
             Container.BindInterfacesTo<WalkPerformOnListenInputSystem>().AsSingle();
             Container.BindInterfacesTo<JumpPerformOnRequestSystem>().AsSingle();
