@@ -1,6 +1,6 @@
 ﻿namespace _Project.Scripts.Features.Mechanics.Platforms.Requests
 {
-    public struct ScalePlatformEngageRequest
+    public struct RotatePlatformRequest
     {
         
     }

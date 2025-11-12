@@ -4,25 +4,25 @@ using Leopotam.EcsLite;
 
 namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
 {
-    public class ScalePlatformEngageRequestDeleterSystem : IEcsInitSystem, IEcsRunSystem, IEcsGameSystem
+    public class PositionPlatformRequestDeleterSystem : IEcsInitSystem, IEcsRunSystem, IEcsGameSystem
     {
         private EcsFilter _filter;
-        private EcsPool<ScalePlatformEngageRequest> _scalePlatformEngageRequestPool;
+        private EcsPool<PositionPlatformRequest> _positionPlatformRequestPool;
         
         public void Init(IEcsSystems systems)
         {
             var world = systems.GetWorld();
 
             _filter = world
-                .Filter<ScalePlatformEngageRequest>()
+                .Filter<PositionPlatformRequest>()
                 .End();
             
-            _scalePlatformEngageRequestPool = world.GetPool<ScalePlatformEngageRequest>();
+            _positionPlatformRequestPool = world.GetPool<PositionPlatformRequest>();  
         }
 
         public void Run(IEcsSystems systems)
         {
-            foreach (var e in _filter) _scalePlatformEngageRequestPool.Del(e);
+            foreach (var e in _filter) _positionPlatformRequestPool.Del(e);
         }
     }
 }
