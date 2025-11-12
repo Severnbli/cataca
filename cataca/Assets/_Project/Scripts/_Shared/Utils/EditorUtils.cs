@@ -32,7 +32,7 @@ namespace _Project.Scripts._Shared.Utils
                 });
         }
 
-        public static void Validate(HashSet<KeyValuePair<Func<bool>, string>> checks, string name)
+        public static void Validate(Dictionary<Func<bool>, string> checks, string name)
         {
             var output = new List<string>(checks.Count);
             
