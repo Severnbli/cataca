@@ -23,6 +23,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
 
         protected override void BindSystems()
         {
+            Container.BindInterfacesTo<PlayerMovementConfigSetupSystem>().AsSingle();
             Container.BindInterfacesTo<AudioSettingsLoaderSystem>().AsSingle();
             
             Container.BindInterfacesTo<PositionPlatformRequestDeleterSystem>().AsSingle();
@@ -64,8 +65,6 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<GroundCheckStatusUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<JumpResetCurrentCountOnGroundCheckSystem>().AsSingle();
             Container.BindInterfacesTo<DashResetCurrentCountOnGroundCheckSystem>().AsSingle();
-            
-            Container.BindInterfacesTo<PlayerMovementConfigSetupSystem>().AsSingle();
         }
     }
 }
