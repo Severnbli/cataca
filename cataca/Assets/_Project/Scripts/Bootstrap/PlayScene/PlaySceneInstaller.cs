@@ -75,6 +75,8 @@ namespace _Project.Scripts.Bootstrap.PlayScene
 
             Container.BindInterfacesTo<TweenQueueAppendOnRequestSystem>().AsSingle();
             Container.BindInterfacesTo<TweenQueueUpdateSystem>().AsSingle();
+            
+            Container.BindInterfacesTo<TweenKillOnDisposeSystem>().AsSingle();
         }
     }
 }
