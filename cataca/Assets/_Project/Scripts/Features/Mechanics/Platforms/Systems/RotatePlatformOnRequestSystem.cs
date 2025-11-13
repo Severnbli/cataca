@@ -1,4 +1,5 @@
-﻿using _Project.Scripts.Core.Systems.Interfaces;
+﻿using System.Linq;
+using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features.Mechanics.Anims.Requests;
 using _Project.Scripts.Features.Mechanics.Platforms.Components;
 using _Project.Scripts.Features.Mechanics.Platforms.Configs;
@@ -41,7 +42,8 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
                 
                 ref var platform = ref _platformPool.Get(e);
 
-                var states = platform.Platform.States;
+                var states = platform.Platform.RotateStates;
+                if (!states.Any()) continue;
 
                 var nextId = platform.RotateId + 1;
                 platform.RotateId = nextId < states.Count
