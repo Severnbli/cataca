@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 819b1401c2d543598d6246252dfd0e5d, type: 3}
   m_Name: PlatformAnimationConfig
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 0.6
   ease: 7
-  transitionDuration: 0.5
+  transitionDuration: 0.1
