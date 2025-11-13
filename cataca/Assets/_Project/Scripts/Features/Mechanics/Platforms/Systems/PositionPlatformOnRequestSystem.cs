@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features._Shared.Components;
+using _Project.Scripts.Features.Mechanics.Anims.Components;
 using _Project.Scripts.Features.Mechanics.Platforms.Components;
 using _Project.Scripts.Features.Mechanics.Platforms.Configs;
 using _Project.Scripts.Features.Mechanics.Platforms.Requests;

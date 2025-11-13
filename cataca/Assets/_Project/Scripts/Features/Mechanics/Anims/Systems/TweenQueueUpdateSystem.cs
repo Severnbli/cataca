@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features._Shared.Components;
+using _Project.Scripts.Features.Mechanics.Anims.Components;
 using Leopotam.EcsLite;
 
 namespace _Project.Scripts.Features.Mechanics.Anims.Systems
