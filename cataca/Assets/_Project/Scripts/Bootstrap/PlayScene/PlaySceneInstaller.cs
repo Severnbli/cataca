@@ -72,7 +72,8 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<PositionPlatformOnRequestSystem>().AsSingle();
             Container.BindInterfacesTo<RotatePlatformOnRequestSystem>().AsSingle();
             Container.BindInterfacesTo<ScalePlatformOnRequestSystem>().AsSingle();
-            
+
+            Container.BindInterfacesTo<TweenQueueAppendOnRequestSystem>().AsSingle();
             Container.BindInterfacesTo<TweenQueueUpdateSystem>().AsSingle();
         }
     }
