@@ -2,11 +2,11 @@
 using _Project.Scripts.Features._Shared.Systems;
 using _Project.Scripts.Features.Audio.Services;
 using _Project.Scripts.Features.Audio.Systems;
+using _Project.Scripts.Features.Mechanics.Anims.Systems;
 using _Project.Scripts.Features.Mechanics.Records.Services;
 using _Project.Scripts.Features.Mechanics.Records.Systems;
 using _Project.Scripts.Features.UI.Buttons.Systems;
 using _Project.Scripts.Features.UI.Popups.Systems;
-using UnityEngine;
 
 namespace _Project.Scripts.Bootstrap.MenuScene
 {
@@ -48,6 +48,8 @@ namespace _Project.Scripts.Bootstrap.MenuScene
             Container.BindInterfacesTo<AudioSettingsWriterSystem>().AsSingle();
             Container.BindInterfacesTo<AudioServiceUpdateOnSlidersChangeValueSystem>().AsSingle();
             Container.BindInterfacesTo<AudioSettingsUpdateSystem>().AsSingle();
+            
+            Container.BindInterfacesTo<TweenKillOnDisposeSystem>().AsSingle();
         }
     }
 }
