@@ -15,7 +15,9 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Monos
 {
     public class Platform : MonoBehaviour
     {
-        [SerializeField] private GameObject _statesContainer;
+        [SerializeField] private GameObject _positionStatesContainer;
+        [SerializeField] private GameObject _rotateStatesContainer;
+        [SerializeField] private GameObject _scaleStatesContainer;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Collider2D _collider;
         [SerializeField] private PlatformType[] _platformTypes;
@@ -26,7 +28,9 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Monos
         public PlatformType[] PlatformTypes => _platformTypes;
         public Transform Object => _object;
 
-        public List<Transform> States => _statesContainer.GetChildComponents<Transform>();
+        public List<Transform> PositionStates => _positionStatesContainer.GetChildComponents<Transform>();
+        public List<Transform> RotateStates => _rotateStatesContainer.GetChildComponents<Transform>();
+        public List<Transform> ScaleStates => _scaleStatesContainer.GetChildComponents<Transform>();
 
 #if UNITY_EDITOR
         [PropertySpace(10)]
@@ -35,7 +39,12 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Monos
         {
             var checks = new Dictionary<Func<bool>, string>();
 
-            checks.TryAdd(() => _statesContainer == null, "StatesContainer not set");
+            checks.TryAdd(() => _positionStatesContainer == null, "PositionStatesContainer not set");
+            checks.TryAdd(() => PositionStates.Count == 0, "No positional state is specified");
+            checks.TryAdd(() => _rotateStatesContainer == null, "RotateStatesContainer not set");
+            checks.TryAdd(() => RotateStates.Count == 0, "No rotational state is specified");
+            checks.TryAdd(() => _scaleStatesContainer == null, "ScaleStatesContainer not set");
+            checks.TryAdd(() => ScaleStates.Count == 0, "No scale state is specified");
             checks.TryAdd(() => _spriteRenderer == null, "SpriteRenderer not set");
             checks.TryAdd(() => _collider == null, "Collider not set");
             checks.TryAdd(() => _platformTypes.Length != _platformTypes.Distinct().Count(), "Platform types duplicated");
