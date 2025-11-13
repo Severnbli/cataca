@@ -103,6 +103,7 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Monos
             Gizmos.matrix = Matrix4x4.identity;
         }
 
+        [PropertySpace(10)]
         [Button]
         private void ResetAnimation()
         {
