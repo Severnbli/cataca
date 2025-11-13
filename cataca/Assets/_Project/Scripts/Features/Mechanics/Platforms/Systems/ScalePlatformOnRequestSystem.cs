@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using _Project.Scripts.Core.Systems.Interfaces;
-using _Project.Scripts.Features._Shared.Components;
-using _Project.Scripts.Features.Mechanics.Anims.Components;
+﻿using _Project.Scripts.Core.Systems.Interfaces;
+using _Project.Scripts.Features.Mechanics.Anims.Requests;
 using _Project.Scripts.Features.Mechanics.Platforms.Components;
 using _Project.Scripts.Features.Mechanics.Platforms.Configs;
 using _Project.Scripts.Features.Mechanics.Platforms.Requests;
@@ -21,7 +18,7 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
         private PlatformAnimationConfig _animationConfig;
         private EcsFilter _filter;
         private EcsPool<PlatformComponent> _platformPool;
-        private EcsPool<TweenQueueComponent> _tweenQueuePool;
+        private EcsPool<TweenQueueAppendRequest> _tweenQueueAppendRequestPool;
         
         public void Init(IEcsSystems systems)
         {
@@ -33,13 +30,15 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
                 .End();
             
             _platformPool = world.GetPool<PlatformComponent>();
-            _tweenQueuePool = world.GetPool<TweenQueueComponent>();
+            _tweenQueueAppendRequestPool = world.GetPool<TweenQueueAppendRequest>();
         }
 
         public void PostRun(IEcsSystems systems)
         {
             foreach (var e in _filter)
             {
+                if (_tweenQueueAppendRequestPool.Has(e)) continue;
+                
                 ref var platform = ref _platformPool.Get(e);
 
                 var states = platform.Platform.States;
@@ -48,16 +47,13 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
                 platform.ScaleId = nextId < states.Count
                     ? nextId
                     : 0;
-                
-                ref var tweenQueue = ref _tweenQueuePool.Has(e)
-                    ? ref _tweenQueuePool.Get(e)
-                    : ref _tweenQueuePool.Add(e);
+
+                ref var tweenQueueAppendRequest = ref _tweenQueueAppendRequestPool.Add(e);
                 
                 var targetScale = states[platform.ScaleId].localScale;
                 var localPlatform = platform.Platform;
                 
-                tweenQueue.Queue ??= new Queue<Func<Tween>>();
-                tweenQueue.Queue.Enqueue(() =>
+                tweenQueueAppendRequest.Func = () =>
                 {
                     var sequence = DOTween.Sequence();
                     
@@ -69,7 +65,7 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
                     sequence.AppendInterval(_animationConfig.TransitionDuration);
                     
                     return sequence;
-                });
+                };
             }
         }
     }
