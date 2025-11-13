@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using _Project.Scripts._Shared.Extensions;
 using _Project.Scripts.Features.Mechanics.Platforms.Enums;
 using UnityEngine;
 
@@ -25,19 +26,8 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Monos
         public PlatformType[] PlatformTypes => _platformTypes;
         public Transform Object => _object;
 
-        public List<Transform> States
-        {
-            get
-            {
-                var states = _statesContainer != null 
-                    ? _statesContainer.GetComponentsInChildren<Transform>()
-                        .Where(x => x != _statesContainer.transform)
-                        .ToList()
-                    : new List<Transform>();
-                return states;
-            }
-        }
-        
+        public List<Transform> States => _statesContainer.GetChildComponents<Transform>();
+
 #if UNITY_EDITOR
         [PropertySpace(10)]
         [Button]
