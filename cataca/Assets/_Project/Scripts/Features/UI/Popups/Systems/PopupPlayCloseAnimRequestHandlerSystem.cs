@@ -1,5 +1,6 @@
 ﻿using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features._Shared.Components;
+using _Project.Scripts.Features.Mechanics.Anims.Components;
 using _Project.Scripts.Features.UI.Popups.Components;
 using _Project.Scripts.Features.UI.Popups.Configs;
 using _Project.Scripts.Features.UI.Popups.Requests;
