@@ -1,5 +1,6 @@
 ﻿using _Project.Scripts.Bootstrap._Shared;
 using _Project.Scripts.Features.Audio.Systems;
+using _Project.Scripts.Features.Mechanics.Anims.Systems;
 using _Project.Scripts.Features.Mechanics.Input.Services;
 using _Project.Scripts.Features.Mechanics.Input.Systems;
 using _Project.Scripts.Features.Mechanics.Physics._Shared.Systems;
@@ -69,6 +70,8 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<PositionPlatformOnRequestSystem>().AsSingle();
             Container.BindInterfacesTo<RotatePlatformOnRequestSystem>().AsSingle();
             Container.BindInterfacesTo<ScalePlatformOnRequestSystem>().AsSingle();
+            
+            Container.BindInterfacesTo<TweenQueueUpdateSystem>().AsSingle();
         }
     }
 }
