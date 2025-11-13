@@ -24,6 +24,8 @@ namespace _Project.Scripts.Bootstrap.PlayScene
 
         protected override void BindSystems()
         {
+            Container.BindInterfacesTo<TweenQueueAppendRequestDeleter>().AsSingle();
+            
             Container.BindInterfacesTo<PlayerMovementConfigSetupSystem>().AsSingle();
             Container.BindInterfacesTo<AudioSettingsLoaderSystem>().AsSingle();
             
