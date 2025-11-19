@@ -361,6 +361,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 90857442}
   m_CullTransparentMesh: 1
+--- !u!1 &91300752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 449791915964137964, guid: 5257f2e159205744d8fbccd3a2327303, type: 3}
+  m_PrefabInstance: {fileID: 1721299670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &91300756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91300752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowColor: {r: 1, g: 0.035848916, b: 0.035848916, a: 1}
+  glowBrightness: 1.5
+  outlineWidth: 10
+  alphaThreshold: 0.01
+  drawOutside: 0
+  enableInstancing: 0
 --- !u!1 &155610837
 GameObject:
   m_ObjectHideFlags: 0
@@ -3446,6 +3469,26 @@ PrefabInstance:
       propertyPath: _animationDelay
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5587571054491930617, guid: 5257f2e159205744d8fbccd3a2327303, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587571054491930617, guid: 5257f2e159205744d8fbccd3a2327303, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587571054491930617, guid: 5257f2e159205744d8fbccd3a2327303, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587571054491930617, guid: 5257f2e159205744d8fbccd3a2327303, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587571054491930617, guid: 5257f2e159205744d8fbccd3a2327303, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7839851470470047091, guid: 5257f2e159205744d8fbccd3a2327303, type: 3}
       propertyPath: m_Name
       value: Platform
@@ -3536,6 +3579,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7839851470470047091, guid: 5257f2e159205744d8fbccd3a2327303, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1076215392}
+    - targetCorrespondingSourceObject: {fileID: 449791915964137964, guid: 5257f2e159205744d8fbccd3a2327303, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 91300756}
   m_SourcePrefab: {fileID: 100100000, guid: 5257f2e159205744d8fbccd3a2327303, type: 3}
 --- !u!1 &1905121522
 GameObject:
