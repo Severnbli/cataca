@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _Project.Scripts._Shared.ScriptableObjects;
 using _Project.Scripts._Shared.Utils;
 using Sirenix.OdinInspector;
@@ -9,10 +10,14 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Configs
 {
     public class PlatformShaderConfig : ScriptableObjectAutoInstaller<PlatformShaderConfig>
     {
+        [Header("Main")]
+        
         [OnValueChanged(nameof(UpdateParameters))]
         [SerializeField] 
         private Shader _shader;
 
+        [Header("Position")]
+        
         [ShowIf(nameof(HasShader))] 
         [SerializeField]
         [ValueDropdown(nameof(GetColorProperties))]
@@ -27,6 +32,8 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Configs
         [SerializeField]
         private Color _positionColor;
         
+        [Header("Rotate")]
+        
         [ShowIf(nameof(HasShader))]
         [SerializeField]
         [ValueDropdown(nameof(GetColorProperties))]
@@ -40,6 +47,8 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Configs
         [ShowIf(nameof(HasShader))]
         [SerializeField]
         private Color _rotateColor;
+        
+        [Header("Scale")]
 
         [ShowIf(nameof(HasShader))]
         [SerializeField]
@@ -97,7 +106,17 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Configs
         [Button]
         private void Validate()
         {
+            var checks = new Dictionary<Func<bool>, string>();
+
+            checks.TryAdd(() => !HasShader, "Shader not set");
+            checks.TryAdd(() => string.IsNullOrEmpty(_positionColorProp), "Position color property not set");
+            checks.TryAdd(() => string.IsNullOrEmpty(_positionEnabledProp), "Position enabled property not set");
+            checks.TryAdd(() => string.IsNullOrEmpty(_rotateColorProp), "Rotation color property not set");
+            checks.TryAdd(() => string.IsNullOrEmpty(_rotateEnabledProp), "Rotation enabled property not set");
+            checks.TryAdd(() => string.IsNullOrEmpty(_scaleColorProp), "Scale color property not set");
+            checks.TryAdd(() => string.IsNullOrEmpty(_scaleEnabledProp), "Scale enabled property not set");
             
+            EditorUtils.Validate(checks, nameof(PlatformShaderConfig));
         }
 #endif
     }
