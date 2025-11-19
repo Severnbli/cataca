@@ -38,7 +38,8 @@ namespace _Project.Scripts.Features.Mechanics.Input.Systems
             {
                 if (_dashPerformRequestPool.Has(e)) continue;
                 
-                _dashPerformRequestPool.Add(e);
+                ref var dashPerformRequest = ref _dashPerformRequestPool.Add(e);
+                dashPerformRequest.Factor = _inputService.Walk.x;
             }
         }
     }
