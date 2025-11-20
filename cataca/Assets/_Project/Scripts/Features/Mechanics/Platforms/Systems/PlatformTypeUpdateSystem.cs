@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using _Project.Scripts._Shared.Extensions;
 using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features.Mechanics.Platforms.Components;
 using _Project.Scripts.Features.Mechanics.Platforms.Enums;
@@ -33,34 +34,16 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
         {
             foreach (var e in _filter)
             {
-                ref var platform = ref _platformPool.Get(e);
+                var platform = _platformPool.Get(e);
 
-                if (platform.Platform.PlatformTypes.Contains(PlatformType.Position))
-                {
-                    _positionPlatformMarkerPool.Add(e);
-                }
-                else
-                {
-                    _positionPlatformMarkerPool.Del(e);
-                }
+                _positionPlatformMarkerPool.AddOrDelComponentOnCondition(e,
+                    () => platform.Platform.PlatformTypes.Contains(PlatformType.Position));
 
-                if (platform.Platform.PlatformTypes.Contains(PlatformType.Rotate))
-                {
-                    _rotatePlatformMarkerPool.Add(e);
-                }
-                else
-                {
-                    _rotatePlatformMarkerPool.Del(e);
-                }
+                _rotatePlatformMarkerPool.AddOrDelComponentOnCondition(e,
+                    () => platform.Platform.PlatformTypes.Contains(PlatformType.Rotate));
 
-                if (platform.Platform.PlatformTypes.Contains(PlatformType.Scale))
-                {
-                    _scalePlatformMarkerPool.Add(e);
-                }
-                else
-                {
-                    _scalePlatformMarkerPool.Del(e);
-                }
+                _scalePlatformMarkerPool.AddOrDelComponentOnCondition(e,
+                    () => platform.Platform.PlatformTypes.Contains(PlatformType.Scale));
             }
         }
     }
