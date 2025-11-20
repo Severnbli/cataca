@@ -60,11 +60,11 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
                     var sequence = DOTween.Sequence();
 
                     sequence.Append(localPlatform.Object.transform
-                        .DOMove(targetPosition, _animationConfig.Duration)
-                        .SetEase(_animationConfig.Ease)
+                        .DOMove(targetPosition, _animationConfig.TransformDuration)
+                        .SetEase(_animationConfig.TransformEase)
                     );
 
-                    sequence.AppendInterval(_animationConfig.TransitionDuration);
+                    sequence.AppendInterval(_animationConfig.TransformTransitionDuration);
 
                     return sequence;
                 };

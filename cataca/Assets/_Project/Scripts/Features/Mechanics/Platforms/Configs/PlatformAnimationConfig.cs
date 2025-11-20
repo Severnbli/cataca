@@ -6,12 +6,14 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Configs
 {
     public class PlatformAnimationConfig : ScriptableObjectAutoInstaller<PlatformAnimationConfig>
     {
-        [SerializeField] private float _duration = 0.2f;
-        [SerializeField] private Ease _ease = Ease.InOutQuad;
-        [SerializeField] private float _transitionDuration = 0.2f;
+        [Header("Transform")]
         
-        public float Duration => _duration;
-        public Ease Ease => _ease;
-        public float TransitionDuration => _transitionDuration;
+        [SerializeField] private float _transformDuration = 0.2f;
+        [SerializeField] private Ease _transformEase = Ease.InOutQuad;
+        [SerializeField] private float _transformTransitionDuration = 0.2f;
+        
+        public float TransformDuration => _transformDuration;
+        public Ease TransformEase => _transformEase;
+        public float TransformTransitionDuration => _transformTransitionDuration;
     }
 }
