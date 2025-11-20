@@ -12,8 +12,27 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Configs
         [SerializeField] private Ease _transformEase = Ease.InOutQuad;
         [SerializeField] private float _transformTransitionDuration = 0.2f;
         
+        [Header("Color")]
+        
+        [SerializeField] private Color _baseColor = Color.white;
+        [SerializeField] private Color _positionColor = Color.cyan;
+        [SerializeField] private Color _rotateColor = Color.green;
+        [SerializeField] private Color _scaleColor = Color.yellow;
+        [SerializeField] private Ease _colorEase = Ease.OutQuint;
+        [SerializeField] private float _colorTransitionDuration = 0.5f;
+        [SerializeField] private float _colorPulseDuration = 0.2f;
+        [SerializeField] private float _colorPulseFactor = 0.2f;
+        
         public float TransformDuration => _transformDuration;
         public Ease TransformEase => _transformEase;
         public float TransformTransitionDuration => _transformTransitionDuration;
+        public Color BaseColor => _baseColor;
+        public Color PositionColor => _positionColor;
+        public Color RotateColor => _rotateColor;
+        public Color ScaleColor => _scaleColor;
+        public Ease ColorEase => _colorEase;
+        public float ColorTransitionDuration => _colorTransitionDuration;
+        public float ColorPulseDuration => _colorPulseDuration;
+        public float ColorPulseFactor => _colorPulseFactor;
     }
 }
