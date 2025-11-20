@@ -19,9 +19,10 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Configs
         [SerializeField] private Color _rotateColor = Color.green;
         [SerializeField] private Color _scaleColor = Color.yellow;
         [SerializeField] private Ease _colorEase = Ease.OutQuint;
-        [SerializeField] private float _colorTransitionDuration = 0.5f;
-        [SerializeField] private float _colorPulseDuration = 0.2f;
-        [SerializeField] private float _colorPulseFactor = 0.2f;
+        [SerializeField] private float _colorTransitionDuration = 0.2f;
+        [SerializeField] private float _colorTransitionPauseDuration = 0.5f;
+        [SerializeField] private float _brightnessPulseDuration = 2f;
+        [SerializeField] private float _brightnessPulseFactor = 0.2f;
         
         public float TransformDuration => _transformDuration;
         public Ease TransformEase => _transformEase;
@@ -32,7 +33,8 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Configs
         public Color ScaleColor => _scaleColor;
         public Ease ColorEase => _colorEase;
         public float ColorTransitionDuration => _colorTransitionDuration;
-        public float ColorPulseDuration => _colorPulseDuration;
-        public float ColorPulseFactor => _colorPulseFactor;
+        public float ColorTransitionPauseDuration => _colorTransitionPauseDuration;
+        public float BrightnessPulseDuration => _brightnessPulseDuration;
+        public float BrightnessPulseFactor => _brightnessPulseFactor;
     }
 }
