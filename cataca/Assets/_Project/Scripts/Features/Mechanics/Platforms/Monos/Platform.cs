@@ -39,7 +39,7 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Monos
         [PropertySpace(10)]
         [Button]
         private void Validate()
-        {  
+        {
             var checks = new Dictionary<Func<bool>, string>();
 
             checks.TryAdd(() => _positionStatesContainer == null, "PositionStatesContainer not set");
