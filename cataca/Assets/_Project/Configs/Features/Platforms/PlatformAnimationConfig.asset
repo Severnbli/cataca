@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 819b1401c2d543598d6246252dfd0e5d, type: 3}
   m_Name: PlatformAnimationConfig
   m_EditorClassIdentifier: 
-  duration: 0.6
-  ease: 7
-  transitionDuration: 0.1
+  _transformDuration: 0.6
+  _transformEase: 7
+  _transformTransitionDuration: 0.1
+  _baseColor: {r: 1, g: 1, b: 1, a: 1}
+  _positionColor: {r: 0.7803922, g: 0.3529412, b: 0.07450981, a: 1}
+  _rotateColor: {r: 0.58431375, g: 0.16470589, b: 0.42352945, a: 1}
+  _scaleColor: {r: 0.12941177, g: 0.4039216, b: 0.5921569, a: 1}
+  _colorEase: 15
+  _colorTransitionDuration: 0.5
+  _colorPulseDuration: 0.2
+  _colorPulseFactor: 0.2
