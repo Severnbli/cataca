@@ -1,4 +1,5 @@
-﻿using Leopotam.EcsLite;
+﻿using System;
+using Leopotam.EcsLite;
 
 namespace _Project.Scripts._Shared.Extensions
 {
@@ -11,6 +12,25 @@ namespace _Project.Scripts._Shared.Extensions
 
             entity = filter.GetRawEntities()[0];
             return true;
+        }
+
+        public static void AddOrDelComponentOnCondition<T>(this EcsPool<T> pool, int entity, Func<bool> condition)
+            where T : struct
+        {
+            if (condition.Invoke())
+            {
+                if (!pool.Has(entity))
+                {
+                    pool.Add(entity);
+                }
+            }
+            else
+            {
+                if (pool.Has(entity))
+                {
+                    pool.Del(entity);
+                }
+            }
         }
     }
 }
