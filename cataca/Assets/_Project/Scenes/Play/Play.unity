@@ -3494,6 +3494,10 @@ PrefabInstance:
       value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 8049414035519318162, guid: 5257f2e159205744d8fbccd3a2327303, type: 3}
+      propertyPath: _spriteGlow
+      value: 
+      objectReference: {fileID: 91300756}
+    - target: {fileID: 8049414035519318162, guid: 5257f2e159205744d8fbccd3a2327303, type: 3}
       propertyPath: _platformTypes.Array.size
       value: 3
       objectReference: {fileID: 0}
