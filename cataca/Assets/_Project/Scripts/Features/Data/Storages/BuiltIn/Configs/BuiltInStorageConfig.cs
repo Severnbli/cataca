@@ -22,6 +22,21 @@ namespace _Project.Scripts.Features.Data.Storages.BuiltIn.Configs
         [PropertySpace(10)]
         [PropertyOrder(0)]
         [Button]
+        private void Validate()
+        {
+            var checks = EditorUtils.GetChecksContainer();
+            
+            checks.TryAdd(() => string.IsNullOrEmpty(_levelToLoad), "LevelToLoad key is not assigned");
+            checks.TryAdd(() => string.IsNullOrEmpty(_levels), "Levels key is not assigned");
+            checks.TryAdd(() => string.IsNullOrEmpty(_records), "Records key is not assigned");
+            checks.TryAdd(() => string.IsNullOrEmpty(_settings), "Settings key is not assigned");
+            
+            EditorUtils.Validate(checks, nameof(BuiltInStorageConfig));
+        }
+        
+        [PropertySpace(10)]
+        [PropertyOrder(0)]
+        [Button]
         private void ResetLevelToLoad()
         {
             PlayerPrefs.DeleteKey(_levelToLoad);
