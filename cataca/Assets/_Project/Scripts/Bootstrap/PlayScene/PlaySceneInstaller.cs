@@ -78,7 +78,6 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<DashResetCurrentCountOnGroundCheckSystem>().AsSingle();
             
             Container.BindInterfacesTo<SendDestroyLoadedLevelRequestOnInstantiateLevelRequestSystem>().AsSingle();
-            
             Container.BindInterfacesTo<DestroyLoadedLevelOnRequestSystem>().AsSingle();
             
             Container.BindInterfacesTo<InstantiateLevelOnRequestSystem>().AsSingle();
