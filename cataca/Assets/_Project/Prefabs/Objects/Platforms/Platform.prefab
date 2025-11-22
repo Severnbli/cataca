@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1692856348095937163}
   - component: {fileID: 5587571054491930617}
   - component: {fileID: 8284547077663548122}
+  - component: {fileID: 7815196758327002474}
   m_Layer: 0
   m_Name: Object
   m_TagString: Untagged
@@ -56,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -134,6 +135,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7815196758327002474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449791915964137964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowColor: {r: 1, g: 1, b: 1, a: 1}
+  glowBrightness: 2
+  outlineWidth: 10
+  alphaThreshold: 0.01
+  drawOutside: 0
+  enableInstancing: 0
 --- !u!1 &1544991377734254088
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,6 +395,7 @@ MonoBehaviour:
   _rotateStatesContainer: {fileID: 4688331272088164014}
   _scaleStatesContainer: {fileID: 7176735300797580205}
   _spriteRenderer: {fileID: 5587571054491930617}
+  _spriteGlow: {fileID: 7815196758327002474}
   _collider: {fileID: 8284547077663548122}
   _platformTypes: 00000000
   _object: {fileID: 1692856348095937163}
@@ -392,5 +412,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _platform: {fileID: 8049414035519318162}
+  _draw: 0
+  _animate: 0
+  _animationDelay: 1
   _gizmosColor: {r: 0, g: 1, b: 0, a: 1}
   _handlesColor: {r: 0, g: 1, b: 1, a: 1}
