@@ -1,5 +1,7 @@
-﻿using _Project.Scripts.Core.Systems.Interfaces;
+﻿using _Project.Scripts._Shared.Extensions;
+using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features.Mechanics.Levels.Requests;
+using _Project.Scripts.Features.Mechanics.Levels.Services;
 using Leopotam.EcsLite;
 
 namespace _Project.Scripts.Features.Mechanics.Levels.Systems
@@ -7,6 +9,12 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
     public class SendDestroyLoadedLevelRequestOnInstantiateLevelRequestSystem : IEcsInitSystem, IEcsPostRunSystem, 
         IEcsGameSystem
     {
+        public SendDestroyLoadedLevelRequestOnInstantiateLevelRequestSystem(LevelService levelService)
+        {
+            _levelService = levelService;
+        }
+        
+        private LevelService _levelService;
         private EcsFilter _filter;
         private EcsPool<DestroyLoadedLevelRequest> _destroyLoadedLevelRequestPool;
         
@@ -23,12 +31,9 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
 
         public void PostRun(IEcsSystems systems)
         {
-            foreach (var e in _filter)
+            if (_levelService.Loaded && _filter.TryGetFirst(out var entity))
             {
-                if (!_destroyLoadedLevelRequestPool.Has(e))
-                {
-                    _destroyLoadedLevelRequestPool.Add(e);
-                }
+                _destroyLoadedLevelRequestPool.Add(entity);
             }
         }
     }
