@@ -3,6 +3,7 @@ using _Project.Scripts.Features.Audio.Systems;
 using _Project.Scripts.Features.Mechanics.Anims.Systems;
 using _Project.Scripts.Features.Mechanics.Input.Services;
 using _Project.Scripts.Features.Mechanics.Input.Systems;
+using _Project.Scripts.Features.Mechanics.Levels.Systems;
 using _Project.Scripts.Features.Mechanics.Physics._Shared.Systems;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Checks.Systems;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Systems;
@@ -27,6 +28,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
         {
             Container.BindInterfacesTo<TweenQueueAppendRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadPlatformRequestDeleterSystem>().AsSingle();
+            Container.BindInterfacesTo<LoadLevelRequestDeleterSystem>().AsSingle();
             
             Container.BindInterfacesTo<PlayerMovementConfigSetupSystem>().AsSingle();
             Container.BindInterfacesTo<AudioSettingsLoaderSystem>().AsSingle();
