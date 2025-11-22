@@ -1,4 +1,5 @@
 ﻿using _Project.Scripts.Core.Systems.Interfaces;
+using _Project.Scripts.Features.Mechanics.Levels.Markers;
 using _Project.Scripts.Features.Mechanics.Platforms.Components;
 using _Project.Scripts.Features.Mechanics.Platforms.Monos;
 using _Project.Scripts.Features.Mechanics.Platforms.Requests;
@@ -11,6 +12,8 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
         private EcsFilter _filter;
         private EcsPool<LoadPlatformRequest> _loadPlatformRequestPool;
         private EcsPool<PlatformComponent> _platformPool;
+        private EcsPool<DelEntityOnDestroyLevelMarker> _delEntityOnDestroyLevelMarkerPool;
+        
         public void Init(IEcsSystems systems)
         {
             var world = systems.GetWorld();
@@ -21,6 +24,7 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
             
             _loadPlatformRequestPool = world.GetPool<LoadPlatformRequest>();
             _platformPool = world.GetPool<PlatformComponent>();
+            _delEntityOnDestroyLevelMarkerPool = world.GetPool<DelEntityOnDestroyLevelMarker>();
         }
 
         public void PostRun(IEcsSystems systems)
@@ -37,6 +41,8 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
         {
             ref var platformComponent = ref _platformPool.Add(entity);
             platformComponent.Platform = platform;
+            
+            _delEntityOnDestroyLevelMarkerPool.Add(entity);
         }
     }
 }
