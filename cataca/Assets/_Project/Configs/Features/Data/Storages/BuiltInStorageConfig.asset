@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10edfb32a6e24c79934b624c9c533485, type: 3}
   m_Name: BuiltInStorageConfig
   m_EditorClassIdentifier: 
+  _levelToLoad: levelToLoad
   _levels: levels
   _records: records
   _settings: settings
