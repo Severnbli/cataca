@@ -26,12 +26,13 @@ namespace _Project.Scripts.Bootstrap.PlayScene
 
         protected override void BindSystems()
         {
+            Container.BindInterfacesTo<PlayerMovementConfigSetupSystem>().AsSingle();
+            Container.BindInterfacesTo<AudioSettingsLoaderSystem>().AsSingle();
+            Container.BindInterfacesTo<LoadLevelsFromConfigSystem>().AsSingle();
+            
             Container.BindInterfacesTo<TweenQueueAppendRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadPlatformRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadLevelRequestDeleterSystem>().AsSingle();
-            
-            Container.BindInterfacesTo<PlayerMovementConfigSetupSystem>().AsSingle();
-            Container.BindInterfacesTo<AudioSettingsLoaderSystem>().AsSingle();
             
             Container.BindInterfacesTo<PositionPlatformRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<RotatePlatformRequestDeleterSystem>().AsSingle();
