@@ -64,7 +64,7 @@ namespace _Project.Scripts._Shared.Utils
 
         public static T Load<T>(string path) where T : new()
         {
-            var jsonData = PlayerPrefs.GetString(path, String.Empty);
+            var jsonData = PlayerPrefs.GetString(path, string.Empty);
             var obj = string.IsNullOrEmpty(jsonData)
                 ? new T()
                 : JsonUtils.FromJson<T>(jsonData);
