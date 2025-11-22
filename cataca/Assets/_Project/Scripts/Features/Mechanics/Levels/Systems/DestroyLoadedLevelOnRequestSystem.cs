@@ -1,4 +1,5 @@
 ﻿using _Project.Scripts.Core.Systems.Interfaces;
+using _Project.Scripts.Features.Mechanics.Levels.Markers;
 using _Project.Scripts.Features.Mechanics.Levels.Requests;
 using _Project.Scripts.Features.Mechanics.Levels.Services;
 using Leopotam.EcsLite;
@@ -12,22 +13,33 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
         {
             _levelService = levelService;
         }
-        
+
+        private EcsWorld _world;
+        private EcsFilter _requestsFilter;
+        private EcsFilter _delEntityFilter;
         private LevelService _levelService;
-        private EcsFilter _filter;
-        
+
         public void Init(IEcsSystems systems)
         {
-            var world = systems.GetWorld();
+            _world = systems.GetWorld();
 
-            _filter = world
+            _requestsFilter = _world
                 .Filter<DestroyLoadedLevelRequest>()
+                .End();
+
+            _delEntityFilter = _world
+                .Filter<DelEntityOnDestroyLevelMarker>()
                 .End();
         }
 
         public void PostRun(IEcsSystems systems)
         {
-            if (_filter.GetEntitiesCount() == 0) return;
+            if (_requestsFilter.GetEntitiesCount() == 0) return;
+
+            foreach (var e in _delEntityFilter)
+            {
+                _world.DelEntity(e);
+            }
             
             if (_levelService.LoadedLevel != null) Object.Destroy(_levelService.LoadedLevel);
 
