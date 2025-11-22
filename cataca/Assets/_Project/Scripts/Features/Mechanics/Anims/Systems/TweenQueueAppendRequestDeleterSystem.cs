@@ -4,7 +4,7 @@ using Leopotam.EcsLite;
 
 namespace _Project.Scripts.Features.Mechanics.Anims.Systems
 {
-    public class TweenQueueAppendRequestDeleter : IEcsInitSystem, IEcsRunSystem, IEcsGameSystem
+    public class TweenQueueAppendRequestDeleterSystem : IEcsInitSystem, IEcsRunSystem, IEcsGameSystem
     {
         private EcsFilter _filter;
         private EcsPool<TweenQueueAppendRequest> _tweenQueueAppendRequestPool;
