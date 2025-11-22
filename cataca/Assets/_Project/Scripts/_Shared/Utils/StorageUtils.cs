@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _Project.Scripts.Features.Data.Entities;
 using _Project.Scripts.Features.Data.Storages.BuiltIn.Configs;
 using UnityEngine;
@@ -11,6 +10,11 @@ namespace _Project.Scripts._Shared.Utils
         public static Level LoadLevelToLoad(BuiltInStorageConfig config)
         {
             return Load<Level>(config.LevelToLoad);
+        }
+
+        public static bool TryLoadLevelToLoad(BuiltInStorageConfig config, out Level level)
+        {
+            return TryLoad(config.LevelToLoad, out level);
         }
 
         public static void SaveLevelToLoad(BuiltInStorageConfig config, Level level)
@@ -64,11 +68,23 @@ namespace _Project.Scripts._Shared.Utils
 
         public static T Load<T>(string path) where T : new()
         {
+            if (!TryLoad(path, out T result))
+            {
+                result = new T();
+            }
+
+            return result;
+        }
+
+        public static bool TryLoad<T>(string path, out T obj)
+        {
             var jsonData = PlayerPrefs.GetString(path, string.Empty);
-            var obj = string.IsNullOrEmpty(jsonData)
-                ? new T()
-                : JsonUtils.FromJson<T>(jsonData);
-            return obj;
+            obj = default;
+
+            if (string.IsNullOrEmpty(jsonData)) return false;
+            
+            obj = JsonUtils.FromJson<T>(jsonData);
+            return true;
         }
 
         public static void Save<T>(string path, T data)
