@@ -1,5 +1,6 @@
 ﻿using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features.Mechanics.Anims.Components;
+using _Project.Scripts.Features.Mechanics.Levels.Markers;
 using _Project.Scripts.Features.Mechanics.Platforms.Components;
 using Leopotam.EcsLite;
 
@@ -11,6 +12,7 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
         private EcsFilter _filter;
         private EcsPool<PlatformGlowComponent> _platformGlowPool;
         private EcsPool<TweenComponent> _tweenPool;
+        private EcsPool<DelEntityOnDestroyLevelMarker> _delEntityOnDestroyLevelMarkerPool;
         
         public void Init(IEcsSystems systems)
         {
@@ -23,6 +25,7 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
             
             _platformGlowPool = _world.GetPool<PlatformGlowComponent>();
             _tweenPool = _world.GetPool<TweenComponent>();
+            _delEntityOnDestroyLevelMarkerPool = _world.GetPool<DelEntityOnDestroyLevelMarker>();
         }
 
         public void Run(IEcsSystems systems)
@@ -33,9 +36,11 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
                 
                 platformGlow.PulseAnimEntity = _world.NewEntity();
                 _tweenPool.Add(platformGlow.PulseAnimEntity);
+                _delEntityOnDestroyLevelMarkerPool.Add(platformGlow.PulseAnimEntity);
                 
                 platformGlow.TransitionAnimEntity = _world.NewEntity();
                 _tweenPool.Add(platformGlow.TransitionAnimEntity);
+                _delEntityOnDestroyLevelMarkerPool.Add(platformGlow.TransitionAnimEntity);
             }
         }
     }
