@@ -24,12 +24,14 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Monos
         [SerializeField] private Collider2D _collider;
         [SerializeField] private PlatformType[] _platformTypes;
         [SerializeField] private Transform _object;
+        [SerializeField] private bool _controlledByInput = true;
 
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
         public SpriteGlowEffect SpriteGlow => _spriteGlow;
         public Collider2D Collider => _collider;
         public PlatformType[] PlatformTypes => _platformTypes;
         public Transform Object => _object;
+        public bool ControlledByInput => _controlledByInput;
 
         public List<Transform> PositionStates => _positionStatesContainer.GetChildComponents<Transform>();
         public List<Transform> RotateStates => _rotateStatesContainer.GetChildComponents<Transform>();
