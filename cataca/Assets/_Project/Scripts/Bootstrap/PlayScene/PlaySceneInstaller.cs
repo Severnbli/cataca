@@ -8,7 +8,6 @@ using _Project.Scripts.Features.Mechanics.Levels.Systems;
 using _Project.Scripts.Features.Mechanics.Physics._Shared.Systems;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Checks.Systems;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Systems;
-using _Project.Scripts.Features.Mechanics.Platforms.Requests;
 using _Project.Scripts.Features.Mechanics.Platforms.Systems;
 using _Project.Scripts.Features.Mechanics.Player.Systems;
 using _Project.Scripts.Features.Mechanics.Time.Services;
@@ -34,8 +33,6 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             
             Container.BindInterfacesTo<TweenQueueAppendRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadPlatformRequestDeleterSystem>().AsSingle();
-            Container.BindInterfacesTo<LoadLevelRequestDeleterSystem>().AsSingle();
-            Container.BindInterfacesTo<InstantiateLevelRequestDeleterSystem>().AsSingle();
             
             Container.BindInterfacesTo<PositionPlatformRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<RotatePlatformRequestDeleterSystem>().AsSingle();
@@ -95,6 +92,9 @@ namespace _Project.Scripts.Bootstrap.PlayScene
 
             Container.BindInterfacesTo<TweenQueueAppendOnRequestSystem>().AsSingle();
             Container.BindInterfacesTo<TweenQueueUpdateSystem>().AsSingle();
+            
+            Container.BindInterfacesTo<LoadLevelRequestDeleterSystem>().AsSingle();
+            Container.BindInterfacesTo<InstantiateLevelRequestDeleterSystem>().AsSingle();
             
             Container.BindInterfacesTo<TweenKillOnDisposeSystem>().AsSingle();
         }
