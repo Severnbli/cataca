@@ -74,6 +74,8 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<JumpResetCurrentCountOnGroundCheckSystem>().AsSingle();
             Container.BindInterfacesTo<DashResetCurrentCountOnGroundCheckSystem>().AsSingle();
             
+            Container.BindInterfacesTo<LoadLevelOnRequestSystem>().AsSingle();
+            
             Container.BindInterfacesTo<PositionPlatformOnRequestSystem>().AsSingle();
             Container.BindInterfacesTo<RotatePlatformOnRequestSystem>().AsSingle();
             Container.BindInterfacesTo<ScalePlatformOnRequestSystem>().AsSingle();
