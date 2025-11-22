@@ -3,6 +3,7 @@ using _Project.Scripts.Features.Audio.Systems;
 using _Project.Scripts.Features.Mechanics.Anims.Systems;
 using _Project.Scripts.Features.Mechanics.Input.Services;
 using _Project.Scripts.Features.Mechanics.Input.Systems;
+using _Project.Scripts.Features.Mechanics.Levels.Services;
 using _Project.Scripts.Features.Mechanics.Levels.Systems;
 using _Project.Scripts.Features.Mechanics.Physics._Shared.Systems;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Checks.Systems;
@@ -22,6 +23,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
         {
             Container.Bind<TimeService>().AsSingle();
             Container.Bind<InputService>().AsSingle();
+            Container.Bind<LevelService>().AsSingle();
         }
 
         protected override void BindSystems()
