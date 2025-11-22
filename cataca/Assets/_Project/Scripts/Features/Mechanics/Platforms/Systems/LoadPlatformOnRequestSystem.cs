@@ -8,20 +8,19 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
 {
     public class LoadPlatformOnRequestSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
     {
-        private EcsWorld _world;
         private EcsFilter _filter;
         private EcsPool<LoadPlatformRequest> _loadPlatformRequestPool;
         private EcsPool<PlatformComponent> _platformPool;
         public void Init(IEcsSystems systems)
         {
-            _world = systems.GetWorld();
+            var world = systems.GetWorld();
 
-            _filter = _world
+            _filter = world
                 .Filter<LoadPlatformRequest>()
                 .End();
             
-            _loadPlatformRequestPool = _world.GetPool<LoadPlatformRequest>();
-            _platformPool = _world.GetPool<PlatformComponent>();
+            _loadPlatformRequestPool = world.GetPool<LoadPlatformRequest>();
+            _platformPool = world.GetPool<PlatformComponent>();
         }
 
         public void PostRun(IEcsSystems systems)
@@ -30,14 +29,12 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
             {
                 ref var request = ref _loadPlatformRequestPool.Get(e);
                 
-                LoadPlatform(request.Platform);
+                LoadPlatform(request.Platform, e);
             }
         }
 
-        private void LoadPlatform(Platform platform)
+        private void LoadPlatform(Platform platform, int entity)
         {
-            var entity = _world.NewEntity();
-
             ref var platformComponent = ref _platformPool.Add(entity);
             platformComponent.Platform = platform;
         }
