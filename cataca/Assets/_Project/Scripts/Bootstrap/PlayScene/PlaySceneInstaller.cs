@@ -30,6 +30,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<PlayerMovementConfigSetupSystem>().AsSingle();
             Container.BindInterfacesTo<AudioSettingsLoaderSystem>().AsSingle();
             Container.BindInterfacesTo<LoadLevelsFromConfigSystem>().AsSingle();
+            Container.BindInterfacesTo<SpawnLevelFromStorageSystem>().AsSingle();
             
             Container.BindInterfacesTo<TweenQueueAppendRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadPlatformRequestDeleterSystem>().AsSingle();
