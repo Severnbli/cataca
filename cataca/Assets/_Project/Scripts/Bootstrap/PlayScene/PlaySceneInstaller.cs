@@ -33,6 +33,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<TweenQueueAppendRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadPlatformRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadLevelRequestDeleterSystem>().AsSingle();
+            Container.BindInterfacesTo<InstantiateLevelRequestDeleterSystem>().AsSingle();
             
             Container.BindInterfacesTo<PositionPlatformRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<RotatePlatformRequestDeleterSystem>().AsSingle();
