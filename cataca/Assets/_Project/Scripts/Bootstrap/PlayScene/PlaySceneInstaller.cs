@@ -79,6 +79,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<PlatformGlowUpdatePulseSystem>().AsSingle();
             Container.BindInterfacesTo<PlatformGlowUpdateTransitionSystem>().AsSingle();
             Container.BindInterfacesTo<LoadPlatformOnRequestSystem>().AsSingle();
+            Container.BindInterfacesTo<PlatformControlledByInputUpdateSystem>().AsSingle();
 
             Container.BindInterfacesTo<TweenQueueAppendOnRequestSystem>().AsSingle();
             Container.BindInterfacesTo<TweenQueueUpdateSystem>().AsSingle();
