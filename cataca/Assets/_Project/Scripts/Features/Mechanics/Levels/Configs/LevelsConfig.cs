@@ -28,12 +28,12 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Configs
             
             foreach (var level in _levels)
             {
-                if (!ids.Add(level.Level.Id))
+                if (!ids.Add(level.LevelDto.Id))
                 {
-                    repeatedIds.Add(level.Level.Id);
+                    repeatedIds.Add(level.LevelDto.Id);
                 }
                 
-                checks.TryAdd(() => level.Prefab == null, $"Level with id = {level.Level.Id} has no prefab");
+                checks.TryAdd(() => level.Prefab == null, $"LevelDto with id = {level.LevelDto.Id} has no prefab");
             }
             
             checks.TryAdd(() => repeatedIds.Any(), $"Ids [{string.Join(", ", repeatedIds)}] are repeated");
@@ -51,7 +51,7 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Configs
                 foreach (var level in levels)
                 {
                     checks.TryAdd(() => !ids.Contains(level.Id),
-                        "Level with id: " + level.Id + " is in memory but not assigned");
+                        "LevelDto with id: " + level.Id + " is in memory but not assigned");
                 }
             }
 

@@ -3,7 +3,7 @@
 namespace _Project.Scripts.Features.Data.Entities
 {
     [Serializable]
-    public class Level
+    public class LevelDto
     {
         public int Id;
     }
