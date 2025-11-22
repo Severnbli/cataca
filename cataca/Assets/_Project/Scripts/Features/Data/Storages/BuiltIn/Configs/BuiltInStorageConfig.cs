@@ -40,15 +40,28 @@ namespace _Project.Scripts.Features.Data.Storages.BuiltIn.Configs
         }
         
         [PropertySpace(10)]
-        [PropertyOrder(0)]
+        [PropertyOrder(1)]
         [Button]
         private void ResetLevelToLoad()
         {
             PlayerPrefs.DeleteKey(_levelToLoad);
         }
+
+        [PropertySpace(10)]
+        [PropertyOrder(2)]
+        [SerializeField]
+        private LevelDto _level;
         
         [PropertySpace(10)]
-        [PropertyOrder(0)]
+        [PropertyOrder(2)]
+        [Button]
+        private void AddLevelToLoad()
+        {
+            StorageUtils.SaveLevelToLoad(this, _level);
+        }
+        
+        [PropertySpace(10)]
+        [PropertyOrder(3)]
         [Button]
         private void ResetLevels()
         {
@@ -56,7 +69,7 @@ namespace _Project.Scripts.Features.Data.Storages.BuiltIn.Configs
         }
         
         [PropertySpace(10)]
-        [PropertyOrder(1)]
+        [PropertyOrder(4)]
         [Button]
         private void ResetRecords()
         {
@@ -64,12 +77,12 @@ namespace _Project.Scripts.Features.Data.Storages.BuiltIn.Configs
         }
 
         [PropertySpace] 
-        [PropertyOrder(2)]
+        [PropertyOrder(5)]
         [SerializeField] 
         private Record record;
         
         [PropertySpace(10)]
-        [PropertyOrder(3)]
+        [PropertyOrder(5)]
         [Button]
         private void AddRecord()
         {
@@ -79,7 +92,7 @@ namespace _Project.Scripts.Features.Data.Storages.BuiltIn.Configs
         }
         
         [PropertySpace(10)]
-        [PropertyOrder(4)]
+        [PropertyOrder(6)]
         [Button]
         private void ResetSettings()
         {
