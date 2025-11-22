@@ -2,6 +2,7 @@
 using System.Linq;
 using _Project.Scripts._Shared.ScriptableObjects;
 using _Project.Scripts._Shared.Utils;
+using _Project.Scripts.Features.Data.Storages.BuiltIn.Configs;
 using _Project.Scripts.Features.Mechanics.Levels.Components;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -15,6 +16,8 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Configs
         public List<LevelComponent> Levels => _levels;
       
 #if UNITY_EDITOR
+        [SerializeField] private BuiltInStorageConfig _storageConfig;
+        
         [PropertySpace(10)]
         [Button]
         private void Validate()
@@ -34,7 +37,24 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Configs
             }
             
             checks.TryAdd(() => repeatedIds.Any(), $"Ids [{string.Join(", ", repeatedIds)}] are repeated");
-            
+
+            if (_storageConfig != null)
+            {
+                if (StorageUtils.TryLoadLevelToLoad(_storageConfig, out var levelToLoad))
+                {
+                    checks.TryAdd(() => !ids.Contains(levelToLoad.Id),
+                        $"LevelToLoad with id {levelToLoad.Id} is in memory but not assigned");
+                }
+
+                var levels = StorageUtils.LoadLevels(_storageConfig);
+
+                foreach (var level in levels)
+                {
+                    checks.TryAdd(() => !ids.Contains(level.Id),
+                        "Level with id: " + level.Id + " is in memory but not assigned");
+                }
+            }
+
             EditorUtils.Validate(checks, nameof(LevelsConfig));
         }
 #endif
