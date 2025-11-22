@@ -7,27 +7,27 @@ namespace _Project.Scripts._Shared.Utils
 {
     public static class StorageUtils
     {
-        public static Level LoadLevelToLoad(BuiltInStorageConfig config)
+        public static LevelDto LoadLevelToLoad(BuiltInStorageConfig config)
         {
-            return Load<Level>(config.LevelToLoad);
+            return Load<LevelDto>(config.LevelToLoad);
         }
 
-        public static bool TryLoadLevelToLoad(BuiltInStorageConfig config, out Level level)
+        public static bool TryLoadLevelToLoad(BuiltInStorageConfig config, out LevelDto levelDto)
         {
-            return TryLoad(config.LevelToLoad, out level);
+            return TryLoad(config.LevelToLoad, out levelDto);
         }
 
-        public static void SaveLevelToLoad(BuiltInStorageConfig config, Level level)
+        public static void SaveLevelToLoad(BuiltInStorageConfig config, LevelDto levelDto)
         {
-            Save(config.LevelToLoad, level);
+            Save(config.LevelToLoad, levelDto);
         }
         
-        public static List<Level> LoadLevels(BuiltInStorageConfig config)
+        public static List<LevelDto> LoadLevels(BuiltInStorageConfig config)
         {
-            return LoadBuiltInList<Level>(config.Levels);
+            return LoadBuiltInList<LevelDto>(config.Levels);
         }
 
-        public static void SaveLevels(BuiltInStorageConfig config, List<Level> levels)
+        public static void SaveLevels(BuiltInStorageConfig config, List<LevelDto> levels)
         {
             SaveBuiltInList(config.Levels, levels);
         }
