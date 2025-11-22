@@ -52,6 +52,8 @@ namespace _Project.Scripts._Shared.Utils
                 .ToList();
             Debug.LogWarning($"Validation {name} failed:\n{string.Join(";\n", finalOutput)}");
         }
+
+        public static Dictionary<Func<bool>, string> GetChecksContainer() => new();
     }
 }
 
