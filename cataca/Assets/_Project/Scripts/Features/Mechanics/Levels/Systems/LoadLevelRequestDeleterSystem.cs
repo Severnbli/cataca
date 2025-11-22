@@ -4,7 +4,7 @@ using Leopotam.EcsLite;
 
 namespace _Project.Scripts.Features.Mechanics.Levels.Systems
 {
-    public class LoadLevelRequestDeleterSystem : IEcsInitSystem, IEcsRunSystem, IEcsGameSystem
+    public class LoadLevelRequestDeleterSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
     {
         private EcsFilter _filter;
         private EcsPool<LoadLevelRequest> _loadLevelRequestPool;
@@ -20,7 +20,7 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
             _loadLevelRequestPool = world.GetPool<LoadLevelRequest>();
         }
 
-        public void Run(IEcsSystems systems)
+        public void PostRun(IEcsSystems systems)
         {
             foreach (var e in _filter) _loadLevelRequestPool.Del(e);
         }
