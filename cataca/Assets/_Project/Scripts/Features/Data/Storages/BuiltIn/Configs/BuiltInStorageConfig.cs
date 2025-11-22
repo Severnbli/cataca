@@ -8,15 +8,25 @@ namespace _Project.Scripts.Features.Data.Storages.BuiltIn.Configs
 {
     public class BuiltInStorageConfig : ScriptableObjectAutoInstaller<BuiltInStorageConfig>
     {
+        [SerializeField] private string _levelToLoad;
         [SerializeField] private string _levels;
         [SerializeField] private string _records;
         [SerializeField] private string _settings;
         
+        public string LevelToLoad => _levelToLoad;
         public string Levels => _levels;
         public string Records => _records;
         public string Settings => _settings;
 
 #if UNITY_EDITOR
+        [PropertySpace(10)]
+        [PropertyOrder(0)]
+        [Button]
+        private void ResetLevelToLoad()
+        {
+            PlayerPrefs.DeleteKey(_levelToLoad);
+        }
+        
         [PropertySpace(10)]
         [PropertyOrder(0)]
         [Button]
