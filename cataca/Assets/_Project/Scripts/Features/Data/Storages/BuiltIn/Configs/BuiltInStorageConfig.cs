@@ -1,4 +1,6 @@
-﻿using _Project.Scripts._Shared.ScriptableObjects;
+﻿using System.Collections.Generic;
+using System.Linq;
+using _Project.Scripts._Shared.ScriptableObjects;
 using _Project.Scripts._Shared.Utils;
 using _Project.Scripts.Features.Data.Entities;
 using Sirenix.OdinInspector;
@@ -30,6 +32,9 @@ namespace _Project.Scripts.Features.Data.Storages.BuiltIn.Configs
             checks.TryAdd(() => string.IsNullOrEmpty(_levels), "Levels key is not assigned");
             checks.TryAdd(() => string.IsNullOrEmpty(_records), "Records key is not assigned");
             checks.TryAdd(() => string.IsNullOrEmpty(_settings), "Settings key is not assigned");
+
+            var storages = new List<string> { _levelToLoad, _levels, _records, _settings };
+            checks.TryAdd(() => storages.Count != storages.Distinct().Count(), "Repeated storage values detected");
             
             EditorUtils.Validate(checks, nameof(BuiltInStorageConfig));
         }
