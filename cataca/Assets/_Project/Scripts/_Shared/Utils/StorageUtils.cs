@@ -8,6 +8,16 @@ namespace _Project.Scripts._Shared.Utils
 {
     public static class StorageUtils
     {
+        public static Level LoadLevelToLoad(BuiltInStorageConfig config)
+        {
+            return Load<Level>(config.LevelToLoad);
+        }
+
+        public static void SaveLevelToLoad(BuiltInStorageConfig config, Level level)
+        {
+            Save(config.LevelToLoad, level);
+        }
+        
         public static List<Level> LoadLevels(BuiltInStorageConfig config)
         {
             return LoadBuiltInList<Level>(config.Levels);
