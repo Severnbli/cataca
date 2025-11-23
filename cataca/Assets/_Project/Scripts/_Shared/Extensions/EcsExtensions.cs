@@ -33,12 +33,13 @@ namespace _Project.Scripts._Shared.Extensions
             }
         }
 
-        public static void AddComponentIfNotExists<T>(this EcsPool<T> pool, int entity)
+        public static ref T AddComponentIfNotExists<T>(this EcsPool<T> pool, int entity)
             where T : struct
         {
-            if (pool.Has(entity)) return;
-            
-            pool.Add(entity);
+            ref var component = ref pool.Has(entity)
+                ? ref pool.Get(entity)
+                : ref pool.Add(entity);
+            return ref component;
         }
 
         public static void DelComponentIfExists<T>(this EcsPool<T> pool, int entity)
@@ -49,7 +50,7 @@ namespace _Project.Scripts._Shared.Extensions
             pool.Del(entity);
         }
 
-        public static bool TryGetComponent<T>(this EcsPool<T> pool, int entity, ref T component)
+        public static bool TryGetComponent<T>(this EcsPool<T> pool, int entity, out T component)
             where T : struct
         {
             component = default;
