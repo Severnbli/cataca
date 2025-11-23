@@ -24,6 +24,7 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
                 .End();
             
             _loadLevelRequestPool = _world.GetPool<LoadLevelRequest>();
+            _loadPlatformRequestPool = _world.GetPool<LoadPlatformRequest>();
         }
 
         public void PostRun(IEcsSystems systems)
