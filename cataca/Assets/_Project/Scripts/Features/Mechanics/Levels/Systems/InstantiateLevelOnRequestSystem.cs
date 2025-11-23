@@ -1,5 +1,8 @@
-﻿using _Project.Scripts.Core.Systems.Interfaces;
+﻿using _Project.Scripts._Shared.Extensions;
+using _Project.Scripts.Core.Systems.Interfaces;
+using _Project.Scripts.Features._Shared.Components;
 using _Project.Scripts.Features.Mechanics.Levels.Components;
+using _Project.Scripts.Features.Mechanics.Levels.Markers;
 using _Project.Scripts.Features.Mechanics.Levels.Monos;
 using _Project.Scripts.Features.Mechanics.Levels.Requests;
 using _Project.Scripts.Features.Mechanics.Levels.Services;
@@ -19,9 +22,11 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
         private EcsWorld _world;
         private EcsFilter _requestsFilter;
         private EcsFilter _levelsFilter;
+        private EcsFilter _levelsContainerFilter;
         private EcsPool<InstantiateLevelRequest> _instantiateLevelRequestPool;
         private EcsPool<LevelComponent> _levelsPool;
         private EcsPool<LoadLevelRequest> _loadLevelRequestPool;
+        private EcsPool<TransformComponent> _transformPool;
         
         public void Init(IEcsSystems systems)
         {
@@ -34,10 +39,16 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
             _levelsFilter = _world
                 .Filter<LevelComponent>()
                 .End();
+
+            _levelsContainerFilter = _world
+                .Filter<LevelsContainerMarker>()
+                .Inc<TransformComponent>()
+                .End();
             
             _instantiateLevelRequestPool = _world.GetPool<InstantiateLevelRequest>();
             _levelsPool = _world.GetPool<LevelComponent>();
             _loadLevelRequestPool = _world.GetPool<LoadLevelRequest>();
+            _transformPool = _world.GetPool<TransformComponent>();
         }
 
         public void PostRun(IEcsSystems systems)
@@ -69,7 +80,15 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
 
         private void SpawnLevel(LevelComponent levelComponent)
         {
-            var levelObject = Object.Instantiate(levelComponent.Prefab);
+            Transform parent = null;
+
+            if (_levelsContainerFilter.TryGetFirst(out var levelsContainerEntity))
+            {
+                ref var levelsContainerTransform = ref _transformPool.Get(levelsContainerEntity);
+                parent = levelsContainerTransform.Transform;
+            }
+            
+            var levelObject = Object.Instantiate(levelComponent.Prefab, parent);
             var level = levelObject.GetComponent<Level>();
             
             if (level is not null) SendLoadRequest(level);
