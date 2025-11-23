@@ -9,6 +9,7 @@ namespace _Project.Scripts.Core.Systems.Collections
     {
         public EditorCollection(EcsWorld defaultWorld, IEnumerable<IEcsEditorSystem> systems) : base(defaultWorld, systems)
         {
+            Add(new EcsWorldDebugSystem());
             Add(new EcsSystemsDebugSystem());
         }
     }
