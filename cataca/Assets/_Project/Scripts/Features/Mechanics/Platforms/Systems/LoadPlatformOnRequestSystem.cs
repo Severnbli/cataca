@@ -21,6 +21,7 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
 
             _filter = world
                 .Filter<LoadPlatformRequest>()
+                .Exc<PlatformComponent>()
                 .End();
             
             _loadPlatformRequestPool = world.GetPool<LoadPlatformRequest>();
