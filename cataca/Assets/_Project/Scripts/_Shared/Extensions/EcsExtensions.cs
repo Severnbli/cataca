@@ -32,5 +32,21 @@ namespace _Project.Scripts._Shared.Extensions
                 }
             }
         }
+
+        public static void AddComponentIfNotExists<T>(this EcsPool<T> pool, int entity)
+            where T : struct
+        {
+            if (pool.Has(entity)) return;
+            
+            pool.Add(entity);
+        }
+
+        public static void DelComponentIfExists<T>(this EcsPool<T> pool, int entity)
+            where T : struct
+        {
+            if (!pool.Has(entity)) return;
+            
+            pool.Del(entity);
+        }
     }
 }
