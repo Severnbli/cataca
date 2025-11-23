@@ -13,6 +13,7 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
         private EcsPool<LoadPlatformRequest> _loadPlatformRequestPool;
         private EcsPool<PlatformComponent> _platformPool;
         private EcsPool<DelEntityOnDestroyLevelMarker> _delEntityOnDestroyLevelMarkerPool;
+        private EcsPool<ResetPlatformStatesRequest> _resetPlatformStatesRequestPool;
         
         public void Init(IEcsSystems systems)
         {
@@ -25,6 +26,7 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
             _loadPlatformRequestPool = world.GetPool<LoadPlatformRequest>();
             _platformPool = world.GetPool<PlatformComponent>();
             _delEntityOnDestroyLevelMarkerPool = world.GetPool<DelEntityOnDestroyLevelMarker>();
+            _resetPlatformStatesRequestPool = world.GetPool<ResetPlatformStatesRequest>();
         }
 
         public void PostRun(IEcsSystems systems)
@@ -43,6 +45,7 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
             platformComponent.Platform = platform;
             
             _delEntityOnDestroyLevelMarkerPool.Add(entity);
+            _resetPlatformStatesRequestPool.Add(entity);
         }
     }
 }
