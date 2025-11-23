@@ -16,5 +16,7 @@ MonoBehaviour:
   _levels: levels
   _records: records
   _settings: settings
+  _level:
+    Id: 0
   record:
     Id: 0
