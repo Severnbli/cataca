@@ -48,5 +48,16 @@ namespace _Project.Scripts._Shared.Extensions
             
             pool.Del(entity);
         }
+
+        public static bool TryGetComponent<T>(this EcsPool<T> pool, int entity, ref T component)
+            where T : struct
+        {
+            component = default;
+            
+            if (!pool.Has(entity)) return false;
+            
+            component = ref pool.Get(entity);
+            return true;
+        }
     }
 }
