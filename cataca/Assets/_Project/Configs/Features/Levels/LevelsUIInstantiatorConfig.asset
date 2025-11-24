@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc7cad10aa54a12832a99eaa96c4843, type: 3}
   m_Name: LevelsUIInstantiatorConfig
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 373131750488355174, guid: 58624732cd4bda04f868504b240fee28, type: 3}
