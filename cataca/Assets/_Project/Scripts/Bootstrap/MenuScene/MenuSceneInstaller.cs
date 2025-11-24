@@ -3,6 +3,7 @@ using _Project.Scripts.Features._Shared.Systems;
 using _Project.Scripts.Features.Audio.Services;
 using _Project.Scripts.Features.Audio.Systems;
 using _Project.Scripts.Features.Mechanics.Anims.Systems;
+using _Project.Scripts.Features.Mechanics.Levels.Systems;
 using _Project.Scripts.Features.Mechanics.Records.Services;
 using _Project.Scripts.Features.Mechanics.Records.Systems;
 using _Project.Scripts.Features.UI.Buttons.Systems;
@@ -48,6 +49,8 @@ namespace _Project.Scripts.Bootstrap.MenuScene
             Container.BindInterfacesTo<AudioSettingsWriterSystem>().AsSingle();
             Container.BindInterfacesTo<AudioServiceUpdateOnSlidersChangeValueSystem>().AsSingle();
             Container.BindInterfacesTo<AudioSettingsUpdateSystem>().AsSingle();
+            
+            Container.BindInterfacesTo<InstantiateLevelButtonRequestDeleter>().AsSingle();
             
             Container.BindInterfacesTo<TweenKillOnDisposeSystem>().AsSingle();
         }
