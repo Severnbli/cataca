@@ -56,6 +56,8 @@ namespace _Project.Scripts.Bootstrap.MenuScene
             Container.BindInterfacesTo<LoadLevelButtonOnRequestSystem>().AsSingle();
             Container.BindInterfacesTo<LevelButtonUpdateSystem>().AsSingle();
             
+            Container.BindInterfacesTo<LoadSceneOnRequestSystem>().AsSingle();
+            
             Container.BindInterfacesTo<InstantiateLevelButtonRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadLevelButtonRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadSceneRequestDeleterSystem>().AsSingle();
