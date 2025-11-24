@@ -91,11 +91,13 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
             var levelObject = Object.Instantiate(levelComponent.Prefab, parent);
             var level = levelObject.GetComponent<Level>();
             
-            if (level is not null) SendLoadRequest(level);
-
             _levelService.Loaded = true;
             _levelService.LevelDto = levelComponent.LevelDto;
             _levelService.LoadedLevel = level;
+
+            if (level is null) return;
+            
+            SendLoadRequest(level);
         }
 
         private void SendLoadRequest(Level level)
