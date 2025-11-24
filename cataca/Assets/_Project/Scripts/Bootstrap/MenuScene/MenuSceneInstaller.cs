@@ -26,6 +26,7 @@ namespace _Project.Scripts.Bootstrap.MenuScene
             Container.BindInterfacesTo<AudioServiceLoaderSystem>().AsSingle();
             
             Container.BindInterfacesTo<RecordsUIInstantiatorSystem>().AsSingle();
+            Container.BindInterfacesTo<SpawnLevelsButtonsFromStorageSystem>().AsSingle();
             
             Container.BindInterfacesTo<RecordPlayPauseRequestDeleter>().AsSingle();
             
