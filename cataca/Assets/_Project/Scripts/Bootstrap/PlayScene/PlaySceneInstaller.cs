@@ -83,6 +83,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             
             Container.BindInterfacesTo<InstantiateLevelOnRequestSystem>().AsSingle();
             Container.BindInterfacesTo<LoadLevelOnRequestSystem>().AsSingle();
+            Container.BindInterfacesTo<MoveToLevelSpawnPointOnRequestSystem>().AsSingle();
             
             Container.BindInterfacesTo<PositionPlatformOnRequestSystem>().AsSingle();
             Container.BindInterfacesTo<RotatePlatformOnRequestSystem>().AsSingle();
