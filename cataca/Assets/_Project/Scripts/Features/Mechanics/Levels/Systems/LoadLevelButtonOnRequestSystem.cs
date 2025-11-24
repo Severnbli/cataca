@@ -42,7 +42,7 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
 
                 levelButton.LevelButton = request.LevelButton;
                 button.Button = request.LevelButton.Button;
-                sceneLoader.Scene = Scene.Game;
+                sceneLoader.Scene = Scene.Play;
             }
         }
     }

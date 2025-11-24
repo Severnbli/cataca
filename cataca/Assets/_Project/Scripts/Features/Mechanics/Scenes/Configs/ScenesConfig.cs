@@ -13,7 +13,7 @@ namespace _Project.Scripts.Features.Mechanics.Scenes.Configs
         [SerializeField] private SerializedDictionary<Scene, string> _scenes = new()
         {
             { Scene.Menu, "Menu" },
-            { Scene.Game, "Game" }
+            { Scene.Play, "Play" }
         };
         
         public SerializedDictionary<Scene, string> Scenes => _scenes;
@@ -26,7 +26,7 @@ namespace _Project.Scripts.Features.Mechanics.Scenes.Configs
             var checks = EditorUtils.GetChecksContainer();
             
             checks.TryAdd(() => !_scenes.Keys.Contains(Scene.Menu), "Menu scene key is not provided");
-            checks.TryAdd(() => !_scenes.Keys.Contains(Scene.Game), "Game scene key is not provided");
+            checks.TryAdd(() => !_scenes.Keys.Contains(Scene.Play), "Play scene key is not provided");
             checks.TryAdd(() => _scenes.Values.Any(string.IsNullOrEmpty), "Some of scene values are not provided");
             
             EditorUtils.Validate(checks, nameof(ScenesConfig));

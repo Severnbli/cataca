@@ -3,6 +3,6 @@
     public enum Scene
     {
         Menu = 0,
-        Game = 1
+        Play = 1
     }
 }
