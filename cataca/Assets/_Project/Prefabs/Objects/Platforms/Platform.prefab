@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1692856348095937163
 Transform:
   m_ObjectHideFlags: 0
@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _platform: {fileID: 8049414035519318162}
-  _draw: 0
+  _draw: 1
   _animate: 0
   _animationDelay: 1
   _gizmosColor: {r: 0, g: 1, b: 0, a: 1}
