@@ -70,6 +70,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             
             Container.BindInterfacesTo<FlipObjectOnWalkSystem>().AsSingle();
 
+            Container.BindInterfacesTo<ApplyGroundSnapSystem>().AsSingle();
             Container.BindInterfacesTo<GroundCheckTimeBlockUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<GroundCheckStatusUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<JumpResetCurrentCountOnGroundCheckSystem>().AsSingle();
