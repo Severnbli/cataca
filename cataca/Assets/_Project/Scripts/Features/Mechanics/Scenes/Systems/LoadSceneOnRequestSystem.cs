@@ -31,12 +31,14 @@ namespace _Project.Scripts.Features.Mechanics.Scenes.Systems
 
         public void PostRun(IEcsSystems systems)
         {
-            if (!_filter.TryGetFirst(out var entity)) return;
-            
-            ref var request = ref _loadSceneRequestPool.Get(entity);
-            if (!_scenesConfig.Scenes.TryGetValue(request.Scene, out var sceneName)) return;
+            foreach (var e in _filter)
+            {
+                ref var request = ref _loadSceneRequestPool.Get(e);
+                if (!_scenesConfig.Scenes.TryGetValue(request.Scene, out var sceneName)) continue;
 
-            SceneManager.LoadScene(sceneName);
+                SceneManager.LoadScene(sceneName);
+                return;
+            }
         }
     }
 }
