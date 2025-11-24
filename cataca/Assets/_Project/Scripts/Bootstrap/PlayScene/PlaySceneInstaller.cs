@@ -95,8 +95,6 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<TweenQueueAppendOnRequestSystem>().AsSingle();
             Container.BindInterfacesTo<TweenQueueUpdateSystem>().AsSingle();
             
-            Container.BindInterfacesTo<ApplyGroundSnapSystem>().AsSingle();
-            
             Container.BindInterfacesTo<LoadLevelRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<InstantiateLevelRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<ResetPlatformStatesRequestDeleterSystem>().AsSingle();
