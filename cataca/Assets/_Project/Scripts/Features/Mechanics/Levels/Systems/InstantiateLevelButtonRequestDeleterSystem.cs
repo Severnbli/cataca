@@ -4,7 +4,7 @@ using Leopotam.EcsLite;
 
 namespace _Project.Scripts.Features.Mechanics.Levels.Systems
 {
-    public class InstantiateLevelButtonRequestDeleter : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
+    public class InstantiateLevelButtonRequestDeleterSystem : IEcsInitSystem, IEcsPostRunSystem, IEcsGameSystem
     {
         private EcsFilter _filter;
         private EcsPool<InstantiateLevelButtonRequest> _instantiateLevelButtonRequestPool;
