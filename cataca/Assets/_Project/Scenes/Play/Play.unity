@@ -2628,7 +2628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _component:
-    Transform: {fileID: 1240016997335290181}
+    Transform: {fileID: 1506968977}
 --- !u!1 &1625394267
 GameObject:
   m_ObjectHideFlags: 0
