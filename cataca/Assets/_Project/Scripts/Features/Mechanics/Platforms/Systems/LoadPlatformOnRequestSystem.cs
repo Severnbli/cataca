@@ -44,6 +44,7 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
         {
             ref var platformComponent = ref _platformPool.Add(entity);
             platformComponent.Platform = platform;
+            platformComponent.Platform.Object.gameObject.SetActive(true);
             
             _delEntityOnDestroyLevelMarkerPool.Add(entity);
             _resetPlatformStatesRequestPool.Add(entity);
