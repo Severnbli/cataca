@@ -4,7 +4,7 @@ namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Checks.Componen
 {
     public struct GroundCheckResultComponent
     {
-        public Transform Transform;
-        public Vector3 Offset;
+        public Transform GroundTransform;
+        public Vector3 GroundLandingPosition;
     }
 }
