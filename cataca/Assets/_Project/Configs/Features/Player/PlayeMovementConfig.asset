@@ -18,7 +18,7 @@ MonoBehaviour:
   _jump:
     Enabled: 1
     Force: 7
-    MaxCount: 2
+    MaxCount: 1
   _dash:
     Enabled: 1
     Force: 15
