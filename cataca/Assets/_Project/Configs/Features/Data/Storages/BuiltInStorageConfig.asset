@@ -18,5 +18,6 @@ MonoBehaviour:
   _settings: settings
   _level:
     Id: 0
+    Name: 
   record:
     Id: 0
