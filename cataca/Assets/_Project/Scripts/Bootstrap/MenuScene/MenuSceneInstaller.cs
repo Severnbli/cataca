@@ -51,6 +51,7 @@ namespace _Project.Scripts.Bootstrap.MenuScene
             Container.BindInterfacesTo<AudioSettingsUpdateSystem>().AsSingle();
 
             Container.BindInterfacesTo<InstantiateLevelButtonOnRequestSystem>().AsSingle();
+            Container.BindInterfacesTo<LoadLevelButtonOnRequestSystem>().AsSingle();
             
             Container.BindInterfacesTo<InstantiateLevelButtonRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadLevelButtonRequestDeleterSystem>().AsSingle();
