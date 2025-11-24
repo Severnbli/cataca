@@ -1,5 +1,6 @@
 ﻿using _Project.Scripts._Shared.Extensions;
 using _Project.Scripts.Core.Systems.Interfaces;
+using _Project.Scripts.Features._Shared.Components;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Checks.Components;
 using Leopotam.EcsLite;
 using UnityEngine;
@@ -11,6 +12,8 @@ namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Checks.Systems
         private EcsFilter _filter;
         private EcsPool<GroundCheckComponent> _groundCheckPool;
         private EcsPool<GroundCheckStatusComponent> _groundCheckStatusPool;
+        private EcsPool<GroundCheckResultComponent> _groundCheckResultPool;
+        private EcsPool<TransformComponent> _transformPool;
         
         public void Init(IEcsSystems systems)
         {
@@ -22,6 +25,8 @@ namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Checks.Systems
             
             _groundCheckPool = world.GetPool<GroundCheckComponent>();
             _groundCheckStatusPool = world.GetPool<GroundCheckStatusComponent>();
+            _groundCheckResultPool = world.GetPool<GroundCheckResultComponent>();
+            _transformPool = world.GetPool<TransformComponent>();
         }
 
         public void PostRun(IEcsSystems systems)
@@ -35,14 +40,21 @@ namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Checks.Systems
                     ? ref _groundCheckStatusPool.Get(e)
                     : ref _groundCheckStatusPool.Add(e);
 
-                if (groundCheck.Disabled)
+                groundCheckStatus.IsOnGround = Physics2DExtensions.TryHitCollider(groundCheck.Transform.position,
+                    Vector2.down, groundCheck.Distance, groundCheck.Layer, out var hit) && !groundCheck.Disabled;
+                
+                if (!groundCheckStatus.IsOnGround || !groundCheck.ResultSaving || !_transformPool.Has(e))
                 {
-                    groundCheckStatus.IsOnGround = false;
+                    _groundCheckResultPool.DelComponentIfExists(e);
                     continue;
                 }
                 
-                groundCheckStatus.IsOnGround = Physics2DExtensions.IsHitCollider(groundCheck.Transform.position,
-                    Vector2.down, groundCheck.Distance, groundCheck.Layer);
+                ref var characterTransform = ref _transformPool.Get(e);
+                ref var groundCheckResult = ref _groundCheckResultPool.AddComponentIfNotExists(e);
+                
+                groundCheckResult.Transform = hit.collider.transform;
+                groundCheckResult.Offset = groundCheckResult.Transform.localPosition -
+                                           characterTransform.Transform.localPosition;
             }
         }
     }
