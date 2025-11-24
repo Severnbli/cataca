@@ -6,6 +6,7 @@ namespace _Project.Scripts.Features.Data.Entities
     public class LevelDto
     {
         public int Id;
+        public string Name;
         
         public static bool operator ==(LevelDto a, LevelDto b)
         {
