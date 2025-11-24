@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5587571054491930617}
   - component: {fileID: 8284547077663548122}
   - component: {fileID: 7815196758327002474}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,8 +397,9 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 5587571054491930617}
   _spriteGlow: {fileID: 7815196758327002474}
   _collider: {fileID: 8284547077663548122}
-  _platformTypes: 00000000
+  _platformTypes: 
   _object: {fileID: 1692856348095937163}
+  _controlledByInput: 1
 --- !u!114 &5449238375751469982
 MonoBehaviour:
   m_ObjectHideFlags: 0
