@@ -6,6 +6,7 @@ using _Project.Scripts.Features.Mechanics.Anims.Systems;
 using _Project.Scripts.Features.Mechanics.Levels.Systems;
 using _Project.Scripts.Features.Mechanics.Records.Services;
 using _Project.Scripts.Features.Mechanics.Records.Systems;
+using _Project.Scripts.Features.Mechanics.Scenes.Systems;
 using _Project.Scripts.Features.UI.Buttons.Systems;
 using _Project.Scripts.Features.UI.Popups.Systems;
 
@@ -57,6 +58,7 @@ namespace _Project.Scripts.Bootstrap.MenuScene
             
             Container.BindInterfacesTo<InstantiateLevelButtonRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadLevelButtonRequestDeleterSystem>().AsSingle();
+            Container.BindInterfacesTo<LoadSceneRequestDeleterSystem>().AsSingle();
             
             Container.BindInterfacesTo<TweenKillOnDisposeSystem>().AsSingle();
         }
