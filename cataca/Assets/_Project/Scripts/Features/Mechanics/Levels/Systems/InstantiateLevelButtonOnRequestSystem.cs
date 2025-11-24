@@ -83,6 +83,8 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
 
                 if (levelButton == null) continue;
                 
+                levelButton.LevelDto = request.LevelDto;
+                
                 var levelButtonEntity = _world.NewEntity();
                 ref var loadLevelButtonRequest = ref _loadLevelButtonRequestPool.Add(levelButtonEntity);
                 loadLevelButtonRequest.LevelButton = levelButton;
