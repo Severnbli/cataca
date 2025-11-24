@@ -10,6 +10,7 @@ using _Project.Scripts.Features.Mechanics.Physics.Characters.Checks.Systems;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Systems;
 using _Project.Scripts.Features.Mechanics.Platforms.Systems;
 using _Project.Scripts.Features.Mechanics.Player.Systems;
+using _Project.Scripts.Features.Mechanics.Scenes.Systems;
 using _Project.Scripts.Features.Mechanics.Time.Services;
 using _Project.Scripts.Features.Mechanics.Time.Systems;
 
@@ -99,6 +100,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<LoadLevelRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<InstantiateLevelRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<ResetPlatformStatesRequestDeleterSystem>().AsSingle();
+            Container.BindInterfacesTo<LoadSceneRequestDeleterSystem>().AsSingle();
             
             Container.BindInterfacesTo<TweenKillOnDisposeSystem>().AsSingle();
         }
