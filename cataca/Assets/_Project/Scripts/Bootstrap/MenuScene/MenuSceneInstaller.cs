@@ -50,7 +50,7 @@ namespace _Project.Scripts.Bootstrap.MenuScene
             Container.BindInterfacesTo<AudioServiceUpdateOnSlidersChangeValueSystem>().AsSingle();
             Container.BindInterfacesTo<AudioSettingsUpdateSystem>().AsSingle();
             
-            Container.BindInterfacesTo<InstantiateLevelButtonRequestDeleter>().AsSingle();
+            Container.BindInterfacesTo<InstantiateLevelButtonRequestDeleterSystem>().AsSingle();
             
             Container.BindInterfacesTo<TweenKillOnDisposeSystem>().AsSingle();
         }
