@@ -10,5 +10,6 @@ namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Checks.Componen
         public Transform Transform;
         public LayerMask Layer;
         public float Distance;
+        public bool ResultSaving;
     }
 }
