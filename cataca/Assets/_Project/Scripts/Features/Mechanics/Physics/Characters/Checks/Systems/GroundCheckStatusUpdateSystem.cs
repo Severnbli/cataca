@@ -13,7 +13,6 @@ namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Checks.Systems
         private EcsPool<GroundCheckComponent> _groundCheckPool;
         private EcsPool<GroundCheckStatusComponent> _groundCheckStatusPool;
         private EcsPool<GroundCheckResultComponent> _groundCheckResultPool;
-        private EcsPool<TransformComponent> _transformPool;
         
         public void Init(IEcsSystems systems)
         {
@@ -26,7 +25,6 @@ namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Checks.Systems
             _groundCheckPool = world.GetPool<GroundCheckComponent>();
             _groundCheckStatusPool = world.GetPool<GroundCheckStatusComponent>();
             _groundCheckResultPool = world.GetPool<GroundCheckResultComponent>();
-            _transformPool = world.GetPool<TransformComponent>();
         }
 
         public void PostRun(IEcsSystems systems)
@@ -43,18 +41,16 @@ namespace _Project.Scripts.Features.Mechanics.Physics.Characters.Checks.Systems
                 groundCheckStatus.IsOnGround = Physics2DExtensions.TryHitCollider(groundCheck.Transform.position,
                     Vector2.down, groundCheck.Distance, groundCheck.Layer, out var hit) && !groundCheck.Disabled;
                 
-                if (!groundCheckStatus.IsOnGround || !groundCheck.ResultSaving || !_transformPool.Has(e))
+                if (!groundCheckStatus.IsOnGround || !groundCheck.ResultSaving)
                 {
                     _groundCheckResultPool.DelComponentIfExists(e);
                     continue;
                 }
                 
-                ref var characterTransform = ref _transformPool.Get(e);
                 ref var groundCheckResult = ref _groundCheckResultPool.AddComponentIfNotExists(e);
-                
-                groundCheckResult.Transform = hit.collider.transform;
-                groundCheckResult.Offset = groundCheckResult.Transform.localPosition -
-                                           characterTransform.Transform.localPosition;
+
+                groundCheckResult.GroundTransform = hit.collider.transform;
+                groundCheckResult.GroundLandingPosition = hit.collider.transform.position;
             }
         }
     }
