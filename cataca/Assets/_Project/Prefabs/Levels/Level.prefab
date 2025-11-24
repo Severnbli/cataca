@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _platformsParent: {fileID: 3724466923399870134}
-  _spawnPoint: {fileID: 0}
+  _spawnPoint: {fileID: 19525991224361391}
 --- !u!1001 &3287305366524317295
 PrefabInstance:
   m_ObjectHideFlags: 0
