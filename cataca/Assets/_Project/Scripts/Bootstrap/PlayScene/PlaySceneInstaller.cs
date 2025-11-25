@@ -14,6 +14,7 @@ using _Project.Scripts.Features.Mechanics.Player.Systems;
 using _Project.Scripts.Features.Mechanics.Scenes.Systems;
 using _Project.Scripts.Features.Mechanics.Time.Services;
 using _Project.Scripts.Features.Mechanics.Time.Systems;
+using _Project.Scripts.Features.UI._Shared.Systems;
 using _Project.Scripts.Features.UI.Buttons.Systems;
 using _Project.Scripts.Features.UI.Popups.Systems;
 
@@ -35,6 +36,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<AudioSettingsLoaderSystem>().AsSingle();
             Container.BindInterfacesTo<LoadLevelsFromConfigSystem>().AsSingle();
             Container.BindInterfacesTo<SpawnLevelFromStorageSystem>().AsSingle();
+            Container.BindInterfacesTo<DisableTouchOnlyInputOnDesktopSystem>().AsSingle();
             
             Container.BindInterfacesTo<TweenQueueAppendRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadPlatformRequestDeleterSystem>().AsSingle();
