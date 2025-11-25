@@ -1,10 +1,8 @@
-﻿using _Project.Scripts._Shared.Extensions;
-using _Project.Scripts._Shared.Utils;
+﻿using _Project.Scripts._Shared.Utils;
 using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features.Data.Storages.BuiltIn.Configs;
 using _Project.Scripts.Features.Mechanics.Levels.Components;
 using _Project.Scripts.Features.Mechanics.Scenes.Components;
-using _Project.Scripts.Features.Mechanics.Scenes.Requests;
 using _Project.Scripts.Features.UI.Buttons.Components;
 using Leopotam.EcsLite;
 
@@ -21,8 +19,6 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
         private EcsFilter _filter;
         private EcsPool<LevelButtonComponent> _levelButtonPool;
         private EcsPool<ButtonComponent> _buttonPool;
-        private EcsPool<SceneLoaderComponent> _sceneLoaderPool;
-        private EcsPool<LoadSceneRequest> _loadSceneRequestPool;
         
         public void Init(IEcsSystems systems)
         {
@@ -36,8 +32,6 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
             
             _levelButtonPool = world.GetPool<LevelButtonComponent>();
             _buttonPool = world.GetPool<ButtonComponent>();
-            _sceneLoaderPool = world.GetPool<SceneLoaderComponent>();
-            _loadSceneRequestPool = world.GetPool<LoadSceneRequest>();
         }
 
         public void Run(IEcsSystems systems)
@@ -48,11 +42,7 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
                 if (!button.Button.Pressed) continue;
                 
                 ref var levelButton = ref _levelButtonPool.Get(e);
-                ref var sceneLoader = ref _sceneLoaderPool.Get(e);
-                ref var loadSceneRequest = ref _loadSceneRequestPool.AddComponentIfNotExists(e);
-                
                 StorageUtils.SaveLevelToLoad(_storageConfig, levelButton.LevelButton.LevelDto);
-                loadSceneRequest.Scene = sceneLoader.Scene;
             }
         }
     }
