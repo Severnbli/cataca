@@ -111,6 +111,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<TweenQueueAppendOnRequestSystem>().AsSingle();
             Container.BindInterfacesTo<TweenQueueUpdateSystem>().AsSingle();
             
+            Container.BindInterfacesTo<ProcessSceneLoaderButtonPressedSystem>().AsSingle();
             Container.BindInterfacesTo<LoadSceneOnRequestSystem>().AsSingle();
             
             Container.BindInterfacesTo<LoadLevelRequestDeleterSystem>().AsSingle();
