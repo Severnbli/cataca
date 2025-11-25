@@ -3,7 +3,6 @@ using System.Linq;
 using System.Text;
 using _Project.Scripts._Shared.ScriptableObjects;
 using _Project.Scripts._Shared.Utils;
-using _Project.Scripts.Features.Data.Entities;
 using _Project.Scripts.Features.Data.Storages.BuiltIn.Configs;
 using _Project.Scripts.Features.Mechanics.Records.Components;
 using Sirenix.OdinInspector;

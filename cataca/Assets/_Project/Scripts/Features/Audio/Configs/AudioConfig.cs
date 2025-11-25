@@ -12,22 +12,30 @@ namespace _Project.Scripts.Features.Audio.Configs
         [SerializeField] private Sprite _playableIsOff;
         
         [SerializeField] 
+#if UNITY_EDITOR
         [OnValueChanged(nameof(UpdateExposedParameters))]
+#endif
         private AudioMixer _audioMixer;
 
         [SerializeField]
+#if UNITY_EDITOR
         [ShowIf(nameof(HasMixer))]
         [ValueDropdown(nameof(ExposedParameters))]
+#endif
         private string _globalVolume;
         
         [SerializeField]
+#if UNITY_EDITOR
         [ShowIf(nameof(HasMixer))]
         [ValueDropdown(nameof(ExposedParameters))]
+#endif
         private string _musicVolume;
         
         [SerializeField]
+#if UNITY_EDITOR
         [ShowIf(nameof(HasMixer))]
         [ValueDropdown(nameof(ExposedParameters))]
+#endif
         private string _soundsVolume;
 
         public Sprite PlayableIsOn => _playableIsOn;

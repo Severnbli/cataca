@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor.Animations;
+#endif
 
 namespace _Project.Scripts._Shared.Extensions
 {
     public static class AnimatorExtensions
     {
+#if UNITY_EDITOR
         public struct Trigger {}
         
         public static bool TryGetParametersWithTypes(this AnimatorController animatorController, 
@@ -58,5 +62,6 @@ namespace _Project.Scripts._Shared.Extensions
                 _ => type == AnimatorControllerParameterType.Bool ? typeof(bool) : typeof(Trigger)
             };
         }
+#endif
     }
 }
