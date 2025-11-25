@@ -14,6 +14,8 @@ using _Project.Scripts.Features.Mechanics.Player.Systems;
 using _Project.Scripts.Features.Mechanics.Scenes.Systems;
 using _Project.Scripts.Features.Mechanics.Time.Services;
 using _Project.Scripts.Features.Mechanics.Time.Systems;
+using _Project.Scripts.Features.UI.Buttons.Systems;
+using _Project.Scripts.Features.UI.Popups.Systems;
 
 namespace _Project.Scripts.Bootstrap.PlayScene
 {
@@ -43,6 +45,14 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             
             Container.BindInterfacesTo<TimeServiceUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<InputServiceUpdateSystem>().AsSingle();
+            
+            Container.BindInterfacesTo<OpenSignalButtonListenerSystem>().AsSingle();
+            Container.BindInterfacesTo<CloseSignalButtonListenerSystem>().AsSingle();
+            
+            Container.BindInterfacesTo<PopupOpenListenerSystem>().AsSingle();
+            Container.BindInterfacesTo<PopupCloseListenerSystem>().AsSingle();
+            Container.BindInterfacesTo<PopupPlayCloseAnimRequestHandlerSystem>().AsSingle();
+            Container.BindInterfacesTo<PopupPlayOpenAnimRequestHandlerSystem>().AsSingle();
             
             Container.BindInterfacesTo<JumpPerformRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<DashPerformRequestDeleterSystem>().AsSingle();
