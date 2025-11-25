@@ -36,7 +36,8 @@ namespace _Project.Scripts._Shared.ScriptableObjects
         protected virtual void OnBeforeSerialize()
         {
         }
-
+        
+#if UNITY_EDITOR
         [HideInTables]
         [OnInspectorGUI]
         [PropertyOrder(-2.1474836E+09f)]
@@ -44,5 +45,6 @@ namespace _Project.Scripts._Shared.ScriptableObjects
         {
             EditorOnlyModeConfigUtility.InternalOnInspectorGUI(this);
         }
+#endif
     }
 }
