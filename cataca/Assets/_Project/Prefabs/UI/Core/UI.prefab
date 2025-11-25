@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 3793085558234982776}
   - component: {fileID: 9098922923936002544}
   - component: {fileID: 5093132727461808639}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7843293002734948635}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
