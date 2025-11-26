@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 819b1401c2d543598d6246252dfd0e5d, type: 3}
   m_Name: PlatformAnimationConfig
   m_EditorClassIdentifier: 
-  _transformDuration: 0.6
+  _positionTransitionSpeed: 6
+  _rotateTransitionSpeed: 60
+  _scaleTransitionSpeed: 6
   _transformEase: 7
   _transformTransitionDuration: 0.1
   _baseColor: {r: 1, g: 1, b: 1, a: 1}
