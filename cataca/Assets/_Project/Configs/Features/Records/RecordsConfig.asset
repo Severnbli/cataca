@@ -13,43 +13,43 @@ MonoBehaviour:
   m_Name: RecordsConfig
   m_EditorClassIdentifier: 
   _records:
-  - Record:
+  - recordDto:
       Id: 0
     AudioClip: {fileID: 8300000, guid: 99c4786cd4b228645b6e5aac9f6a3d29, type: 3}
-  - Record:
+  - recordDto:
       Id: 1
     AudioClip: {fileID: 8300000, guid: 4be28f3849fb9cc458525eda45effe4d, type: 3}
-  - Record:
+  - recordDto:
       Id: 2
     AudioClip: {fileID: 8300000, guid: cbb169cf3a5ecab429a9301fde16e0a3, type: 3}
-  - Record:
+  - recordDto:
       Id: 3
     AudioClip: {fileID: 8300000, guid: 950dddbbc4071af479343b22c12f51ff, type: 3}
-  - Record:
+  - recordDto:
       Id: 4
     AudioClip: {fileID: 8300000, guid: 0ba05f336aa6ba041abd014c6a680a69, type: 3}
-  - Record:
+  - recordDto:
       Id: 5
     AudioClip: {fileID: 8300000, guid: 28723a0e6c8d0004db431462e72f97c2, type: 3}
-  - Record:
+  - recordDto:
       Id: 6
     AudioClip: {fileID: 8300000, guid: 2ca2540c8d9fb75428b33f5f6fba13ff, type: 3}
-  - Record:
+  - recordDto:
       Id: 7
     AudioClip: {fileID: 8300000, guid: d93bad29c8be56d4ca77be6451b15023, type: 3}
-  - Record:
+  - recordDto:
       Id: 8
     AudioClip: {fileID: 8300000, guid: bd3641ca258a89f4683a82a547662cff, type: 3}
-  - Record:
+  - recordDto:
       Id: 9
     AudioClip: {fileID: 8300000, guid: 18da8a6d1877a5d429583b4b4515f2e2, type: 3}
-  - Record:
+  - recordDto:
       Id: 10
     AudioClip: {fileID: 8300000, guid: 6041cfef61023844e829bff97f078094, type: 3}
-  - Record:
+  - recordDto:
       Id: 11
     AudioClip: {fileID: 8300000, guid: 5940444a868916746b3e4a1e6a901d46, type: 3}
-  - Record:
+  - recordDto:
       Id: 12
     AudioClip: {fileID: 8300000, guid: c3c7e479f0718e14e8d42298c0d5316c, type: 3}
   _loopedPlayback: 0
