@@ -57,11 +57,11 @@ namespace _Project.Scripts.Features.Mechanics.Records.Configs
 
             foreach (var record in _records)
             {
-                if (idsFromStorage.Contains(record.Record.Id)) idsFromStorage.Remove(record.Record.Id);
-                if (record.AudioClip == null) notAudioClipIds.Add(record.Record.Id);
-                if (_records.Count(x => x.Record.Id == record.Record.Id) > 1)
+                if (idsFromStorage.Contains(record.recordDto.Id)) idsFromStorage.Remove(record.recordDto.Id);
+                if (record.AudioClip == null) notAudioClipIds.Add(record.recordDto.Id);
+                if (_records.Count(x => x.recordDto.Id == record.recordDto.Id) > 1)
                 {
-                    repeatedIds.Add(record.Record.Id);
+                    repeatedIds.Add(record.recordDto.Id);
                 }
             }
 

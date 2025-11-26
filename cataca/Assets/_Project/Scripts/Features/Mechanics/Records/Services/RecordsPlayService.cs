@@ -4,7 +4,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Services
 {
     public sealed class RecordsPlayService
     {
-        public Record Current;
+        public RecordDto Current;
         public bool Playing;
     }
 }
