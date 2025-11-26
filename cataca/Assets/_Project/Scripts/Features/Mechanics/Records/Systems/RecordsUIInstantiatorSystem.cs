@@ -3,7 +3,6 @@ using System.Linq;
 using _Project.Scripts._Shared.Utils;
 using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features.Audio.Components;
-using _Project.Scripts.Features.Audio.Configs;
 using _Project.Scripts.Features.Data.Storages.BuiltIn.Configs;
 using _Project.Scripts.Features.Mechanics.Records.Components;
 using _Project.Scripts.Features.Mechanics.Records.Configs;
@@ -68,9 +67,9 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
                 var obj = Object.Instantiate(_uiConfig.Prefab, parent);
                 var recordMono = obj.GetComponent<RecordButton>();
                 if (recordMono is null) continue;
-                
-                recordMono.Icon.sprite = _uiConfig.Icons[Random.Range(0, _uiConfig.Icons.Length)];
-                
+
+                recordMono.Icon.sprite = _uiConfig.Icon;
+                    
                 var entity = _world.NewEntity();
                 
                 ref var button = ref _buttonPool.Add(entity);
