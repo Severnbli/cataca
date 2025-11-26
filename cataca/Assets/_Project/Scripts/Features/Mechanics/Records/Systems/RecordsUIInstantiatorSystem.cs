@@ -66,7 +66,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
             foreach (var record in _recordsToSpawn)
             {
                 var obj = Object.Instantiate(_uiConfig.Prefab, parent);
-                var recordMono = obj.GetComponent<Record>();
+                var recordMono = obj.GetComponent<RecordButton>();
                 if (recordMono is null) continue;
                 
                 recordMono.Icon.sprite = _uiConfig.Icons[Random.Range(0, _uiConfig.Icons.Length)];
