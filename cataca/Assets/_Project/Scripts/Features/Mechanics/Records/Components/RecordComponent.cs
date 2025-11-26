@@ -7,7 +7,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Components
     [Serializable]
     public struct RecordComponent
     {
-        public Record Record;
+        public RecordDto recordDto;
         public AudioClip AudioClip;
     }
 }

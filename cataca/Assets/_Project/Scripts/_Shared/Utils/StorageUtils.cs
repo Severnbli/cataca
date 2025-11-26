@@ -32,12 +32,12 @@ namespace _Project.Scripts._Shared.Utils
             SaveBuiltInList(config.Levels, levels);
         }
 
-        public static List<Record> LoadRecords(BuiltInStorageConfig config)
+        public static List<RecordDto> LoadRecords(BuiltInStorageConfig config)
         {
-            return LoadBuiltInList<Record>(config.Records);
+            return LoadBuiltInList<RecordDto>(config.Records);
         }
 
-        public static void SaveRecords(BuiltInStorageConfig config, List<Record> records)
+        public static void SaveRecords(BuiltInStorageConfig config, List<RecordDto> records)
         {
             SaveBuiltInList(config.Records, records);
         }

@@ -79,7 +79,7 @@ namespace _Project.Scripts.Features.Data.Storages.BuiltIn.Configs
         [PropertySpace] 
         [PropertyOrder(5)]
         [SerializeField] 
-        private Record record;
+        private RecordDto recordDto;
         
         [PropertySpace(10)]
         [PropertyOrder(5)]
@@ -87,7 +87,7 @@ namespace _Project.Scripts.Features.Data.Storages.BuiltIn.Configs
         private void AddRecord()
         {
             var list = StorageUtils.LoadRecords(this);
-            list.Add(record);
+            list.Add(recordDto);
             StorageUtils.SaveRecords(this, list);
         }
         

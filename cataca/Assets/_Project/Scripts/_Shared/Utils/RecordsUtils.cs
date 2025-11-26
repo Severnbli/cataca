@@ -9,13 +9,13 @@ namespace _Project.Scripts._Shared.Utils
 {
     public static class RecordsUtils
     {
-        public static bool TryGetAudioClipByRecord(List<RecordComponent> records, Record record,
+        public static bool TryGetAudioClipByRecord(List<RecordComponent> records, RecordDto recordDto,
             out AudioClip audioClip)
         {
             audioClip = null;
             
             var recordComponentsWithSuchIds = records
-                .Where(x => x.Record.Id == record.Id)
+                .Where(x => x.recordDto.Id == recordDto.Id)
                 .ToList();
             
             if (recordComponentsWithSuchIds.Count == 0) return false;
@@ -26,12 +26,12 @@ namespace _Project.Scripts._Shared.Utils
         }
 
         public static List<RecordComponent> GetRecordComponentsByRecords(List<RecordComponent> recordComponents,
-            List<Record> records)
+            List<RecordDto> records)
         {
             var ids = records.Select(x => x.Id).ToList();
             
             var result = recordComponents
-                .Where(x => ids.Contains(x.Record.Id))
+                .Where(x => ids.Contains(x.recordDto.Id))
                 .ToList();
             
             return result;
