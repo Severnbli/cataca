@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using _Project.Scripts._Shared.Utils;
 using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features.Mechanics.Anims.Requests;
 using _Project.Scripts.Features.Mechanics.Platforms.Components;
@@ -59,8 +60,12 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
                 {
                     var sequence = DOTween.Sequence();
                     
+                    var currentTransform = localPlatform.Object.transform;
+                    var time = DOTweenUtils.GetTimeToChange(currentTransform.localScale, targetScale,
+                        _animationConfig.ScaleTransitionSpeed);
+                    
                     sequence.Append(localPlatform.Object.transform
-                        .DOScale(targetScale, _animationConfig.TransformDuration)
+                        .DOScale(targetScale, time)
                         .SetEase(_animationConfig.TransformEase)
                     );
                 

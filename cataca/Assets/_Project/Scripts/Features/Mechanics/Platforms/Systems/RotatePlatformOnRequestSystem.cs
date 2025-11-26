@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using _Project.Scripts._Shared.Utils;
 using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features.Mechanics.Anims.Requests;
 using _Project.Scripts.Features.Mechanics.Platforms.Components;
@@ -58,9 +59,13 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
                 tweenQueueAppendRequest.Func = () =>
                 {
                     var sequence = DOTween.Sequence();
+                    
+                    var currentTransform = localPlatform.Object.transform;
+                    var time = DOTweenUtils.GetTimeToChange(currentTransform.rotation, targetRotation,
+                        _animationConfig.RotateTransitionSpeed);
 
                     sequence.Append(localPlatform.Object.transform
-                        .DORotateQuaternion(targetRotation, _animationConfig.TransformDuration)
+                        .DORotateQuaternion(targetRotation, time)
                         .SetEase(_animationConfig.TransformEase)
                     );
                 

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using _Project.Scripts._Shared.Utils;
 using _Project.Scripts.Core.Systems.Interfaces;
 using _Project.Scripts.Features.Mechanics.Anims.Requests;
 using _Project.Scripts.Features.Mechanics.Platforms.Components;
@@ -54,13 +55,17 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Systems
                 
                 var targetPosition = states[platform.PositionId].position;
                 var localPlatform = platform.Platform;
-
+                
                 tweenQueueAppendRequest.Func = () =>
                 {
                     var sequence = DOTween.Sequence();
 
-                    sequence.Append(localPlatform.Object.transform
-                        .DOMove(targetPosition, _animationConfig.TransformDuration)
+                    var currentTransform = localPlatform.Object.transform;
+                    var time = DOTweenUtils.GetTimeToChange(currentTransform.position, targetPosition,
+                        _animationConfig.PositionTransitionSpeed);
+                    
+                    sequence.Append(currentTransform
+                        .DOMove(targetPosition, time)
                         .SetEase(_animationConfig.TransformEase)
                     );
 
