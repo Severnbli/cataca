@@ -4,7 +4,7 @@ using Leopotam.EcsLite;
 
 namespace _Project.Scripts.Features.UI.Buttons.Systems
 {
-    public class ButtonUpdateStateSystem : IEcsInitSystem, IEcsRunSystem, IEcsGameSystem
+    public class ButtonUpdateSystem : IEcsInitSystem, IEcsRunSystem, IEcsGameSystem
     {
         private EcsFilter _filter;
         private EcsPool<ButtonComponent> _buttonPool;
