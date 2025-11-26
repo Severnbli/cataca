@@ -39,7 +39,7 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
             foreach (var e in _filter)
             {
                 ref var button = ref _buttonPool.Get(e);
-                if (!button.Button.Pressed) continue;
+                if (!button.Pressed) continue;
                 
                 ref var levelButton = ref _levelButtonPool.Get(e);
                 StorageUtils.SaveLevelToLoad(_storageConfig, levelButton.LevelButton.LevelDto);
