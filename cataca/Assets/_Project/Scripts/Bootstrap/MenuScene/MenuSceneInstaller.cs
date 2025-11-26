@@ -22,6 +22,8 @@ namespace _Project.Scripts.Bootstrap.MenuScene
 
         protected override void BindSystems()
         {
+            Container.BindInterfacesTo<ButtonUpdateSystem>().AsSingle();
+            
             Container.BindInterfacesTo<AudioSettingsLoaderSystem>().AsSingle();
             Container.BindInterfacesTo<AudioSlidersLoaderSystem>().AsSingle();
             Container.BindInterfacesTo<AudioServiceLoaderSystem>().AsSingle();
