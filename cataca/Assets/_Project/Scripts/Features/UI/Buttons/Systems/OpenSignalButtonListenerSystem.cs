@@ -31,7 +31,7 @@ namespace _Project.Scripts.Features.UI.Buttons.Systems
                 ref var button = ref _buttonPool.Get(e);
                 ref var openSignal = ref _openSignalPool.Get(e);
 
-                openSignal.RequestHandler.openRequested = button.Button.Pressed;
+                openSignal.RequestHandler.openRequested = button.Pressed;
             }
         }
     }

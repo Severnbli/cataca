@@ -31,7 +31,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
             {
                 ref var button = ref _buttonPool.Get(e);
                 
-                if (!button.Button.Pressed) continue;
+                if (!button.Pressed) continue;
                 if (_recordPlayPauseRequestPool.Has(e)) continue;
                 
                 _recordPlayPauseRequestPool.Add(e);

@@ -32,7 +32,7 @@ namespace _Project.Scripts.Features.UI.Buttons.Systems
             {
                 ref var button = ref _buttonPool.Get(e);
 
-                if (!button.Button.Pressed) continue;
+                if (!button.Pressed) continue;
                 
                 var world = systems.GetWorld();
                 var requestEntity = world.NewEntity();
