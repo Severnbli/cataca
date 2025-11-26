@@ -8,7 +8,9 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Configs
     {
         [Header("Transform")]
         
-        [SerializeField] private float _transformDuration = 0.2f;
+        [SerializeField] private float _positionTransitionSpeed = 6f;
+        [SerializeField] private float _rotateTransitionSpeed = 60f;
+        [SerializeField] private float _scaleTransitionSpeed = 6f;
         [SerializeField] private Ease _transformEase = Ease.InOutQuad;
         [SerializeField] private float _transformTransitionDuration = 0.2f;
         
@@ -24,7 +26,9 @@ namespace _Project.Scripts.Features.Mechanics.Platforms.Configs
         [SerializeField] private float _brightnessPulseDuration = 2f;
         [SerializeField] private float _brightnessPulseFactor = 0.2f;
         
-        public float TransformDuration => _transformDuration;
+        public float PositionTransitionSpeed => _positionTransitionSpeed;
+        public float RotateTransitionSpeed => _rotateTransitionSpeed;
+        public float ScaleTransitionSpeed => _scaleTransitionSpeed;
         public Ease TransformEase => _transformEase;
         public float TransformTransitionDuration => _transformTransitionDuration;
         public Color BaseColor => _baseColor;
