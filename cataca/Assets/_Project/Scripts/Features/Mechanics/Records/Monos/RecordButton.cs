@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace _Project.Scripts.Features.Mechanics.Records.Monos
 {
-    public class Record : MonoBehaviour
+    public class RecordButton : MonoBehaviour
     {
         [SerializeField] private Image _icon;
         [SerializeField] private ButtonWrapper _button;
