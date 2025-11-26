@@ -47,6 +47,9 @@ TagManager:
   - name: Platforms
     uniqueID: 1023829493
     locked: 0
+  - name: Blocks
+    uniqueID: 3287704221
+    locked: 0
   - name: UI Overlay
     uniqueID: 1863149165
     locked: 0
