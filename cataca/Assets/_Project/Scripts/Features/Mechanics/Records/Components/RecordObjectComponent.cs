@@ -2,8 +2,8 @@
 
 namespace _Project.Scripts.Features.Mechanics.Records.Components
 {
-    public struct RecordComponent
+    public struct RecordObjectComponent
     {
-        public RecordObject Record;
+        public RecordObject RecordObject;
     }
 }
