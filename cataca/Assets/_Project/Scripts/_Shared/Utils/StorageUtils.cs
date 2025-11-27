@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _Project.Scripts.Features.Data.Entities;
 using _Project.Scripts.Features.Data.Storages.BuiltIn.Configs;
 using UnityEngine;
@@ -42,6 +43,12 @@ namespace _Project.Scripts._Shared.Utils
             SaveBuiltInList(config.Records, records);
         }
 
+        public static void AddRecord(BuiltInStorageConfig config, RecordDto recordDto,
+            Func<List<RecordDto>, bool> condition)
+        {
+            AddToBuiltInListOnCondition(config.Records, recordDto, condition);
+        }
+
         public static Settings LoadSettings(BuiltInStorageConfig config)
         {
             return Load<Settings>(config.Settings);
@@ -64,6 +71,21 @@ namespace _Project.Scripts._Shared.Utils
         public static void SaveBuiltInList<T>(string path, List<T> list)
         {
             PlayerPrefs.SetString(path, JsonUtils.ToJson(list));
+        }
+
+        public static void AddToBuiltInList<T>(string path, T item)
+        {
+            var data = LoadBuiltInList<T>(path);
+            data.Add(item);
+            SaveBuiltInList(path, data);
+        }
+
+        public static void AddToBuiltInListOnCondition<T>(string path, T item, Func<List<T>, bool> condition)
+        {
+            var data = LoadBuiltInList<T>(path);
+            if (!condition(data)) return;
+            data.Add(item);
+            SaveBuiltInList(path, data);
         }
 
         public static T Load<T>(string path) where T : new()
