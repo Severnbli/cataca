@@ -119,6 +119,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<PlatformControlledByInputUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<ResetPlatformStatesOnRequestSystem>().AsSingle();
             
+            Container.BindInterfacesTo<PlayerPickupRecordObjectSystem>().AsSingle();
             Container.BindInterfacesTo<LoadRecordObjectOnRequestSystem>().AsSingle();
 
             Container.BindInterfacesTo<TweenQueueAppendOnRequestSystem>().AsSingle();
