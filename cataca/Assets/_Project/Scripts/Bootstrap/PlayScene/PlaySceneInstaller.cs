@@ -9,6 +9,7 @@ using _Project.Scripts.Features.Mechanics.Levels.Systems;
 using _Project.Scripts.Features.Mechanics.Physics._Shared.Systems;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Checks.Systems;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Systems;
+using _Project.Scripts.Features.Mechanics.Physics.Colliders.Services;
 using _Project.Scripts.Features.Mechanics.Platforms.Systems;
 using _Project.Scripts.Features.Mechanics.Player.Systems;
 using _Project.Scripts.Features.Mechanics.Scenes.Systems;
@@ -28,6 +29,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.Bind<TimeService>().AsSingle();
             Container.Bind<InputService>().AsSingle();
             Container.Bind<LevelService>().AsSingle();
+            Container.Bind<CollisionService>().AsSingle();
         }
 
         protected override void BindSystems()
