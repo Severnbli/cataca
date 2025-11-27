@@ -1,9 +1,8 @@
-﻿using Sirenix.OdinInspector;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace _Project.Scripts.Features.Mechanics.Records.Monos
 {
-    public class RecordObject : SerializedMonoBehaviour
+    public class RecordObject : MonoBehaviour
     {
         [SerializeField] private int _recordId;
         [SerializeField] private Collider2D _collider;
