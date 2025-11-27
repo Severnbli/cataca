@@ -15,7 +15,7 @@ namespace _Project.Scripts._Shared.Utils
             audioClip = null;
             
             var recordComponentsWithSuchIds = records
-                .Where(x => x.recordDto.Id == recordDto.Id)
+                .Where(x => x.RecordDto.Id == recordDto.Id)
                 .ToList();
             
             if (recordComponentsWithSuchIds.Count == 0) return false;
@@ -31,7 +31,7 @@ namespace _Project.Scripts._Shared.Utils
             var ids = records.Select(x => x.Id).ToList();
             
             var result = recordComponents
-                .Where(x => ids.Contains(x.recordDto.Id))
+                .Where(x => ids.Contains(x.RecordDto.Id))
                 .ToList();
             
             return result;

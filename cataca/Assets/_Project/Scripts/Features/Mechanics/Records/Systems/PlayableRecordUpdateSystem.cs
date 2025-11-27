@@ -41,7 +41,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
                 ref var record = ref _recordPool.Get(e);
                 ref var playable = ref _playablePool.Get(e);
                 
-                if (_recordsPlayService.Current != record.recordDto || !_recordsPlayService.Playing)
+                if (_recordsPlayService.Current != record.RecordDto || !_recordsPlayService.Playing)
                 {
                     playable.Playable.sprite = _audioConfig.PlayableIsOff;
                     continue;

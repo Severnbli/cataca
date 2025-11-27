@@ -49,7 +49,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
             
             ref var record = ref _recordPool.Get(requestEntity);
 
-            if (record.recordDto == _recordsPlayService.Current)
+            if (record.RecordDto == _recordsPlayService.Current)
             {
                 if (_recordsPlayService.Playing)
                 {
@@ -91,7 +91,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
         private void StartPlayback(RecordUiComponent recordUi)
         {
             _recordsPlayService.Playing = true;
-            _recordsPlayService.Current = recordUi.recordDto;
+            _recordsPlayService.Current = recordUi.RecordDto;
 
             foreach (var e in _audioSourcesFilter)
             {
