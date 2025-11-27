@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using _Project.Scripts.Features.Mechanics.Physics.Colliders.Enums;
+using _Project.Scripts.Features.Mechanics.Physics.Colliders.Types;
+using UnityEngine;
 
 namespace _Project.Scripts._Shared.Utils
 {
@@ -106,6 +108,53 @@ namespace _Project.Scripts._Shared.Utils
                     Gizmos.DrawLine(a, b);
                 }
             }
+        }
+
+        public static bool TryCollide(Collider2D colliderA, Collider2D colliderB, out bool collide,
+            out ColliderDistance2D result)
+        {
+            collide = false;
+            
+            result = Physics2D.Distance(colliderA, colliderB);
+            if (result is not { isValid: true })
+            {
+                return false;
+            }
+
+            collide = result.isOverlapped;
+            return true;
+        }
+
+        public static bool TryGetCollisionCheckResult(Collider2D colliderA, Collider2D colliderB,
+            out CollisionCheckResult result, CollisionCheckResult prev = default)
+        {
+            result = default;
+
+            if (!TryCollide(colliderA, colliderB, out var collide, out var collisionDistance))
+            {
+                return false;
+            }
+
+            result.Distance = collisionDistance;
+                
+            if (collide)
+            {
+                result.CheckStatus = prev.CheckStatus switch
+                {
+                    CollisionCheckStatus.Start or CollisionCheckStatus.Continue => CollisionCheckStatus.Continue,
+                    _ => CollisionCheckStatus.Start
+                };
+            }
+            else
+            {
+                result.CheckStatus = prev.CheckStatus switch
+                {
+                    CollisionCheckStatus.No or CollisionCheckStatus.Stop => CollisionCheckStatus.No,
+                    _ => CollisionCheckStatus.Stop
+                };
+            }
+            
+            return true;
         }
     }
 }
