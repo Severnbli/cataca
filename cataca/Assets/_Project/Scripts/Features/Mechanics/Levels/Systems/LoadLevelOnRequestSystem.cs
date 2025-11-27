@@ -4,6 +4,8 @@ using _Project.Scripts.Features.Mechanics.Levels.Monos;
 using _Project.Scripts.Features.Mechanics.Levels.Requests;
 using _Project.Scripts.Features.Mechanics.Platforms.Monos;
 using _Project.Scripts.Features.Mechanics.Platforms.Requests;
+using _Project.Scripts.Features.Mechanics.Records.Monos;
+using _Project.Scripts.Features.Mechanics.Records.Requests;
 using Leopotam.EcsLite;
 
 namespace _Project.Scripts.Features.Mechanics.Levels.Systems
@@ -14,6 +16,7 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
         private EcsFilter _filter;
         private EcsPool<LoadLevelRequest> _loadLevelRequestPool;
         private EcsPool<LoadPlatformRequest> _loadPlatformRequestPool;
+        private EcsPool<LoadRecordObjectRequest> _loadRecordObjectRequestPool;
         
         public void Init(IEcsSystems systems)
         {
@@ -25,6 +28,7 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
             
             _loadLevelRequestPool = _world.GetPool<LoadLevelRequest>();
             _loadPlatformRequestPool = _world.GetPool<LoadPlatformRequest>();
+            _loadRecordObjectRequestPool = _world.GetPool<LoadRecordObjectRequest>();
         }
 
         public void PostRun(IEcsSystems systems)
@@ -32,11 +36,12 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
             foreach (var e in _filter)
             {
                 var request = _loadLevelRequestPool.Get(e);
-                LoadLevel(request.Level, e);
+                LoadLevels(request.Level);
+                LoadRecords(request.Level);
             }
         }
 
-        private void LoadLevel(Level level, int entity)
+        private void LoadLevels(Level level)
         {
             var platforms = level.PlatformsParent.GetChildComponents<Platform>();
 
@@ -45,6 +50,18 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
                 var platformEntity = _world.NewEntity();
                 ref var loadPlatformRequest = ref _loadPlatformRequestPool.Add(platformEntity);
                 loadPlatformRequest.Platform = platform;
+            }
+        }
+        
+        private void LoadRecords(Level level)
+        {
+            var records = level.RecordsParent.GetChildComponents<RecordObject>();
+
+            foreach (var record in records)
+            {
+                var recordEntity = _world.NewEntity();
+                ref var loadRecordObject = ref _loadRecordObjectRequestPool.Add(recordEntity);
+                loadRecordObject.RecordObject = record;
             }
         }
     }
