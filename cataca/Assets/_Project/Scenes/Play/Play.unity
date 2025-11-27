@@ -531,6 +531,7 @@ GameObject:
   - component: {fileID: 1506968988}
   - component: {fileID: 1506968990}
   - component: {fileID: 1506968991}
+  - component: {fileID: 1506968992}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -682,6 +683,7 @@ MonoBehaviour:
   - {fileID: 1506968987}
   - {fileID: 1506968990}
   - {fileID: 1506968991}
+  - {fileID: 1506968992}
   _destroyAfterConversion: 0
 --- !u!114 &1506968984
 MonoBehaviour:
@@ -832,6 +834,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _component:
     Transform: {fileID: 1506968977}
+--- !u!114 &1506968992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506968976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe5fe0c28f444f6b2363eac8a5319c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _component:
+    Collider: {fileID: 1506968989}
 --- !u!1 &2031705481
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,6 +902,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9e18dd4e4eee2ac4c92adc09d38421a3, type: 2}
   - {fileID: 11400000, guid: a5ed41dfc26b511408a966651fb582c1, type: 2}
   - {fileID: 11400000, guid: c5680303b3ed7564f81700f8c41180ee, type: 2}
+  - {fileID: 11400000, guid: fa60598cda8bd4c4ca740e08682db692, type: 2}
   _monoInstallers:
   - {fileID: 307701178}
   _installerPrefabs: []
