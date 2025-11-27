@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: RecordsUIInstantiatorConfig
   m_EditorClassIdentifier: 
   _prefab: {fileID: 373131750488355174, guid: 95160e495d503b24d89fb7c91c01c310, type: 3}
-  _icons:
-  - {fileID: 21300000, guid: 4862e5b436cd4d74da8651c26cd7b565, type: 3}
-  - {fileID: 21300000, guid: de76f38665f6c21439241a88dbaceb65, type: 3}
+  _icon: {fileID: 21300000, guid: de76f38665f6c21439241a88dbaceb65, type: 3}
