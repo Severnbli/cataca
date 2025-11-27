@@ -14,11 +14,11 @@ namespace _Project.Scripts.Features.Mechanics.Records.Configs
     {
         [SerializeField] 
         [OnValueChanged("ValidateRecords")]
-        private List<RecordComponent> _records;
+        private List<RecordUiComponent> _records;
 
         [SerializeField] private bool _loopedPlayback = true;
         
-        public List<RecordComponent> Records => _records;
+        public List<RecordUiComponent> Records => _records;
         public bool LoopedPlayback => _loopedPlayback;
 
 #if UNITY_EDITOR

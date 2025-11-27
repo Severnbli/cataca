@@ -22,7 +22,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
         private RecordsConfig _recordsConfig;
         private EcsFilter _audioSourcesFilter;
         private EcsFilter _requestsFilter;
-        private EcsPool<RecordComponent> _recordPool;
+        private EcsPool<RecordUiComponent> _recordPool;
         private EcsPool<AudioSourceComponent> _audioSourcePool;
         
         public void Init(IEcsSystems systems)
@@ -36,11 +36,11 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
 
             _requestsFilter = world
                 .Filter<RecordPlayPauseRequest>()
-                .Inc<RecordComponent>()
+                .Inc<RecordUiComponent>()
                 .End();
             
             _audioSourcePool = world.GetPool<AudioSourceComponent>();
-            _recordPool = world.GetPool<RecordComponent>();
+            _recordPool = world.GetPool<RecordUiComponent>();
         }
 
         public void PostRun(IEcsSystems systems)
@@ -88,15 +88,15 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
             }
         }
 
-        private void StartPlayback(RecordComponent record)
+        private void StartPlayback(RecordUiComponent recordUi)
         {
             _recordsPlayService.Playing = true;
-            _recordsPlayService.Current = record.recordDto;
+            _recordsPlayService.Current = recordUi.recordDto;
 
             foreach (var e in _audioSourcesFilter)
             {
                 ref var audioSource = ref _audioSourcePool.Get(e);
-                audioSource.AudioSource.clip = record.AudioClip;
+                audioSource.AudioSource.clip = recordUi.AudioClip;
                 audioSource.AudioSource.loop = _recordsConfig.LoopedPlayback;
                 audioSource.AudioSource.Play();
             }

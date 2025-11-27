@@ -9,7 +9,7 @@ namespace _Project.Scripts._Shared.Utils
 {
     public static class RecordsUtils
     {
-        public static bool TryGetAudioClipByRecord(List<RecordComponent> records, RecordDto recordDto,
+        public static bool TryGetAudioClipByRecord(List<RecordUiComponent> records, RecordDto recordDto,
             out AudioClip audioClip)
         {
             audioClip = null;
@@ -25,7 +25,7 @@ namespace _Project.Scripts._Shared.Utils
             return audioClip != null;
         }
 
-        public static List<RecordComponent> GetRecordComponentsByRecords(List<RecordComponent> recordComponents,
+        public static List<RecordUiComponent> GetRecordComponentsByRecords(List<RecordUiComponent> recordComponents,
             List<RecordDto> records)
         {
             var ids = records.Select(x => x.Id).ToList();
@@ -37,7 +37,7 @@ namespace _Project.Scripts._Shared.Utils
             return result;
         }
 
-        public static List<RecordComponent> GetRecordComponentsByMemory(List<RecordComponent> recordComponents,
+        public static List<RecordUiComponent> GetRecordComponentsByMemory(List<RecordUiComponent> recordComponents,
             BuiltInStorageConfig config)
         {
             var records = StorageUtils.LoadRecords(config);
