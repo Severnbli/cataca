@@ -10,6 +10,7 @@ using _Project.Scripts.Features.Mechanics.Physics._Shared.Systems;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Checks.Systems;
 using _Project.Scripts.Features.Mechanics.Physics.Characters.Movement.Systems;
 using _Project.Scripts.Features.Mechanics.Physics.Colliders.Services;
+using _Project.Scripts.Features.Mechanics.Physics.Colliders.Systems;
 using _Project.Scripts.Features.Mechanics.Platforms.Systems;
 using _Project.Scripts.Features.Mechanics.Player.Systems;
 using _Project.Scripts.Features.Mechanics.Scenes.Systems;
@@ -35,6 +36,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
         protected override void BindSystems()
         {
             Container.BindInterfacesTo<ButtonUpdateSystem>().AsSingle();
+            Container.BindInterfacesTo<CollisionCheckSystem>().AsSingle();
             
             Container.BindInterfacesTo<PlayerMovementConfigSetupSystem>().AsSingle();
             Container.BindInterfacesTo<AudioSettingsLoaderSystem>().AsSingle();
