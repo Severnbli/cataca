@@ -30,11 +30,11 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
         private BuiltInStorageConfig _storageConfig;
         private EcsWorld _world;
         private EcsFilter _containerFilter;
-        private EcsPool<RecordComponent> _recordPool;
+        private EcsPool<RecordUiComponent> _recordPool;
         private EcsPool<ButtonComponent> _buttonPool;
         private EcsPool<ContainerComponent> _containerPool;
         private EcsPool<PlayableComponent> _playablePool;
-        private List<RecordComponent> _recordsToSpawn = new();
+        private List<RecordUiComponent> _recordsToSpawn = new();
         
         public void Init(IEcsSystems systems)
         {
@@ -48,7 +48,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
                 .Inc<RecordsContainerMarker>()
                 .End();
             
-            _recordPool = _world.GetPool<RecordComponent>();
+            _recordPool = _world.GetPool<RecordUiComponent>();
             _buttonPool = _world.GetPool<ButtonComponent>();
             _containerPool = _world.GetPool<ContainerComponent>();
             _playablePool = _world.GetPool<PlayableComponent>();

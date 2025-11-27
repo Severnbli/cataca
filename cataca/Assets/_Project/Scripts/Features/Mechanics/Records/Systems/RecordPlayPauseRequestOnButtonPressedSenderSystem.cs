@@ -17,7 +17,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
             var world = systems.GetWorld();
 
             _filter = world
-                .Filter<RecordComponent>()
+                .Filter<RecordUiComponent>()
                 .Inc<ButtonComponent>()
                 .End();
             

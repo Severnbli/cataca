@@ -5,7 +5,7 @@ using UnityEngine;
 namespace _Project.Scripts.Features.Mechanics.Records.Components
 {
     [Serializable]
-    public struct RecordComponent
+    public struct RecordUiComponent
     {
         public RecordDto recordDto;
         public AudioClip AudioClip;

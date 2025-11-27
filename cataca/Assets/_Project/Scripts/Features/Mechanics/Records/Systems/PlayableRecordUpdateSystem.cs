@@ -18,7 +18,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
         private AudioConfig _audioConfig;
         private RecordsPlayService _recordsPlayService;
         private EcsFilter _filter;
-        private EcsPool<RecordComponent> _recordPool;
+        private EcsPool<RecordUiComponent> _recordPool;
         private EcsPool<PlayableComponent> _playablePool;
         
         public void Init(IEcsSystems systems)
@@ -26,11 +26,11 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
             var world = systems.GetWorld();
 
             _filter = world
-                .Filter<RecordComponent>()
+                .Filter<RecordUiComponent>()
                 .Inc<PlayableComponent>()
                 .End();
             
-            _recordPool = world.GetPool<RecordComponent>();
+            _recordPool = world.GetPool<RecordUiComponent>();
             _playablePool = world.GetPool<PlayableComponent>();
         }
 
