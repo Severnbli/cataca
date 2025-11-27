@@ -55,10 +55,15 @@ namespace _Project.Scripts.Features.Mechanics.Physics.Colliders.Systems
                 {
                     var colliderB = _colliders[j];
                     var pair = new ColliderPair(colliderA, colliderB);
-                    dict.TryGetValue(pair, out var prevResult);
+                    var prevExists = dict.TryGetValue(pair, out var prevResult);
 
                     if (!Collider2DUtils.TryGetCollisionCheckResult(colliderA, colliderB, out var result, prevResult))
                     {
+                        if (prevExists)
+                        {
+                            dict.Remove(pair);
+                        }
+                        
                         continue;
                     }
                     dict[pair] = result;
