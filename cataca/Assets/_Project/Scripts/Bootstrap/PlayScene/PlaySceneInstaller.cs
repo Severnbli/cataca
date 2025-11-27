@@ -36,6 +36,8 @@ namespace _Project.Scripts.Bootstrap.PlayScene
 
         protected override void BindSystems()
         {
+            Container.BindInterfacesTo<DestroyRecordObjectByIdInStorageSystem>().AsSingle();
+            
             Container.BindInterfacesTo<ButtonUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<CollisionCheckSystem>().AsSingle();
             
