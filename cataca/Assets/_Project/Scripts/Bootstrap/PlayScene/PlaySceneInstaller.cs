@@ -13,6 +13,7 @@ using _Project.Scripts.Features.Mechanics.Physics.Colliders.Services;
 using _Project.Scripts.Features.Mechanics.Physics.Colliders.Systems;
 using _Project.Scripts.Features.Mechanics.Platforms.Systems;
 using _Project.Scripts.Features.Mechanics.Player.Systems;
+using _Project.Scripts.Features.Mechanics.Records.Systems;
 using _Project.Scripts.Features.Mechanics.Scenes.Systems;
 using _Project.Scripts.Features.Mechanics.Time.Services;
 using _Project.Scripts.Features.Mechanics.Time.Systems;
@@ -127,6 +128,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<ResetPlatformStatesRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadSceneRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<MoveToLevelSpawnPointRequestDeleterSystem>().AsSingle();
+            Container.BindInterfacesTo<LoadRecordObjectRequestDeleterSystem>().AsSingle();
             
             Container.BindInterfacesTo<TweenKillOnDisposeSystem>().AsSingle();
         }
