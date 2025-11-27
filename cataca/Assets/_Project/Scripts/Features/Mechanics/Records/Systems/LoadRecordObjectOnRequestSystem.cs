@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using _Project.Scripts._Shared.Extensions;
 using _Project.Scripts.Core.Systems.Interfaces;
+using _Project.Scripts.Features.Mechanics.Levels.Markers;
 using _Project.Scripts.Features.Mechanics.Physics.Colliders.Components;
 using _Project.Scripts.Features.Mechanics.Records.Components;
 using _Project.Scripts.Features.Mechanics.Records.Requests;
@@ -14,6 +15,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
         private EcsPool<LoadRecordObjectRequest> _loadRecordObjectRequestPool;
         private EcsPool<RecordObjectComponent> _recordObjectPool;
         private EcsPool<ColliderComponent> _colliderPool;
+        private EcsPool<DelEntityOnDestroyLevelMarker> _delEntityOnDestroyLevelMarkerPool;
         
         public void Init(IEcsSystems systems)
         {
@@ -26,6 +28,7 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
             _loadRecordObjectRequestPool = world.GetPool<LoadRecordObjectRequest>();
             _recordObjectPool = world.GetPool<RecordObjectComponent>();
             _colliderPool = world.GetPool<ColliderComponent>();
+            _delEntityOnDestroyLevelMarkerPool = world.GetPool<DelEntityOnDestroyLevelMarker>();
         }
 
         public void PostRun(IEcsSystems systems)
@@ -39,6 +42,8 @@ namespace _Project.Scripts.Features.Mechanics.Records.Systems
                 
                 ref var collider = ref _colliderPool.AddComponentIfNotExists(e);
                 collider.Collider = recordObject.RecordObject.Collider;
+
+                _delEntityOnDestroyLevelMarkerPool.AddComponentIfNotExists(e);
             }
         }
     }
