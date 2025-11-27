@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using _Project.Scripts.Features.Data.Entities;
 using _Project.Scripts.Features.Data.Storages.BuiltIn.Configs;
 using UnityEngine;
@@ -43,10 +44,10 @@ namespace _Project.Scripts._Shared.Utils
             SaveBuiltInList(config.Records, records);
         }
 
-        public static void AddRecord(BuiltInStorageConfig config, RecordDto recordDto,
-            Func<List<RecordDto>, bool> condition)
+        public static void AddRecord(BuiltInStorageConfig config, RecordDto recordDto)
         {
-            AddToBuiltInListOnCondition(config.Records, recordDto, condition);
+            AddToBuiltInListOnCondition(config.Records, recordDto,
+                (list) => !list.Select(x => x.Id).Contains(recordDto.Id));
         }
 
         public static Settings LoadSettings(BuiltInStorageConfig config)
