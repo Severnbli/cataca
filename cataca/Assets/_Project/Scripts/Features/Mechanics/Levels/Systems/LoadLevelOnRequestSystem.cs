@@ -17,6 +17,7 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
         private EcsPool<LoadLevelRequest> _loadLevelRequestPool;
         private EcsPool<LoadPlatformRequest> _loadPlatformRequestPool;
         private EcsPool<LoadRecordObjectRequest> _loadRecordObjectRequestPool;
+        private EcsPool<LoadLevelCompleterRequest> _loadLevelCompleterRequestPool;
         
         public void Init(IEcsSystems systems)
         {
@@ -29,6 +30,7 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
             _loadLevelRequestPool = _world.GetPool<LoadLevelRequest>();
             _loadPlatformRequestPool = _world.GetPool<LoadPlatformRequest>();
             _loadRecordObjectRequestPool = _world.GetPool<LoadRecordObjectRequest>();
+            _loadLevelCompleterRequestPool = _world.GetPool<LoadLevelCompleterRequest>();
         }
 
         public void PostRun(IEcsSystems systems)
@@ -38,6 +40,7 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
                 var request = _loadLevelRequestPool.Get(e);
                 LoadLevels(request.Level);
                 LoadRecords(request.Level);
+                LoadLevelCompleter(request.Level);
             }
         }
 
@@ -63,6 +66,14 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
                 ref var loadRecordObject = ref _loadRecordObjectRequestPool.Add(recordEntity);
                 loadRecordObject.RecordObject = record;
             }
+        }
+        
+        private void LoadLevelCompleter(Level level)
+        {
+            var levelCompleterEntity = _world.NewEntity();
+            ref var loadLevelCompleterRequest =
+                ref _loadLevelCompleterRequestPool.AddComponentIfNotExists(levelCompleterEntity);
+            loadLevelCompleterRequest.LevelCompleter = level.LevelCompleter;
         }
     }
 }
