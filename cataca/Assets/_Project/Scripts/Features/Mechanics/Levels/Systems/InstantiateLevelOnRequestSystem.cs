@@ -89,6 +89,7 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
             }
             
             var levelObject = Object.Instantiate(levelComponent.Prefab, parent);
+            levelObject.SetActive(true);
             var level = levelObject.GetComponent<Level>();
             
             _levelService.Loaded = true;
