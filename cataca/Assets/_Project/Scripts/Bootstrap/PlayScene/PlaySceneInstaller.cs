@@ -52,6 +52,8 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<TweenQueueAppendRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadPlatformRequestDeleterSystem>().AsSingle();
             
+            Container.BindInterfacesTo<KillPlayerByDangerSystem>().AsSingle();
+            
             Container.BindInterfacesTo<PositionPlatformRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<RotatePlatformRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<ScalePlatformRequestDeleterSystem>().AsSingle();
