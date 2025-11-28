@@ -33,6 +33,8 @@ namespace _Project.Scripts.Features.Mechanics.Player.Systems
 
         public void PostRun(IEcsSystems systems)
         {
+            if (_playersFilter.GetEntitiesCount() == 0) return;
+            
             foreach (var e in _playersFilter)
             {
                 _playDeathAnimationPool.AddComponentIfNotExists(e);
