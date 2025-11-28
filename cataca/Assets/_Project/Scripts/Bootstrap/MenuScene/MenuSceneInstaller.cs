@@ -27,6 +27,7 @@ namespace _Project.Scripts.Bootstrap.MenuScene
             Container.BindInterfacesTo<AudioSettingsLoaderSystem>().AsSingle();
             Container.BindInterfacesTo<AudioSlidersLoaderSystem>().AsSingle();
             Container.BindInterfacesTo<AudioServiceLoaderSystem>().AsSingle();
+            Container.BindInterfacesTo<AudioThemeVolumeSetupSystem>().AsSingle();
             
             Container.BindInterfacesTo<RecordsUIInstantiatorSystem>().AsSingle();
             Container.BindInterfacesTo<SpawnLevelsButtonsFromStorageSystem>().AsSingle();
