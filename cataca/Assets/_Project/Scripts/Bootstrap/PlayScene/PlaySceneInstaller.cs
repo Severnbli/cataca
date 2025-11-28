@@ -125,6 +125,8 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             
             Container.BindInterfacesTo<PlayerPickupRecordObjectSystem>().AsSingle();
             Container.BindInterfacesTo<LoadRecordObjectOnRequestSystem>().AsSingle();
+            
+            Container.BindInterfacesTo<LoadDangerOnRequestSystem>().AsSingle();
 
             Container.BindInterfacesTo<TweenQueueAppendOnRequestSystem>().AsSingle();
             Container.BindInterfacesTo<TweenQueueUpdateSystem>().AsSingle();
