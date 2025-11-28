@@ -93,6 +93,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<PlayerFallAnimationUpdateSystem>().AsSingle();
             Container.BindInterfacesTo<PlayerJumpAnimationTriggerSystem>().AsSingle();
             Container.BindInterfacesTo<PlayerWalkAnimationUpdateSystem>().AsSingle();
+            Container.BindInterfacesTo<PlayDeathAnimationOnRequestSystem>().AsSingle();
 
             Container.BindInterfacesTo<FlipObjectOnWalkSystem>().AsSingle();
 
