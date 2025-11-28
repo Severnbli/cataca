@@ -53,6 +53,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<LoadPlatformRequestDeleterSystem>().AsSingle();
             
             Container.BindInterfacesTo<KillPlayerByDangerSystem>().AsSingle();
+            Container.BindInterfacesTo<SendLoadSceneRequestOnAnimationEndSystem>().AsSingle();
             
             Container.BindInterfacesTo<PositionPlatformRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<RotatePlatformRequestDeleterSystem>().AsSingle();
