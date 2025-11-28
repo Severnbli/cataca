@@ -1,5 +1,6 @@
 ﻿using _Project.Scripts._Shared.Extensions;
 using _Project.Scripts.Core.Systems.Interfaces;
+using _Project.Scripts.Features.Mechanics.Dangers.Components;
 using _Project.Scripts.Features.Mechanics.Physics.Colliders.Components;
 using _Project.Scripts.Features.Mechanics.Physics.Colliders.Enums;
 using _Project.Scripts.Features.Mechanics.Physics.Colliders.Services;
@@ -34,7 +35,7 @@ namespace _Project.Scripts.Features.Mechanics.Dangers.Systems
 
             _dangersFilter = world
                 .Filter<ColliderComponent>()
-                .Inc<ColliderComponent>()
+                .Inc<DangerComponent>()
                 .End();
             
             _colliderPool = world.GetPool<ColliderComponent>();
