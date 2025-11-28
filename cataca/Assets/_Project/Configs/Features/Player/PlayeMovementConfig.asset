@@ -24,3 +24,4 @@ MonoBehaviour:
     Force: 15
     MaxCount: 1
     Duration: 0.4
+  _fallThreshold: 0.5
