@@ -2,7 +2,10 @@
 using _Project.Scripts.Core.Systems.Interfaces;
 using AB_Utility.FromSceneToEntityConverter;
 using Leopotam.EcsLite;
+
+#if UNITY_EDITOR
 using Leopotam.EcsLite.UnityEditor;
+#endif
 
 namespace _Project.Scripts.Core.Systems.Collections
 {

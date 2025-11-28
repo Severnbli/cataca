@@ -1,0 +1,15 @@
+﻿using System;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace _Project.Scripts.Features.UI.Popups.Components
+{
+    [Serializable]
+    public struct PopupComponent
+    {
+        public GameObject Parent;
+        public Image Fade;
+        public GameObject Body;
+        public bool Opened;
+    }
+}
