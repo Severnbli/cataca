@@ -1,5 +1,7 @@
 ﻿using _Project.Scripts._Shared.Extensions;
 using _Project.Scripts.Core.Systems.Interfaces;
+using _Project.Scripts.Features.Mechanics.Dangers.Monos;
+using _Project.Scripts.Features.Mechanics.Dangers.Requests;
 using _Project.Scripts.Features.Mechanics.Levels.Monos;
 using _Project.Scripts.Features.Mechanics.Levels.Requests;
 using _Project.Scripts.Features.Mechanics.Platforms.Monos;
@@ -18,6 +20,7 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
         private EcsPool<LoadPlatformRequest> _loadPlatformRequestPool;
         private EcsPool<LoadRecordObjectRequest> _loadRecordObjectRequestPool;
         private EcsPool<LoadLevelCompleterRequest> _loadLevelCompleterRequestPool;
+        private EcsPool<LoadDangerRequest> _loadDangerRequestPool;
         
         public void Init(IEcsSystems systems)
         {
@@ -31,6 +34,7 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
             _loadPlatformRequestPool = _world.GetPool<LoadPlatformRequest>();
             _loadRecordObjectRequestPool = _world.GetPool<LoadRecordObjectRequest>();
             _loadLevelCompleterRequestPool = _world.GetPool<LoadLevelCompleterRequest>();
+            _loadDangerRequestPool = _world.GetPool<LoadDangerRequest>();
         }
 
         public void PostRun(IEcsSystems systems)
@@ -41,6 +45,7 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
                 LoadLevels(request.Level);
                 LoadRecords(request.Level);
                 LoadLevelCompleter(request.Level);
+                LoadDangers(request.Level);
             }
         }
 
@@ -74,6 +79,18 @@ namespace _Project.Scripts.Features.Mechanics.Levels.Systems
             ref var loadLevelCompleterRequest =
                 ref _loadLevelCompleterRequestPool.AddComponentIfNotExists(levelCompleterEntity);
             loadLevelCompleterRequest.LevelCompleter = level.LevelCompleter;
+        }
+        
+        private void LoadDangers(Level level)
+        {
+            var dangers = level.DangersParent.GetChildComponents<Danger>();
+
+            foreach (var danger in dangers)
+            {
+                var dangerEntity = _world.NewEntity();
+                ref var loadDanger = ref _loadDangerRequestPool.Add(dangerEntity);
+                loadDanger.Danger = danger;
+            }
         }
     }
 }
