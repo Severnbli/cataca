@@ -47,7 +47,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<AudioThemeVolumeSetupSystem>().AsSingle();
             Container.BindInterfacesTo<LoadLevelsFromConfigSystem>().AsSingle();
             Container.BindInterfacesTo<SpawnLevelFromStorageSystem>().AsSingle();
-            Container.BindInterfacesTo<DisableTouchOnlyInputOnDesktopSystem>().AsSingle();
+            Container.BindInterfacesTo<EnableTouchOnlyInputOnNonDesktopSystem>().AsSingle();
             
             Container.BindInterfacesTo<TweenQueueAppendRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadPlatformRequestDeleterSystem>().AsSingle();

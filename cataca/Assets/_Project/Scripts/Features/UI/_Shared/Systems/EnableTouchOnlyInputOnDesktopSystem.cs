@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace _Project.Scripts.Features.UI._Shared.Systems
 {
-    public class DisableTouchOnlyInputOnDesktopSystem : IEcsInitSystem, IEcsGameSystem
+    public class EnableTouchOnlyInputOnNonDesktopSystem : IEcsInitSystem, IEcsGameSystem
     {
         public void Init(IEcsSystems systems)
         {
-            if (SystemInfo.deviceType != DeviceType.Desktop) return;
+            if (SystemInfo.deviceType == DeviceType.Desktop) return;
             
             var world = systems.GetWorld();
 
@@ -24,7 +24,7 @@ namespace _Project.Scripts.Features.UI._Shared.Systems
             foreach (var e in filter)
             {
                 ref var transform = ref transformPool.Get(e);
-                transform.Transform.gameObject.SetActive(false);
+                transform.Transform.gameObject.SetActive(true);
             }
         }
     }
