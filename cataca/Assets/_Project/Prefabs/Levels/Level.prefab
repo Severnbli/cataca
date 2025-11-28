@@ -332,6 +332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _platformsParent: {fileID: 3724466923399870134}
   _recordsParent: {fileID: 890522816362373231}
+  _dangersParent: {fileID: 5856251245277746301}
   _spawnPoint: {fileID: 19525991224361391}
   _levelCompleter: {fileID: 3742313595758516151}
 --- !u!1001 &3287305366524317295
