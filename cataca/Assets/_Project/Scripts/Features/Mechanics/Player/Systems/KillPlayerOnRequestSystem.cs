@@ -13,6 +13,7 @@ namespace _Project.Scripts.Features.Mechanics.Player.Systems
         private EcsFilter _controlledByInputFilter;
         private EcsPool<PlayDeathAnimationRequest> _playDeathAnimationPool;
         private EcsPool<ControlledByInputMarker> _controlledByInputMarkerPool;
+        private EcsPool<PlayerMarker> _playerMarkerPool;
         
         public void Init(IEcsSystems systems)
         {
@@ -29,6 +30,7 @@ namespace _Project.Scripts.Features.Mechanics.Player.Systems
             
             _playDeathAnimationPool = world.GetPool<PlayDeathAnimationRequest>();
             _controlledByInputMarkerPool = world.GetPool<ControlledByInputMarker>();
+            _playerMarkerPool = world.GetPool<PlayerMarker>();
         }
 
         public void PostRun(IEcsSystems systems)
@@ -38,6 +40,7 @@ namespace _Project.Scripts.Features.Mechanics.Player.Systems
             foreach (var e in _playersFilter)
             {
                 _playDeathAnimationPool.AddComponentIfNotExists(e);
+                _playerMarkerPool.DelComponentIfExists(e);
             }
 
             foreach (var e in _controlledByInputFilter)
