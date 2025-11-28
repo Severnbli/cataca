@@ -142,6 +142,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<LoadRecordObjectRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadLevelCompleterRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadDangerRequestDeleterSystem>().AsSingle();
+            Container.BindInterfacesTo<KillPlayerRequestDeleterSystem>().AsSingle();
             
             Container.BindInterfacesTo<TweenKillOnDisposeSystem>().AsSingle();
         }
