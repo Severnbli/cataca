@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8645637040817437012}
   - component: {fileID: 8687604013335458555}
   - component: {fileID: 1189468981701359521}
+  - component: {fileID: 3612954475714148782}
   m_Layer: 0
   m_Name: Danger
   m_TagString: Untagged
@@ -134,3 +135,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3612954475714148782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7769319831529889485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b781a8ce046430a885cb4b0129ef910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 1189468981701359521}
