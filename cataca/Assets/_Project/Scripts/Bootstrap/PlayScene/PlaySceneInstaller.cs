@@ -1,6 +1,7 @@
 ﻿using _Project.Scripts.Bootstrap._Shared;
 using _Project.Scripts.Features.Audio.Systems;
 using _Project.Scripts.Features.Mechanics.Anims.Systems;
+using _Project.Scripts.Features.Mechanics.Dangers.Systems;
 using _Project.Scripts.Features.Mechanics.Input.Services;
 using _Project.Scripts.Features.Mechanics.Input.Systems;
 using _Project.Scripts.Features.Mechanics.Levels.Requests;
@@ -138,6 +139,7 @@ namespace _Project.Scripts.Bootstrap.PlayScene
             Container.BindInterfacesTo<MoveToLevelSpawnPointRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadRecordObjectRequestDeleterSystem>().AsSingle();
             Container.BindInterfacesTo<LoadLevelCompleterRequestDeleterSystem>().AsSingle();
+            Container.BindInterfacesTo<LoadDangerRequestDeleterSystem>().AsSingle();
             
             Container.BindInterfacesTo<TweenKillOnDisposeSystem>().AsSingle();
         }
