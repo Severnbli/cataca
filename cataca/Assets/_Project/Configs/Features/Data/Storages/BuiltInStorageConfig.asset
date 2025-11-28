@@ -19,5 +19,5 @@ MonoBehaviour:
   _level:
     Id: 0
     Name: 
-  record:
+  recordDto:
     Id: 0
