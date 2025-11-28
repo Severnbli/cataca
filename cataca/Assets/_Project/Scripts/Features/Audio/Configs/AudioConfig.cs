@@ -10,6 +10,7 @@ namespace _Project.Scripts.Features.Audio.Configs
     {
         [SerializeField] private Sprite _playableIsOn;
         [SerializeField] private Sprite _playableIsOff;
+        [SerializeField] private float themeVolume = 0.5f;
         
         [SerializeField] 
 #if UNITY_EDITOR
@@ -40,6 +41,7 @@ namespace _Project.Scripts.Features.Audio.Configs
 
         public Sprite PlayableIsOn => _playableIsOn;
         public Sprite PlayableIsOff => _playableIsOff;
+        public float ThemeVolume => themeVolume;
         public AudioMixer AudioMixer => _audioMixer;
         public string GlobalVolume => _globalVolume;
         public string MusicVolume => _musicVolume;
