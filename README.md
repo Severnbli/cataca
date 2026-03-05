@@ -18,8 +18,8 @@ Unity 2D puzzle-platformer game.
 
 ### Installing
 
-* Android version: // TODO: add link
-* Windows version: // TODO: add link
+* Android version: [link](https://github.com/Severnbli/cataca/releases/download/stable/cataca.apk).
+* Windows version: [link](https://github.com/Severnbli/cataca/releases/download/stable/cataca.zip)
 
 Windows version binds:
 * Walk: A, D.
