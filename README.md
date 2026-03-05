@@ -5,18 +5,34 @@
 
 Unity 2D puzzle-platformer game.
 
-### Used packages
+### Used packages and plugins
 
-* 
+* [esclite](https://github.com/Leopotam/ecslite) (used extensions: Entity Converter, Unity Editor)
+* [Zenject](https://github.com/modesttree/Zenject)
+* [SpriteGlow](https://github.com/elringus/sprite-glow)
+* [TMProDynamicDataCleaner](https://github.com/STARasGAMES/tmpro-dynamic-data-cleaner)
+* [Odin](https://odininspector.com/)
+* [DOTween](https://dotween.demigiant.com/)
 
 ## Getting Started
 
 ### Installing
 
-* 
+* Android version: // TODO: add link
+* Windows version: // TODO: add link
+
+Windows version binds:
+* Walk: A, D.
+* Jump: Space.
+* Position transforming: Left Arrow.
+* Rotation transforming: Up Arrow.
+* Scale transforming: Right Arrow.
 
 ### Building
 
-*
+1. Download project via `git clone` (preferred) or [as .zip file](https://github.com/Severnbli/cataca/archive/refs/heads/main.zip).
+2. Go to Unity and open project. Project unity version is `6000.0.56f1`.
+3. In Editor go to File → Build Profiles.
+4. Build project.
 
 _License: MIT_
