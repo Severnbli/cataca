@@ -32,7 +32,8 @@ Windows version binds:
 
 1. Download project via `git clone` (preferred) or [as .zip file](https://github.com/Severnbli/cataca/archive/refs/heads/main.zip).
 2. Go to Unity and open project. Project unity version is `6000.0.56f1`.
-3. In Editor go to File → Build Profiles.
-4. Build project.
+3. Download and add [Odin](https://odininspector.com/) package.
+4. In Editor go to File → Build Profiles.
+5. Build project.
 
 _License: MIT_
